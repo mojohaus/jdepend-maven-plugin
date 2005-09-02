@@ -1,0 +1,7 @@
+-------------------------------------------------------------------------------
+Battery: org.apache.maven.plugins.jdepend.objects.CyclePackageTest
+-------------------------------------------------------------------------------
+testName(org.apache.maven.plugins.jdepend.objects.CyclePackageTest)
+testPackageListWithOneRecord(org.apache.maven.plugins.jdepend.objects.CyclePackageTest)
+testPackageListWithManyRecord(org.apache.maven.plugins.jdepend.objects.CyclePackageTest)
+testPackageListValue(org.apache.maven.plugins.jdepend.objects.CyclePackageTest)

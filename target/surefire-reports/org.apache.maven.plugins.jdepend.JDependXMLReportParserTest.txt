@@ -1,0 +1,5 @@
+-------------------------------------------------------------------------------
+Battery: org.apache.maven.plugins.jdepend.JDependXMLReportParserTest
+-------------------------------------------------------------------------------
+testPackages(org.apache.maven.plugins.jdepend.JDependXMLReportParserTest)
+testPackage(org.apache.maven.plugins.jdepend.JDependXMLReportParserTest)
