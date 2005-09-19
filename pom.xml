@@ -22,7 +22,7 @@
     </dependency>
     <dependency>
       <groupId>doxia</groupId>
-      <artifactId>doxia-core</artifactId>
+      <artifactId>doxia-sink-api</artifactId>
       <version>1.0-alpha-4</version>
     </dependency>
     <dependency>
