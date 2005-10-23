@@ -17,17 +17,17 @@ package org.codehaus.mojo.jdepend;
  */
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.ResourceBundle;
-import java.util.ArrayList;
+
+import jdepend.xmlui.JDepend;
 
 import org.apache.maven.project.MavenProject;
 import org.apache.maven.reporting.AbstractMavenReport;
 import org.apache.maven.reporting.MavenReportException;
-
 import org.codehaus.doxia.sink.Sink;
 import org.codehaus.doxia.site.renderer.SiteRenderer;
-import jdepend.xmlui.JDepend;
 
 
 /**
@@ -116,6 +116,21 @@ public class JDependMojo extends AbstractMavenReport
         {
             throw new MavenReportException( "Failed to execute JDepend", e );
         }
+    }
+
+    /**
+     * Cf. overriden method documentation.
+     * 
+     * @see org.apache.maven.reporting.MavenReport#canGenerateReport()
+     */
+    public boolean canGenerateReport()
+    {
+        File srcDir = new File( classDirectory );
+        if ( !srcDir.exists() )
+        {
+            return false;
+        }
+        return true;
     }
     
     /**

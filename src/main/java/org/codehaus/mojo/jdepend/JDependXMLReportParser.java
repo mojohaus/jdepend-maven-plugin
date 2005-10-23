@@ -16,23 +16,20 @@
 
 package org.codehaus.mojo.jdepend;
 
-import org.codehaus.mojo.jdepend.objects.JDPackage;
-import org.codehaus.mojo.jdepend.objects.Packages;
-import org.codehaus.mojo.jdepend.objects.Stats;
-import org.codehaus.mojo.jdepend.objects.CyclePackage;
-
-import org.codehaus.mojo.jdepend.ReportGenerator;
-
-import java.io.*;
-import java.util.Stack;
-import java.util.List;
+import java.io.File;
 import java.util.ArrayList;
-import javax.xml.parsers.ParserConfigurationException;
+import java.util.List;
+import java.util.Stack;
 
-import org.xml.sax.*;
-import org.xml.sax.helpers.DefaultHandler;
-import javax.xml.parsers.SAXParserFactory;
 import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
+import org.codehaus.mojo.jdepend.objects.CyclePackage;
+import org.codehaus.mojo.jdepend.objects.JDPackage;
+import org.codehaus.mojo.jdepend.objects.Stats;
+import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
 
 public class JDependXMLReportParser extends DefaultHandler
 {

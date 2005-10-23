@@ -17,20 +17,13 @@
 package org.codehaus.mojo.jdepend;
 
 import java.util.List;
-import java.util.Locale;
 import java.util.ResourceBundle;
 
-import org.apache.maven.project.MavenProject;
-import org.apache.maven.reporting.AbstractMavenReport;
 import org.apache.maven.reporting.MavenReportException;
-
 import org.codehaus.doxia.sink.Sink;
-import org.codehaus.doxia.site.renderer.SiteRenderer;
-
-import org.codehaus.mojo.jdepend.JDependXMLReportParser;
-import org.codehaus.mojo.jdepend.objects.Stats;
-import org.codehaus.mojo.jdepend.objects.JDPackage;
 import org.codehaus.mojo.jdepend.objects.CyclePackage;
+import org.codehaus.mojo.jdepend.objects.JDPackage;
+import org.codehaus.mojo.jdepend.objects.Stats;
 
 
 public class ReportGenerator

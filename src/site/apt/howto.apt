@@ -53,6 +53,6 @@ Maven 2 JDepend Plugin
   Generate the metrics by executing the m2 site plugin.
 
 -------------------
-  m2 site:site
+  mvn site:site
 -------------------
 
