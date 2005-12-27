@@ -60,7 +60,7 @@ public class JDependMojo extends AbstractMavenReport
     
     /**
      * Directory containing the class files.
-     * @parameter expression="${project.build.directory}/classes"
+     * @parameter expression="${project.build.outputDirectory}"
      * @required
      */
     private String classDirectory;
