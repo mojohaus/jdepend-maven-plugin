@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+<JDepend>
+    <Packages>
+
+        <Package name="java.io">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="java.lang">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="java.util">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="javax.xml.parsers">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="jdepend.xmlui">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="org.apache.maven.project">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="org.apache.maven.reporting">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="org.codehaus.doxia.sink">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="org.codehaus.doxia.site.renderer">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="org.codehaus.mojo.jdepend">
+            <Stats>
+                <TotalClasses>3</TotalClasses>
+                <ConcreteClasses>3</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>0</Ca>
+                <Ce>12</Ce>
+                <A>0</A>
+                <I>1</I>
+                <D>0</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="JDependMojo.java">
+                    org.codehaus.mojo.jdepend.JDependMojo
+                </Class>
+                <Class sourceFile="JDependXMLReportParser.java">
+                    org.codehaus.mojo.jdepend.JDependXMLReportParser
+                </Class>
+                <Class sourceFile="ReportGenerator.java">
+                    org.codehaus.mojo.jdepend.ReportGenerator
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>java.io</Package>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+                <Package>javax.xml.parsers</Package>
+                <Package>jdepend.xmlui</Package>
+                <Package>org.apache.maven.project</Package>
+                <Package>org.apache.maven.reporting</Package>
+                <Package>org.codehaus.doxia.sink</Package>
+                <Package>org.codehaus.doxia.site.renderer</Package>
+                <Package>org.codehaus.mojo.jdepend.objects</Package>
+                <Package>org.xml.sax</Package>
+                <Package>org.xml.sax.helpers</Package>
+            </DependsUpon>
+
+            <UsedBy>
+            </UsedBy>
+        </Package>
+
+        <Package name="org.codehaus.mojo.jdepend.objects">
+            <Stats>
+                <TotalClasses>4</TotalClasses>
+                <ConcreteClasses>4</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>1</Ca>
+                <Ce>2</Ce>
+                <A>0</A>
+                <I>0.67</I>
+                <D>0.33</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="CyclePackage.java">
+                    org.codehaus.mojo.jdepend.objects.CyclePackage
+                </Class>
+                <Class sourceFile="JDPackage.java">
+                    org.codehaus.mojo.jdepend.objects.JDPackage
+                </Class>
+                <Class sourceFile="Packages.java">
+                    org.codehaus.mojo.jdepend.objects.Packages
+                </Class>
+                <Class sourceFile="Stats.java">
+                    org.codehaus.mojo.jdepend.objects.Stats
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+            </DependsUpon>
+
+            <UsedBy>
+                <Package>org.codehaus.mojo.jdepend</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="org.xml.sax">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="org.xml.sax.helpers">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+    </Packages>
+
+    <Cycles>
+    </Cycles>
+</JDepend>

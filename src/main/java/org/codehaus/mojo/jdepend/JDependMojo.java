@@ -32,6 +32,7 @@ import org.codehaus.doxia.site.renderer.SiteRenderer;
 
 /**
  * @goal generate
+ * @execute phase="compile"
  * @description Goal which generate the jdepend metrics.
  * @author aramirez@exist.com
  * @version $Id: JDependMojo.java 422 2005-08-26 aqr $
