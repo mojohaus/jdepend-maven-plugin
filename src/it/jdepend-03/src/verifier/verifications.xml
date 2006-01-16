@@ -1,0 +1,13 @@
+<verifications>
+  <files>
+    <file>
+      <location>target/jdepend-report.xml</location>
+    </file>
+    <file>
+      <location>target/site/jdepend-report.html</location>
+    </file>
+	<file>
+	  <location>target/classes/org/codehaus/mojo/App.class</location>
+	</file>
+  </files>
+</verifications>
