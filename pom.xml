@@ -3,7 +3,7 @@
   <parent>
     <groupId>org.codehaus.mojo</groupId>
     <artifactId>mojo</artifactId>
-    <version>5</version>
+    <version>6</version>
   </parent>
   <artifactId>jdepend-maven-plugin</artifactId>
   <version>2.0-beta-1-SNAPSHOT</version>
