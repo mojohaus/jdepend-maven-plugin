@@ -17,10 +17,12 @@
 package org.codehaus.mojo.jdepend;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
@@ -39,7 +41,7 @@ public class JDependXMLReportParser extends DefaultHandler
     
     protected Stats stats;
     
-    protected String elementValue;
+    protected StringBuffer buffer = null;
     
     protected Stack stack;
     
@@ -51,26 +53,24 @@ public class JDependXMLReportParser extends DefaultHandler
     
     private boolean errFlag = false;
     
-    /** Creates a new instance of JDependXMLReportParser */
-    public JDependXMLReportParser( String xmlPath )
+    /**
+     * Creates a new instance of JDependXMLReportParser 
+     * @throws SAXException 
+     * @throws ParserConfigurationException 
+     * @throws IOException
+     */
+    public JDependXMLReportParser( File xmlFile ) throws ParserConfigurationException, SAXException, IOException
     {
         SAXParserFactory factory = SAXParserFactory.newInstance();
 
-        try 
-        {
             /* Create an empty stack */
             stack = new Stack();
             
             SAXParser saxParser = factory.newSAXParser();
             
-            saxParser.parse( new File( xmlPath ),this );
+            saxParser.parse( xmlFile, this );
             
             //report = new ReportGenerator(concreteClasses);
-        } 
-        catch (Throwable t) 
-        {
-           t.printStackTrace();
-        }
         
     }
     
@@ -84,7 +84,10 @@ public class JDependXMLReportParser extends DefaultHandler
         
         /* Push element name into stack */
         stack.push(qName);
-        
+
+        //TODO only create a new buffer when the element is expected to have text
+        buffer = new StringBuffer();
+
         if(qName.equals("Packages"))
         {      
             packages = new ArrayList();
@@ -126,6 +129,8 @@ public class JDependXMLReportParser extends DefaultHandler
        throws SAXException
     {
         //System.out.println("END qname: /" + qName);
+        
+        String elementValue = buffer != null ? buffer.toString().trim() : null;
        
         if(qName.equals("Package"))
         {
@@ -223,17 +228,16 @@ public class JDependXMLReportParser extends DefaultHandler
             /* Remove element name in stack */
             stack.pop();
         }
+        
+        buffer = null;
     }
     
     public void characters(char[] buff, int offset, int len)
         throws SAXException
     {
-        String str = new String(buff, offset, len);
-       
-        if(!str.trim().equals(""))
+        if ( buffer != null )
         {
-            elementValue = str.trim();
-            //System.out.println("VALUE: " + elementValue); 
+            buffer.append( buff, offset, len );
         }
     }
     

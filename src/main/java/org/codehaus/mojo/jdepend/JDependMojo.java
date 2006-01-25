@@ -109,7 +109,7 @@ public class JDependMojo extends AbstractMavenReport
             
             JDepend.main( getArgumentList( getArgument(), getReportFile(), getClassDirectory() ) );            
             
-            xmlParser = new JDependXMLReportParser( getReportFile() );
+            xmlParser = new JDependXMLReportParser( new File( getReportFile() ) );
             
             generateReport(locale);
         }

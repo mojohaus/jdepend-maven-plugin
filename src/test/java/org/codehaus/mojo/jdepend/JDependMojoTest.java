@@ -29,11 +29,13 @@ public class JDependMojoTest
 {
     JDependXMLReportParser parser;
     
+    public static final String REPORT_PATH = "target/test-classes/jdepend-report.xml";
+
     private String basedir = System.getProperty( "basedir" );
-    
-    private String reportXML = basedir + "/target/test-classes/jdepend-report.xml";
-    
-    public void setUp()
+
+    private File reportXML = new File( basedir, REPORT_PATH );
+
+    public void setUp() throws Exception
     {
         parser = new JDependXMLReportParser( reportXML );
     }
@@ -41,19 +43,19 @@ public class JDependMojoTest
     public void testJDependReportContent()
         throws IOException
     {
-        String generatedReport = basedir + "/target/jdepend-report.xml";
-        String classDirectory = basedir + "/target/classes";
+        File generatedReport = new File( basedir, "target/jdepend-report.xml" );
+        File classDirectory = new File( basedir, "target/classes" );
         
         String[] args = new String[3];
         
         args[0] = "-file";
-        args[1] = generatedReport;
-        args[2] = classDirectory;
+        args[1] = generatedReport.getCanonicalPath();
+        args[2] = classDirectory.getCanonicalPath();
         
         JDepend.main( args );
         
         assertTrue( "Generated report xml is not equal to expected output",
-                    compareFiles( new File( generatedReport ), new File( reportXML ) ) );
+                    compareFiles( generatedReport, reportXML ) );
     }
     
     public boolean compareFiles( File f1, File f2 )

@@ -16,6 +16,7 @@ package org.codehaus.mojo.jdepend;
  * limitations under the License.
  */
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,10 +34,9 @@ public class JDependReportParserTest
     
     private String basedir = System.getProperty( "basedir" );
     
-    private String reportXML = basedir + "/target/test-classes/jdepend-report.xml";
-    
-    public void setUp()
+    public void setUp() throws Exception
     {
+        File reportXML = new File( basedir, JDependMojoTest.REPORT_PATH );
         parser = new JDependXMLReportParser( reportXML );
         
         packages = parser.packages;
