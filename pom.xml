@@ -4,13 +4,21 @@
   <parent>
     <artifactId>mojo</artifactId>
     <groupId>org.codehaus.mojo</groupId>
-    <version>11</version>
+    <version>13-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>jdepend-maven-plugin</artifactId>
   <version>2.0-beta-1-SNAPSHOT</version>
   <packaging>maven-plugin</packaging>
   <name>Maven JDepend Plugin</name>
+  <description>Maven 2 plugin that generates JDepend reports for your projects.</description>
+  <inceptionYear>2006</inceptionYear>
+  <licenses>
+    <license>
+      <name>BSD</name>
+      <url>http://www.clarkware.com/software/license.txt</url>
+    </license>
+  </licenses>
   <prerequisites>
     <maven>2.0</maven>
   </prerequisites>
@@ -31,4 +39,11 @@
       <version>2.9.1</version>
     </dependency>
   </dependencies>
+  <reporting>
+    <plugins>
+      <plugin>
+        <artifactId>maven-changes-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </reporting>
 </project>

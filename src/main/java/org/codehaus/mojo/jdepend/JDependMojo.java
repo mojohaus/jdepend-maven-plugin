@@ -31,6 +31,7 @@ import org.codehaus.doxia.site.renderer.SiteRenderer;
 
 
 /**
+ * Runs jdepend and generates a site report.
  * @goal generate
  * @execute phase="compile"
  * @description Goal which generate the jdepend metrics.

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<faqs id="FAQ" title="Frequently Asked Questions">
+  <part id="General">
+    <faq id="jdepend">
+      <question>What is JDepend?</question>
+      <answer>
+        <p>
+          JDepend is a tool that traverses Java class file directories and generates design quality metrics for each
+          Java package. JDepend allows you to automatically measure the quality of a design in terms of its
+          extensibility, reusability, and maintainability to manage package dependencies effectively.
+        </p>
+        <p>
+          See
+          <a href="http://clarkware.com/software/JDepend.html">http://clarkware.com/software/JDepend.html</a>
+          for details.
+        </p>
+      </answer>
+    </faq>
+  </part>
+</faqs>
