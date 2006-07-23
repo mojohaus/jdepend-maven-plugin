@@ -183,7 +183,7 @@ public class JDependMojo extends AbstractMavenReport
     
     private ResourceBundle getBundle(Locale locale) 
     {
-        return ResourceBundle.getBundle("jdepend-report", locale, 
+        return ResourceBundle.getBundle("org.codehaus.mojo.jdepend.jdepend-report", locale, 
                 this.getClass().getClassLoader());
     }
 
@@ -254,7 +254,8 @@ public class JDependMojo extends AbstractMavenReport
         return classDirectory;
     }
 
-    public void setClassDirectory(String classDirectory) {
+    public void setClassDirectory( String classDirectory )
+    {
         this.classDirectory = classDirectory;
     }
 }

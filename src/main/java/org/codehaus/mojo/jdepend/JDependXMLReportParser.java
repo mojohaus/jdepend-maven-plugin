@@ -33,206 +33,198 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-public class JDependXMLReportParser extends DefaultHandler
+public class JDependXMLReportParser
+    extends DefaultHandler
 {
     protected List packages;
-     
+
     protected JDPackage jdpackage;
-    
+
     protected Stats stats;
-    
+
     protected StringBuffer buffer = null;
-    
+
     protected Stack stack;
-    
+
     protected List cycles;
-    
+
     protected CyclePackage cyclePackage;
-    
+
     ReportGenerator report;
-    
+
     private boolean errFlag = false;
-    
+
     /**
      * Creates a new instance of JDependXMLReportParser 
      * @throws SAXException 
      * @throws ParserConfigurationException 
      * @throws IOException
      */
-    public JDependXMLReportParser( File xmlFile ) throws ParserConfigurationException, SAXException, IOException
+    public JDependXMLReportParser( File xmlFile )
+        throws ParserConfigurationException, SAXException, IOException
     {
         SAXParserFactory factory = SAXParserFactory.newInstance();
 
-            /* Create an empty stack */
-            stack = new Stack();
-            
-            SAXParser saxParser = factory.newSAXParser();
-            
-            saxParser.parse( xmlFile, this );
-            
-            //report = new ReportGenerator(concreteClasses);
-        
+        /* Create an empty stack */
+        stack = new Stack();
+
+        SAXParser saxParser = factory.newSAXParser();
+
+        saxParser.parse( xmlFile, this );
+
     }
-    
-    public void startElement(String namespaceURI, 
-            String sName,
-            String qName, 
-            Attributes attrs)
-       throws SAXException
+
+    public void startElement( String namespaceURI, String sName, String qName, Attributes attrs )
+        throws SAXException
     {
-        //System.out.println("START qname: " + qName);
-        
+
         /* Push element name into stack */
-        stack.push(qName);
+        stack.push( qName );
 
         //TODO only create a new buffer when the element is expected to have text
         buffer = new StringBuffer();
 
-        if(qName.equals("Packages"))
-        {      
+        if ( qName.equals( "Packages" ) )
+        {
             packages = new ArrayList();
         }
-        else if(qName.equals("Package"))
+        else if ( qName.equals( "Package" ) )
         {
-            if(isParentElement("Packages"))
+            if ( isParentElement( "Packages" ) )
             {
                 jdpackage = new JDPackage();
-                
-                if(attrs != null)
+
+                if ( attrs != null )
                 {
-                    jdpackage.setPackageName(attrs.getValue(0));
+                    jdpackage.setPackageName( attrs.getValue( 0 ) );
                 }
             }
-            else if(isParentElement("Cycles"))
+            else if ( isParentElement( "Cycles" ) )
             {
                 cyclePackage = new CyclePackage();
-                
-                if(attrs != null)
+
+                if ( attrs != null )
                 {
-                    cyclePackage.setName(attrs.getValue(0));
+                    cyclePackage.setName( attrs.getValue( 0 ) );
                 }
             }
         }
-        else if(qName.equals("Stats"))
+        else if ( qName.equals( "Stats" ) )
         {
             stats = new Stats();
         }
-        else if(qName.equals("Cycles"))
+        else if ( qName.equals( "Cycles" ) )
         {
             cycles = new ArrayList();
         }
     }
-    
-    public void endElement(String namespaceURI,
-            String sName,
-            String qName)
-       throws SAXException
-    {
-        //System.out.println("END qname: /" + qName);
-        
-        String elementValue = buffer != null ? buffer.toString().trim() : null;
-       
-        if(qName.equals("Package"))
-        {
-            if(isParentElement("Packages"))
-            {
-                if(errFlag == false)
-                {
-                    jdpackage.setStats(stats);
 
-                    packages.add(jdpackage);
+    public void endElement( String namespaceURI, String sName, String qName )
+        throws SAXException
+    {
+
+        String elementValue = buffer != null ? buffer.toString().trim() : null;
+
+        if ( qName.equals( "Package" ) )
+        {
+            if ( isParentElement( "Packages" ) )
+            {
+                if ( errFlag == false )
+                {
+                    jdpackage.setStats( stats );
+
+                    packages.add( jdpackage );
                 }
                 errFlag = false;
             }
-            else if(isParentElement("DependsUpon"))
+            else if ( isParentElement( "DependsUpon" ) )
             {
-                jdpackage.addDependsUpon(elementValue);
+                jdpackage.addDependsUpon( elementValue );
             }
-            else if(isParentElement("UsedBy"))
+            else if ( isParentElement( "UsedBy" ) )
             {
-                jdpackage.addUsedBy(elementValue);
+                jdpackage.addUsedBy( elementValue );
             }
-            else if(isParentElement("Package"))
+            else if ( isParentElement( "Package" ) )
             {
-                cyclePackage.addPackageList(elementValue);
+                cyclePackage.addPackageList( elementValue );
             }
-            else if(isParentElement("Cycles"))
+            else if ( isParentElement( "Cycles" ) )
             {
-                cycles.add(cyclePackage);
-            }
-        }   
-        else if(qName.equals("TotalClasses"))
-        {
-            stats.setTotalClasses(elementValue);
-        }
-        else if(qName.equals("ConcreteClasses"))
-        {    
-            if(isParentElement("Stats"))
-            {
-                stats.setConcreteClasses(elementValue);
+                cycles.add( cyclePackage );
             }
         }
-        else if(qName.equals("AbstractClasses"))
+        else if ( qName.equals( "TotalClasses" ) )
         {
-            if(isParentElement("Stats"))
+            stats.setTotalClasses( elementValue );
+        }
+        else if ( qName.equals( "ConcreteClasses" ) )
+        {
+            if ( isParentElement( "Stats" ) )
             {
-                stats.setAbstractClasses(elementValue);
+                stats.setConcreteClasses( elementValue );
             }
         }
-        else if(qName.equals("Ca"))
+        else if ( qName.equals( "AbstractClasses" ) )
         {
-            stats.setCa(elementValue);   
-        }
-        else if(qName.equals("Ce"))
-        {
-            stats.setCe(elementValue);
-        }
-        else if(qName.equals("A"))
-        {
-            stats.setA(elementValue);
-        }
-        else if(qName.equals("I"))
-        {
-            stats.setI(elementValue);
-        }
-        else if(qName.equals("D"))
-        {      
-            stats.setD(elementValue);
-        }
-        else if(qName.equals("V"))
-        {
-            stats.setV(elementValue);
-        }
-        else if(qName.equals("Class"))
-        {
-            if(isParentElement("AbstractClasses"))
+            if ( isParentElement( "Stats" ) )
             {
-                jdpackage.addAbstractClasses(elementValue);
-            }
-            else if(isParentElement("ConcreteClasses"))
-            {
-                jdpackage.addConcreteClasses(elementValue);
+                stats.setAbstractClasses( elementValue );
             }
         }
-        else if(qName.equals("error"))
+        else if ( qName.equals( "Ca" ) )
         {
-            if(isParentElement("Package"))
+            stats.setCa( elementValue );
+        }
+        else if ( qName.equals( "Ce" ) )
+        {
+            stats.setCe( elementValue );
+        }
+        else if ( qName.equals( "A" ) )
+        {
+            stats.setA( elementValue );
+        }
+        else if ( qName.equals( "I" ) )
+        {
+            stats.setI( elementValue );
+        }
+        else if ( qName.equals( "D" ) )
+        {
+            stats.setD( elementValue );
+        }
+        else if ( qName.equals( "V" ) )
+        {
+            stats.setV( elementValue );
+        }
+        else if ( qName.equals( "Class" ) )
+        {
+            if ( isParentElement( "AbstractClasses" ) )
+            {
+                jdpackage.addAbstractClasses( elementValue );
+            }
+            else if ( isParentElement( "ConcreteClasses" ) )
+            {
+                jdpackage.addConcreteClasses( elementValue );
+            }
+        }
+        else if ( qName.equals( "error" ) )
+        {
+            if ( isParentElement( "Package" ) )
             {
                 errFlag = true;
             }
         }
-        
-        
-        if(stack.size() != 0)
+
+        if ( stack.size() != 0 )
         {
             /* Remove element name in stack */
             stack.pop();
         }
-        
+
         buffer = null;
     }
-    
-    public void characters(char[] buff, int offset, int len)
+
+    public void characters( char[] buff, int offset, int len )
         throws SAXException
     {
         if ( buffer != null )
@@ -240,32 +232,32 @@ public class JDependXMLReportParser extends DefaultHandler
             buffer.append( buff, offset, len );
         }
     }
-    
+
     public java.util.List getPackages()
     {
         return this.getPackages();
     }
-    
+
     public Stats getStats()
     {
         return this.stats;
     }
-    
+
     private int getParentIndex()
     {
         int parentIndex = 0;
-        
+
         parentIndex = stack.size() - 2;
-        
+
         return parentIndex;
     }
-    
-    private boolean isParentElement(String parentElement)
+
+    private boolean isParentElement( String parentElement )
     {
         boolean isParent = false;
-        
-        isParent = stack.get(getParentIndex()).toString().equals(parentElement);
-        
+
+        isParent = stack.get( getParentIndex() ).toString().equals( parentElement );
+
         return isParent;
     }
 }

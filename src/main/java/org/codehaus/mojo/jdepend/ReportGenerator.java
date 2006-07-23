@@ -47,7 +47,7 @@ public class ReportGenerator
 
         sink.head();
         sink.title();
-        sink.text( "JDepend Report Metrics" );
+        sink.text( bundle.getString( "report.title" ) ); //$NON-NLS-1$
         sink.title_();
         sink.head_();
 
@@ -55,7 +55,7 @@ public class ReportGenerator
         sink.section1();
 
         sink.sectionTitle1();
-        sink.text( "Metric Results" );
+        sink.text( bundle.getString( "report.metricresults" ) ); //$NON-NLS-1$
         sink.sectionTitle1_();
 
         doSectionLinks( bundle, sink );
@@ -63,8 +63,7 @@ public class ReportGenerator
         sink.lineBreak();
         sink.lineBreak();
 
-        sink.text( "The following document contains the results of a JDepend metric analysis. "
-            + "The various metrics are defined at the bottom of this document." );
+        sink.text( bundle.getString( "report.intro" ) );//$NON-NLS-1$
 
         sink.lineBreak();
         sink.lineBreak();
@@ -87,40 +86,40 @@ public class ReportGenerator
     public void doSectionLinks( ResourceBundle bundle, Sink sink )
     {
 
-        sink.text( "[ " );
-        sink.link( "#summary" );
-        sink.text( "summary" );
+        sink.text( bundle.getString( "report.square-open" ) ); //$NON-NLS-1$
+        sink.link( bundle.getString( "report.summary.anchor" ) ); //$NON-NLS-1$
+        sink.text( bundle.getString( "report.summary.text" ) ); //$NON-NLS-1$
         sink.link_();
-        sink.text( " ] " );
+        sink.text( bundle.getString( "report.square-close" ) ); //$NON-NLS-1$
 
-        sink.text( "[ " );
-        sink.link( "#packages" );
-        sink.text( "packages" );
+        sink.text( bundle.getString( "report.square-open" ) ); //$NON-NLS-1$
+        sink.link( bundle.getString( "report.packages.anchor" ) ); //$NON-NLS-1$
+        sink.text( bundle.getString( "report.packages.text" ) ); //$NON-NLS-1$
         sink.link_();
-        sink.text( " ] " );
+        sink.text( bundle.getString( "report.square-close" ) ); //$NON-NLS-1$
 
-        sink.text( "[ " );
-        sink.link( "#cycles" );
-        sink.text( "cycles" );
+        sink.text( bundle.getString( "report.square-open" ) ); //$NON-NLS-1$
+        sink.link( bundle.getString( "report.cycles.anchor" ) ); //$NON-NLS-1$
+        sink.text( bundle.getString( "report.cycles.text" ) ); //$NON-NLS-1$
         sink.link_();
-        sink.text( " ] " );
+        sink.text( bundle.getString( "report.square-close" ) ); //$NON-NLS-1$
 
-        sink.text( "[ " );
-        sink.link( "#explanations" );
-        sink.text( "explanations" );
+        sink.text( bundle.getString( "report.square-open" ) ); //$NON-NLS-1$
+        sink.link( bundle.getString( "report.explanations.anchor" ) ); //$NON-NLS-1$
+        sink.text( bundle.getString( "report.explanations.text" ) ); //$NON-NLS-1$
         sink.link_();
-        sink.text( " ] " );
+        sink.text( bundle.getString( "report.square-close" ) ); //$NON-NLS-1$
 
     }
 
     public void doSummarySection( ResourceBundle bundle, Sink sink )
     {
 
-        sink.anchor( "summary" );
+        sink.anchor( bundle.getString( "report.summary.text" ) ); //$NON-NLS-1$
         sink.anchor_();
 
         sink.sectionTitle1();
-        sink.text( "Summary" );
+        sink.text( bundle.getString( "report.summary.title" ) ); //$NON-NLS-1$
         sink.sectionTitle1_();
 
         doSectionLinks( bundle, sink );
@@ -132,43 +131,43 @@ public class ReportGenerator
         sink.tableRow();
 
         sink.tableHeaderCell();
-        sink.text( "Package" );
+        sink.text( bundle.getString( "report.package.title" ) ); //$NON-NLS-1$
         sink.tableHeaderCell_();
 
         sink.tableHeaderCell();
-        sink.text( "TC" );
+        sink.text( bundle.getString( "report.TC" ) ); //$NON-NLS-1$
         sink.tableHeaderCell_();
 
         sink.tableHeaderCell();
-        sink.text( "CC" );
+        sink.text( bundle.getString( "report.CC" ) ); //$NON-NLS-1$
         sink.tableHeaderCell_();
 
         sink.tableHeaderCell();
-        sink.text( "AC" );
+        sink.text( bundle.getString( "report.AC" ) ); //$NON-NLS-1$
         sink.tableHeaderCell_();
 
         sink.tableHeaderCell();
-        sink.text( "Ca" );
+        sink.text( bundle.getString( "report.Ca" ) ); //$NON-NLS-1$
         sink.tableHeaderCell_();
 
         sink.tableHeaderCell();
-        sink.text( "Ce" );
+        sink.text( bundle.getString( "report.Ce" ) ); //$NON-NLS-1$
         sink.tableHeaderCell_();
 
         sink.tableHeaderCell();
-        sink.text( "A" );
+        sink.text( bundle.getString( "report.A" ) ); //$NON-NLS-1$
         sink.tableHeaderCell_();
 
         sink.tableHeaderCell();
-        sink.text( "I" );
+        sink.text( bundle.getString( "report.I" ) ); //$NON-NLS-1$
         sink.tableHeaderCell_();
 
         sink.tableHeaderCell();
-        sink.text( "D" );
+        sink.text( bundle.getString( "report.D" ) ); //$NON-NLS-1$
         sink.tableHeaderCell_();
 
         sink.tableHeaderCell();
-        sink.text( "V" );
+        sink.text( bundle.getString( "report.V" ) ); //$NON-NLS-1$
         sink.tableHeaderCell_();
 
         sink.tableRow_();
@@ -183,7 +182,7 @@ public class ReportGenerator
 
             sink.tableRow();
             sink.tableCell();
-            sink.link( "#" + jdpackage.getPackageName() );
+            sink.link( bundle.getString( "report.dash" ) + jdpackage.getPackageName() ); //$NON-NLS-1$
             sink.text( jdpackage.getPackageName() );
             sink.link_();
             sink.tableCell_();
@@ -234,11 +233,11 @@ public class ReportGenerator
     public void doPackagesSection( ResourceBundle bundle, Sink sink )
     {
 
-        sink.anchor( "packages" );
+        sink.anchor( bundle.getString( "report.packages.text" ) ); //$NON-NLS-1$
         sink.anchor_();
 
         sink.sectionTitle1();
-        sink.text( "Packages" );
+        sink.text( bundle.getString( "report.packages.title" ) ); //$NON-NLS-1$
         sink.sectionTitle1_();
 
         doSectionLinks( bundle, sink );
@@ -255,7 +254,7 @@ public class ReportGenerator
 
         if ( list.size() <= 0 )
         {
-            sink.text( "There are no package used." );
+            sink.text( bundle.getString( "report.nopackages" ) ); //$NON-NLS-1$
             sink.lineBreak();
         }
         else
@@ -280,23 +279,23 @@ public class ReportGenerator
                 sink.tableRow();
 
                 sink.tableHeaderCell();
-                sink.text( "Afferent Couplings" );
+                sink.text( bundle.getString( "report.afferentcouplings.title" ) ); //$NON-NLS-1$
                 sink.tableHeaderCell_();
 
                 sink.tableHeaderCell();
-                sink.text( "Efferent Couplings" );
+                sink.text( bundle.getString( "report.efferentcouplings.title" ) ); //$NON-NLS-1$
                 sink.tableHeaderCell_();
 
                 sink.tableHeaderCell();
-                sink.text( "Abstractness" );
+                sink.text( bundle.getString( "report.abstractness.title" ) ); //$NON-NLS-1$
                 sink.tableHeaderCell_();
 
                 sink.tableHeaderCell();
-                sink.text( "Instability" );
+                sink.text( bundle.getString( "report.instability.title" ) ); //$NON-NLS-1$
                 sink.tableHeaderCell_();
 
                 sink.tableHeaderCell();
-                sink.text( "Distance" );
+                sink.text( bundle.getString( "report.distance.title" ) ); //$NON-NLS-1$
                 sink.tableHeaderCell_();
 
                 sink.tableRow_();
@@ -339,19 +338,19 @@ public class ReportGenerator
                  */
 
                 sink.tableHeaderCell();
-                sink.text( "Abstract Classes" );
+                sink.text( bundle.getString( "report.abstractclasses.title" ) ); //$NON-NLS-1$
                 sink.tableHeaderCell_();
 
                 sink.tableHeaderCell();
-                sink.text( "Concrete Classes" );
+                sink.text( bundle.getString( "report.concreteclasses.title" ) ); //$NON-NLS-1$
                 sink.tableHeaderCell_();
 
                 sink.tableHeaderCell();
-                sink.text( "Used by Packages" );
+                sink.text( bundle.getString( "report.usedbypackages" ) ); //$NON-NLS-1$
                 sink.tableHeaderCell_();
 
                 sink.tableHeaderCell();
-                sink.text( "Uses Packages" );
+                sink.text( bundle.getString( "report.usespackage" ) ); //$NON-NLS-1$
                 sink.tableHeaderCell_();
 
                 sink.tableRow_();
@@ -370,7 +369,7 @@ public class ReportGenerator
                 if ( abstractList.size() <= 0 )
                 {
                     sink.italic();
-                    sink.text( "None" );
+                    sink.text( bundle.getString( "report.none" ) ); //$NON-NLS-1$
                     sink.italic_();
                 }
                 else
@@ -391,7 +390,7 @@ public class ReportGenerator
                 if ( concreteList.size() <= 0 )
                 {
                     sink.italic();
-                    sink.text( "None" );
+                    sink.text( bundle.getString( "report.none" ) ); //$NON-NLS-1$
                     sink.italic_();
                 }
                 else
@@ -412,7 +411,7 @@ public class ReportGenerator
                 if ( aList.size() <= 0 )
                 {
                     sink.italic();
-                    sink.text( "None" );
+                    sink.text( bundle.getString( "report.none" ) ); //$NON-NLS-1$
                     sink.italic_();
                 }
                 else
@@ -435,7 +434,7 @@ public class ReportGenerator
                 if ( aList.size() <= 0 )
                 {
                     sink.italic();
-                    sink.text( "None" );
+                    sink.text( bundle.getString( "report.none" ) ); //$NON-NLS-1$
                     sink.italic_();
                 }
                 else
@@ -459,11 +458,11 @@ public class ReportGenerator
     public void doCycleSection( ResourceBundle bundle, Sink sink )
     {
 
-        sink.anchor( "cycles" );
+        sink.anchor( bundle.getString( "report.cycles.text" ) ); //$NON-NLS-1$
         sink.anchor_();
 
         sink.sectionTitle1();
-        sink.text( "Cycles" );
+        sink.text( bundle.getString( "report.cycles.title" ) ); //$NON-NLS-1$
         sink.sectionTitle1_();
 
         doSectionLinks( bundle, sink );
@@ -482,7 +481,7 @@ public class ReportGenerator
 
         if ( cycleList.size() <= 0 )
         {
-            sink.text( "There are no cyclic dependencies." );
+            sink.text( bundle.getString( "report.nocyclicdependencies" ) ); //$NON-NLS-1$
             sink.lineBreak();
         }
         else
@@ -491,11 +490,11 @@ public class ReportGenerator
 
             sink.tableRow();
             sink.tableHeaderCell();
-            sink.text( "Package" );
+            sink.text( bundle.getString( "report.package.title" ) ); //$NON-NLS-1$
             sink.tableHeaderCell_();
 
             sink.tableHeaderCell();
-            sink.text( "Package Dependencies" );
+            sink.text( bundle.getString( "report.packagedependencies" ) ); //$NON-NLS-1$
             sink.tableHeaderCell_();
             sink.tableRow_();
 
@@ -515,7 +514,7 @@ public class ReportGenerator
                 if ( packageList.size() <= 0 )
                 {
                     sink.italic();
-                    sink.text( "None" );
+                    sink.text( bundle.getString( "report.none" ) ); //$NON-NLS-1$
                     sink.italic_();
                 }
                 else
@@ -538,11 +537,11 @@ public class ReportGenerator
     public void doExplanationSection( ResourceBundle bundle, Sink sink )
     {
 
-        sink.anchor( "explanations" );
+        sink.anchor( bundle.getString( "report.explanations" ) ); //$NON-NLS-1$
         sink.anchor_();
 
         sink.sectionTitle1();
-        sink.text( "Explanation" );
+        sink.text( bundle.getString( "report.explanation.title" ) ); //$NON-NLS-1$
         sink.sectionTitle1_();
 
         doSectionLinks( bundle, sink );
@@ -550,8 +549,7 @@ public class ReportGenerator
         sink.lineBreak();
         sink.lineBreak();
 
-        sink.text( "The following explanations are for quick reference and"
-            + " are lifted directly from the original JDepend documentation." );
+        sink.text( bundle.getString( "report.explanation.description" ) ); //$NON-NLS-1$
 
         sink.lineBreak();
         sink.lineBreak();
@@ -560,103 +558,81 @@ public class ReportGenerator
 
         sink.tableRow();
         sink.tableHeaderCell();
-        sink.text( "Term" );
+        sink.text( bundle.getString( "report.term" ) ); //$NON-NLS-1$
         sink.tableHeaderCell_();
 
         sink.tableHeaderCell();
-        sink.text( "Description" );
+        sink.text( bundle.getString( "report.description" ) ); //$NON-NLS-1$
         sink.tableHeaderCell_();
         sink.tableRow_();
 
         sink.tableRow();
         sink.tableCell();
-        sink.text( "Number of Classes" );
+        sink.text( bundle.getString( "report.numberofclasses.title" ) ); //$NON-NLS-1$
         sink.tableCell_();
 
         sink.tableCell();
-        sink.text( "The number of concrete and abstract classes (and interfaces) "
-            + "in the package is an indicator of the extensibility of the package." );
-        sink.tableCell_();
-        sink.tableRow_();
-
-        sink.tableRow();
-        sink.tableCell();
-        sink.text( "Afferent Couplings" );
-        sink.tableCell_();
-
-        sink.tableCell();
-        sink.text( "The number of other packages that depend upon classes within "
-            + "the package is an indicator of the package's responsibility." );
+        sink.text( bundle.getString( "report.numberofclasses.description" ) ); //$NON-NLS-1$
         sink.tableCell_();
         sink.tableRow_();
 
         sink.tableRow();
         sink.tableCell();
-        sink.text( "Efferent Couplings" );
+        sink.text( bundle.getString( "report.afferentcouplings.title" ) ); //$NON-NLS-1$
         sink.tableCell_();
 
         sink.tableCell();
-        sink.text( "The number of other packages that the classes in the package "
-            + "depend upon is an indicator of the package's independence." );
-        sink.tableCell_();
-        sink.tableRow_();
-
-        sink.tableRow();
-        sink.tableCell();
-        sink.text( "Abstractness" );
-        sink.tableCell_();
-
-        sink.tableCell();
-        sink.text( "The ratio of the number of abstract classes (and interfaces) "
-            + "in the analyzed package to the total number of classes in the "
-            + "analyzed package. The range for this metric is 0 to 1, with A=0 "
-            + "indicating a completely concrete package and A=1 indicating a " + "completely abstract package." );
+        sink.text( bundle.getString( "report.afferentcouplings.description" ) ); //$NON-NLS-1$
         sink.tableCell_();
         sink.tableRow_();
 
         sink.tableRow();
         sink.tableCell();
-        sink.text( "Instability" );
+        sink.text( bundle.getString( "report.efferentcouplings.title" ) ); //$NON-NLS-1$
         sink.tableCell_();
 
         sink.tableCell();
-        sink.text( "The ratio of efferent coupling (Ce) to total coupling "
-            + "(Ce / (Ce + Ca)). This metric is an indicator of the package's "
-            + "resilience to change. The range for this metric is 0 to 1, with "
-            + "I=0 indicating a completely stable package and I=1 indicating a " + "completely instable package." );
+        sink.text( bundle.getString( "report.efferentcouplings.description" ) ); //$NON-NLS-1$
         sink.tableCell_();
         sink.tableRow_();
 
         sink.tableRow();
         sink.tableCell();
-        sink.text( "Distance" );
+        sink.text( bundle.getString( "report.abstractness.title" ) ); //$NON-NLS-1$
         sink.tableCell_();
 
         sink.tableCell();
-        sink.text( "The perpendicular distance of a package from the idealized "
-            + "line A + I = 1. This metric is an indicator of the package's "
-            + "balance between abstractness and stability. A package squarely "
-            + "on the main sequence is optimally balanced with respect to its "
-            + "abstractness and stability. Ideal packages are either completely "
-            + "abstract and stable (x=0, y=1) or completely concrete and instable "
-            + "(x=1, y=0). The range for this metric is 0 to 1, with D=0 indicating "
-            + "a package that is coincident with the main sequence and D=1 indicating "
-            + "a package that is as far from the main sequence as possible." );
+        sink.text( bundle.getString( "report.abstractness.description" ) ); //$NON-NLS-1$
         sink.tableCell_();
         sink.tableRow_();
 
         sink.tableRow();
         sink.tableCell();
-        sink.text( "Cycles" );
+        sink.text( bundle.getString( "report.instability.title" ) ); //$NON-NLS-1$
         sink.tableCell_();
 
         sink.tableCell();
-        sink.text( "Packages participating in a package dependency cycle are "
-            + "in a deadly embrace with respect to reusability and their "
-            + "release cycle. Package dependency cycles can be easily identified "
-            + "by reviewing the textual reports of dependency cycles. Once these "
-            + "dependency cycles have been identified with JDepend, they can be "
-            + "broken by employing various object-oriented techniques." );
+        sink.text( bundle.getString( "report.instability.description" ) ); //$NON-NLS-1$
+        sink.tableCell_();
+        sink.tableRow_();
+
+        sink.tableRow();
+        sink.tableCell();
+        sink.text( bundle.getString( "report.distance.title" ) ); //$NON-NLS-1$
+        sink.tableCell_();
+
+        sink.tableCell();
+        sink.text( bundle.getString( "report.distance.description" ) ); //$NON-NLS-1$
+        sink.tableCell_();
+        sink.tableRow_();
+
+        sink.tableRow();
+        sink.tableCell();
+        sink.text( bundle.getString( "report.cycles.title" ) ); //$NON-NLS-1$
+        sink.tableCell_();
+
+        sink.tableCell();
+        sink.text( bundle.getString( "report.cycles.description" ) ); //$NON-NLS-1$
         sink.tableCell_();
         sink.tableRow_();
 
@@ -670,7 +646,7 @@ public class ReportGenerator
 
         ival = Float.parseFloat( value );
         ival = ival * 100;
-        value = String.valueOf( ival ) + "%";
+        value = String.valueOf( ival ) + "%"; //$NON-NLS-1$
 
         return value;
     }
