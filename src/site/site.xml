@@ -24,7 +24,7 @@
       <item name="FAQ" href="faq.html" />
     </menu>
     <menu name="Examples">
-      <item name="JDepend Sample Report" href="jdepend-report.html" />
+      <item name="JDepend Sample Report" href="examples/jdepend-report.html" />
     </menu>
     ${reports}
   </body>
