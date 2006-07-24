@@ -4,10 +4,10 @@
 <head>
 <title>JDepend Report Metrics</title>
 <style type="text/css" media="all">
-@import url("./css/maven-base.css");
-@import url("./css/maven-theme.css");@import url("./css/site.css");
+@import url("../css/maven-base.css");
+@import url("../css/maven-theme.css");@import url("./css/site.css");
 </style>
-<link rel="stylesheet" href="./style/print.css" type="text/css" media="print"></link>
+<link rel="stylesheet" href="../style/print.css" type="text/css" media="print"></link>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta>
 </head>
 
@@ -35,40 +35,7 @@
 <hr/>
 </div>
 </div>
-<div id="leftColumn"><div id="navcolumn"><h5>Project Documentation</h5>
-<ul>
-    <li class="none">
-          <a href="http://mojo.codehaus.org">mojo</a>
-      </li>
-            </ul>
-      <h5>JDepend QuickStart</h5>
-    <ul>
-              
-    <li class="none">
 
-          <a href="howto.html">Overview</a>
-      </li>
-                
-    <li class="none">
-          <a href="jdepend-report.html">JDepend Sample Report</a>
-      </li>
-            </ul>
-      <h5>Project Documentation</h5>
-
-    <ul>
-              
-    <li class="none">
-          <strong><a href="index.html">About Maven JDepend Plugin</a></strong>
-      </li>
-                
-                    
-        <li class="collapsed">
-          <a href="project-info.html">Project Info</a>
-      </li>
-</ul><a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy">
-<img alt="Built by Maven" src="./images/logos/maven-feather.png"></img>
-</a>
-</div></div>
 <div id="bodyColumn">
 <div id="contentBox">
 <div class="section"><h2>Metric Results</h2>[ <a href="#summary">summary</a> ] [ <a href="#packages">packages</a> ] [ <a href="#cycles">cycles</a> ] [ <a href="#explanations">explanations</a> ] <br /><br />The following document contains the results of a JDepend metric analysis. The various metrics are defined at the bottom of this document.<br /><br /><a name="summary"></a><h2>Summary</h2>[ <a href="#summary">summary</a> ] [ <a href="#packages">packages</a> ] [ <a href="#cycles">cycles</a> ] [ <a href="#explanations">explanations</a> ] <br /><br /><table class="bodyTable"><tr class="a"><th>Package</th><th>TC</th><th>CC</th><th>AC</th><th>Ca</th><th>Ce</th><th>A</th><th>I</th><th>D</th><th>V</th></tr><tr class="b"><td><a href="#org.codehaus.mojo.jdepend">org.codehaus.mojo.jdepend</a></td><td>3</td><td>3</td><td>0</td><td>0</td><td>12</td><td>0.0%</td><td>100.0%</td><td>0.0%</td><td>1</td></tr><tr class="a"><td><a href="#org.codehaus.mojo.jdepend.objects">org.codehaus.mojo.jdepend.objects</a></td><td>4</td><td>4</td><td>0</td><td>1</td><td>2</td><td>0.0%</td><td>67.0%</td><td>33.0%</td><td>1</td></tr></table><a name="packages"></a><h2>Packages</h2>[ <a href="#summary">summary</a> ] [ <a href="#packages">packages</a> ] [ <a href="#cycles">cycles</a> ] [ <a href="#explanations">explanations</a> ] <br /><a name="org.codehaus.mojo.jdepend"></a><h3>org.codehaus.mojo.jdepend</h3><table class="bodyTable"><tr class="b"><th>Afferent Couplings</th><th>Efferent Couplings</th><th>Abstractness</th><th>Instability</th><th>Distance</th></tr><tr class="a"><td>0</td><td>12</td><td>0.0%</td><td>100.0%</td><td>0.0%</td></tr></table><table class="bodyTable"><tr class="b"><th>Abstract Classes</th><th>Concrete Classes</th><th>Used by Packages</th><th>Uses Packages</th></tr><tr class="a"><td><i>None</i></td><td>org.codehaus.mojo.jdepend.JDependMojo<br />org.codehaus.mojo.jdepend.JDependXMLReportParser<br />org.codehaus.mojo.jdepend.ReportGenerator<br /></td><td><i>None</i></td><td>java.io<br />java.lang<br />java.util<br />javax.xml.parsers<br />jdepend.xmlui<br />org.apache.maven.project<br />org.apache.maven.reporting<br />org.codehaus.doxia.sink<br />org.codehaus.doxia.site.renderer<br />org.codehaus.mojo.jdepend.objects<br />org.xml.sax<br />org.xml.sax.helpers<br /></td></tr></table><a name="org.codehaus.mojo.jdepend.objects"></a><h3>org.codehaus.mojo.jdepend.objects</h3><table class="bodyTable"><tr class="b"><th>Afferent Couplings</th><th>Efferent Couplings</th><th>Abstractness</th><th>Instability</th><th>Distance</th></tr><tr class="a"><td>1</td><td>2</td><td>0.0%</td><td>67.0%</td><td>33.0%</td></tr></table><table class="bodyTable"><tr class="b"><th>Abstract Classes</th><th>Concrete Classes</th><th>Used by Packages</th><th>Uses Packages</th></tr><tr class="a"><td><i>None</i></td><td>org.codehaus.mojo.jdepend.objects.CyclePackage<br />org.codehaus.mojo.jdepend.objects.JDPackage<br />o.jdepend.objects.Packages<br />org.codehaus.mojo.jdepend.objects.Stats<br /></td><td>org.codehaus.mojo.jdepend<br /></td><td>java.lang<br />java.util<br /></td></tr></table><a name="cycles"></a><h2>Cycles</h2>[ <a href="#summary">summary</a> ] [ <a href="#packages">packages</a> ] [ <a href="#cycles">cycles</a> ] [ <a href="#explanations">explanations</a> ] <br /><br />There are no cyclic dependencies.<br /><a name="explanations"></a><h2>Explanation</h2>[ <a href="#summary">summary</a> ] [ <a href="#packages">packages</a> ] [ <a href="#cycles">cycles</a> ] [ <a href="#explanations">explanations</a> ] <br /><br />The following explanations are for quick reference and are lifted directly from the original JDepend documentation.<br /><br /><table class="bodyTable"><tr class="b"><th>Term</th><th>Description</th></tr><tr class="a"><td>Number of Classes</td><td>The number of concrete and abstract classes (and interfaces) in the package is an indicator of the extensibility of the package.</td></tr><tr class="b"><td>Afferent Couplings</td><td>The number of other packages that depend upon classes within the package is an indicator of the package's responsibility.</td></tr><tr class="a"><td>Efferent Couplings</td><td>The number of other packages that the classes in the package depend upon is an indicator of the package's independence.</td></tr><tr class="b"><td>Abstractness</td><td>The ratio of the number of abstract classes (and interfaces) in the analyzed package to the total number of classes in the analyzed package. The range for this metric is 0 to 1, with A=0 indicating a completely concrete package and A=1 indicating a completely abstract package.</td></tr><tr class="a"><td>Instability</td><td>The ratio of efferent coupling (Ce) to total coupling (Ce / (Ce + Ca)). This metric is an indicator of the package's resilience to change. The range for this metric is 0 to 1, with I=0 indicating a completely stable package and I=1 indicating a completely instable package.</td></tr><tr class="b"><td>Distance</td><td>The perpendicular distance of a package from the idealized line A + I = 1. This metric is an indicator of the package's balance between abstractness and stability. A package squarely on the main sequence is optimally balanced with respect to its abstractness and stability. Ideal packages are either completely abstract and stable (x=0, y=1) or completely concrete and instable (x=1, y=0). The range for this metric is 0 to 1, with D=0 indicating a package that is coincident with the main sequence and D=1 indicating a package that is as far from the main sequence as possible.</td></tr><tr class="a"><td>Cycles</td><td>Packages participating in a package dependency cycle are in a deadly embrace with respect to reusability and their release cycle. Package dependency cycles can be easily identified by reviewing the textual reports of dependency cycles. Once these dependency cycles have been identified with JDepend, they can be broken by employing various object-oriented techniques.</td></tr></table></div>
