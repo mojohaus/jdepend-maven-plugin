@@ -235,7 +235,7 @@ public class JDependXMLReportParser
 
     public java.util.List getPackages()
     {
-        return this.getPackages();
+        return this.packages;
     }
 
     public Stats getStats()
