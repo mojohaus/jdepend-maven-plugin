@@ -1,3 +1,5 @@
+package org.codehaus.mojo.jdepend.objects;
+
 /*
  * Copyright 2001-2005 The Apache Software Foundation.
  *
@@ -14,41 +16,40 @@
  * limitations under the License.
  */
 
-package org.codehaus.mojo.jdepend.objects;
-
-public class Packages 
+public class Packages
 {
     private java.util.List jdpackage;
-    
+
     private String[] attributes;
-    
-    /** Creates a new instance of Packages */
-    public Packages() 
+
+    /**
+     * Creates a new instance of Packages.
+     */
+    public Packages()
     {
     }
 
-    
     public java.util.List getPackages()
     {
-        if(this.jdpackage == null)
+        if ( this.jdpackage == null )
         {
             this.jdpackage = new java.util.ArrayList();
         }
-        
+
         return this.jdpackage;
     }
-    
-    public void setPackages(java.util.List jdpackage)
+
+    public void setPackages( java.util.List jdpackage )
     {
         this.jdpackage = jdpackage;
     }
-    
-    public void addPackage(JDPackage jdpackage)
+
+    public void addPackage( JDPackage jdpackage )
     {
-        getPackages().add(jdpackage);
+        getPackages().add( jdpackage );
     }
-    
-    public void setAttribute(String[] attrs)
+
+    public void setAttribute( String[] attrs )
     {
         this.attributes = attrs;
     }

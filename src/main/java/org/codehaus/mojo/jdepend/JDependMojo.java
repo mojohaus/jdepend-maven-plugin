@@ -16,27 +16,26 @@ package org.codehaus.mojo.jdepend;
  * limitations under the License.
  */
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Locale;
-import java.util.ResourceBundle;
-
 import jdepend.xmlui.JDepend;
-
 import org.apache.maven.project.MavenProject;
 import org.apache.maven.reporting.AbstractMavenReport;
 import org.apache.maven.reporting.MavenReportException;
 import org.codehaus.doxia.sink.Sink;
 import org.codehaus.doxia.site.renderer.SiteRenderer;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 /**
  * Run JDepend and generate a site report.
- * 
+ *
+ * @author aramirez@exist.com
+ * @version $Id$
  * @goal generate
  * @execute phase="compile"
  * @description Goal which generate the JDepend metrics.
- * @author aramirez@exist.com
- * @version $Id$
  */
 public class JDependMojo extends AbstractMavenReport
 {
@@ -45,7 +44,7 @@ public class JDependMojo extends AbstractMavenReport
      * @readonly
      */
     private MavenProject project;
-    
+
     /**
      * Directory where the generated output site files will be located.
      *
@@ -53,14 +52,14 @@ public class JDependMojo extends AbstractMavenReport
      * @required
      */
     private String outputDirectory;
-    
+
     /**
      * Directory of the project.
      *
      * @parameter expression="${basedir}"
      */
     private String projectDirectory;
-    
+
     /**
      * Directory containing the class files.
      *
@@ -68,13 +67,13 @@ public class JDependMojo extends AbstractMavenReport
      * @required
      */
     private String classDirectory;
-    
+
     /**
      * @parameter default-value="-file"
      * @readonly
      */
     private String argument;
-    
+
     /**
      * Location of the generated JDepend xml report.
      *
@@ -83,41 +82,41 @@ public class JDependMojo extends AbstractMavenReport
      * @readonly
      */
     private String reportFile;
-    
+
     /**
      * @parameter expression="${component.org.codehaus.doxia.site.renderer.SiteRenderer}"
      * @readonly
      */
     private SiteRenderer siteRenderer;
-    
+
     JDependXMLReportParser xmlParser;
-    
+
     /**
      * Execute the generate of reports.
      */
-    public void executeReport(Locale locale) throws MavenReportException
+    public void executeReport( Locale locale )
+        throws MavenReportException
     {
         try
         {
-            File outputDirFile = new File(outputDirectory);
-            
-            if(!outputDirFile.exists())
+            File outputDirFile = new File( outputDirectory );
+
+            if ( !outputDirFile.exists() )
             {
                 boolean success = outputDirFile.mkdirs();
-                if(!success)
+                if ( !success )
                 {
-                    throw new MavenReportException("Could not create directory " 
-                            + outputDirectory);
+                    throw new MavenReportException( "Could not create directory " + outputDirectory );
                 }
             }
-            
-            JDepend.main( getArgumentList( getArgument(), getReportFile(), getClassDirectory() ) );            
-            
+
+            JDepend.main( getArgumentList( getArgument(), getReportFile(), getClassDirectory() ) );
+
             xmlParser = new JDependXMLReportParser( new File( getReportFile() ) );
-            
-            generateReport(locale);
+
+            generateReport( locale );
         }
-        catch(Exception e)
+        catch ( Exception e )
         {
             throw new MavenReportException( "Failed to execute JDepend", e );
         }
@@ -125,7 +124,7 @@ public class JDependMojo extends AbstractMavenReport
 
     /**
      * Cf. overriden method documentation.
-     * 
+     *
      * @see org.apache.maven.reporting.MavenReport#canGenerateReport()
      */
     public boolean canGenerateReport()
@@ -137,123 +136,128 @@ public class JDependMojo extends AbstractMavenReport
         }
         return true;
     }
-    
+
     /**
      * Sets and get the arguments passed for the JDepend.
-     * @param argument             Accepts parameter with "-file" string.
-     * @param reportFile           Accepts the location of the generated JDepend xml report file.
-     * @param classDir             Accepts the location of the classes.
-     * @return String[]            Returns the array to be pass as parameters for JDepend.
+     *
+     * @param argument   Accepts parameter with "-file" string.
+     * @param reportFile Accepts the location of the generated JDepend xml report file.
+     * @param classDir   Accepts the location of the classes.
+     * @return String[]  Returns the array to be pass as parameters for JDepend.
      */
     private String[] getArgumentList( String argument, String reportFile, String classDir )
     {
         ArrayList argList = new ArrayList();
-        
+
         argList.add( argument );
-        
+
         argList.add( reportFile );
-        
+
         argList.add( classDir );
-        
-        return ( String[] ) argList.toArray( new String[ argList.size() ] );
+
+        return (String[]) argList.toArray( new String[argList.size()] );
     }
-    
-    public void generateReport(Locale locale) throws MavenReportException
+
+    public void generateReport( Locale locale )
+        throws MavenReportException
     {
         Sink sink;
         ReportGenerator report = new ReportGenerator();
         try
         {
             sink = getSink();
-            
-            report.doGenerateReport(getBundle(locale), sink, xmlParser);
+
+            report.doGenerateReport( getBundle( locale ), sink, xmlParser );
         }
-        catch(Exception e)
+        catch ( Exception e )
         {
             throw new MavenReportException( "Failed to generate JDepend report", e );
         }
     }
-    
-    public String getDescription(Locale locale) 
+
+    public String getDescription( Locale locale )
     {
-        return getBundle(locale).getString("report.jdepend.description");
-    }
-    
-    public String getName(Locale locale) 
-    {
-        return getBundle(locale).getString("report.jdepend.name");
-    }
-    
-    private ResourceBundle getBundle(Locale locale) 
-    {
-        return ResourceBundle.getBundle("org.codehaus.mojo.jdepend.jdepend-report", locale, 
-                this.getClass().getClassLoader());
+        return getBundle( locale ).getString( "report.jdepend.description" );
     }
 
-    public String getOutputName() 
+    public String getName( Locale locale )
+    {
+        return getBundle( locale ).getString( "report.jdepend.name" );
+    }
+
+    private ResourceBundle getBundle( Locale locale )
+    {
+        return ResourceBundle.getBundle( "org.codehaus.mojo.jdepend.jdepend-report", locale,
+                                         this.getClass().getClassLoader() );
+    }
+
+    public String getOutputName()
     {
         return "jdepend-report";
     }
-    
-    public MavenProject getProject() 
+
+    public MavenProject getProject()
     {
         return project;
     }
 
-    public void setProject(MavenProject project) 
+    public void setProject( MavenProject project )
     {
         this.project = project;
     }
 
-    public String getOutputDirectory() 
+    public String getOutputDirectory()
     {
         return outputDirectory;
     }
 
-    public void setOutputDirectory(String outputDirectory) 
+    public void setOutputDirectory( String outputDirectory )
     {
         this.outputDirectory = outputDirectory;
     }
 
-    public String getArgument() 
+    public String getArgument()
     {
         return argument;
     }
 
-    public void setArgument(String argument) 
+    public void setArgument( String argument )
     {
         this.argument = argument;
     }
 
-    public String getReportFile() 
+    public String getReportFile()
     {
         return reportFile;
     }
 
-    public void setReportFile(String reportFile) 
+    public void setReportFile( String reportFile )
     {
         this.reportFile = reportFile;
     }
 
-    public SiteRenderer getSiteRenderer() 
+    public SiteRenderer getSiteRenderer()
     {
         return siteRenderer;
     }
 
-    public void setSiteRenderer(SiteRenderer siteRenderer) 
+    public void setSiteRenderer( SiteRenderer siteRenderer )
     {
         this.siteRenderer = siteRenderer;
     }
 
-    public String getProjectDirectory() {
+    public String getProjectDirectory()
+    {
         return projectDirectory;
     }
 
-    public void setProjectDirectory(String projectDirectory) {
+    public void setProjectDirectory( String projectDirectory )
+    {
         this.projectDirectory = projectDirectory;
     }
 
-    public String getClassDirectory() {
+    public String getClassDirectory()
+    {
         return classDirectory;
     }
 

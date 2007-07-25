@@ -1,3 +1,5 @@
+package org.codehaus.mojo.jdepend;
+
 /*
  * Copyright 2001-2005 The Apache Software Foundation.
  *
@@ -14,15 +16,13 @@
  * limitations under the License.
  */
 
-package org.codehaus.mojo.jdepend;
-
-import java.util.List;
-import java.util.ResourceBundle;
-
 import org.codehaus.doxia.sink.Sink;
 import org.codehaus.mojo.jdepend.objects.CyclePackage;
 import org.codehaus.mojo.jdepend.objects.JDPackage;
 import org.codehaus.mojo.jdepend.objects.Stats;
+
+import java.util.List;
+import java.util.ResourceBundle;
 
 public class ReportGenerator
 {
@@ -36,7 +36,9 @@ public class ReportGenerator
 
     private CyclePackage cyclepackage;
 
-    /** Creates a new instance of ReportGenerator */
+    /**
+     * Creates a new instance of ReportGenerator.
+     */
     public ReportGenerator()
     {
     }
@@ -63,7 +65,7 @@ public class ReportGenerator
         sink.lineBreak();
         sink.lineBreak();
 
-        sink.text( bundle.getString( "report.intro" ) );//$NON-NLS-1$
+        sink.text( bundle.getString( "report.intro" ) ); //$NON-NLS-1$
 
         sink.lineBreak();
         sink.lineBreak();

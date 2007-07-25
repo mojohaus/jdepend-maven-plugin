@@ -1,3 +1,4 @@
+package org.codehaus.mojo.jdepend.objects;
 
 /*
  * Copyright 2001-2005 The Apache Software Foundation.
@@ -14,101 +15,102 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.codehaus.mojo.jdepend.objects;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class JDPackage 
-{   
+public class JDPackage
+{
     /* Elements */
     private Stats stats;
-    
+
     private String packageName;
-    
+
     private List abstractClasses;
-    
+
     private List concreteClasses;
-    
+
     private List dependsUpon;
-    
+
     private List usedBy;
-    
-    /** Creates a new instance of JDPackage */
-    public JDPackage() 
+
+    /**
+     * Creates a new instance of JDPackage.
+     */
+    public JDPackage()
     {
     }
-    
+
     public String getPackageName()
     {
         return this.packageName;
     }
-    
-    public void setPackageName(String name)
+
+    public void setPackageName( String name )
     {
         this.packageName = name;
     }
 
-    public Stats getStats() 
+    public Stats getStats()
     {
         return stats;
     }
 
-    public void setStats(Stats stats) 
+    public void setStats( Stats stats )
     {
         this.stats = stats;
     }
-    
-    public List getAbstractClasses() 
+
+    public List getAbstractClasses()
     {
-        if(abstractClasses == null)
+        if ( abstractClasses == null )
         {
             abstractClasses = new ArrayList();
         }
         return abstractClasses;
     }
 
-    public void addAbstractClasses(Object object) 
+    public void addAbstractClasses( Object object )
     {
-        getAbstractClasses().add(object);
+        getAbstractClasses().add( object );
     }
 
-    public List getConcreteClasses() 
+    public List getConcreteClasses()
     {
-        if(concreteClasses == null)
+        if ( concreteClasses == null )
         {
             concreteClasses = new ArrayList();
         }
         return concreteClasses;
     }
 
-    public void addConcreteClasses(Object object) 
+    public void addConcreteClasses( Object object )
     {
-        getConcreteClasses().add(object);
+        getConcreteClasses().add( object );
     }
 
-    public List getDependsUpon() 
+    public List getDependsUpon()
     {
-        if(dependsUpon == null)
+        if ( dependsUpon == null )
         {
             dependsUpon = new ArrayList();
         }
         return dependsUpon;
     }
 
-    public void addDependsUpon(Object object) 
+    public void addDependsUpon( Object object )
     {
-        getDependsUpon().add(object);
+        getDependsUpon().add( object );
     }
-    
-    public void addUsedBy(Object object) 
+
+    public void addUsedBy( Object object )
     {
-        getUsedBy().add(object);
+        getUsedBy().add( object );
     }
-    
-    public List getUsedBy() 
+
+    public List getUsedBy()
     {
-        if(usedBy == null)
+        if ( usedBy == null )
         {
             usedBy = new ArrayList();
         }

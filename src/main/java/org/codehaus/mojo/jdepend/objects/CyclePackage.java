@@ -1,3 +1,5 @@
+package org.codehaus.mojo.jdepend.objects;
+
 /*
  * Cycles.java
  *
@@ -8,43 +10,42 @@
  * Open. You can then make changes to the template in the Source Editor.
  */
 
-package org.codehaus.mojo.jdepend.objects;
-
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class CyclePackage 
+public class CyclePackage
 {
     private List packageList;
-    
+
     private String name;
-    
-    /** Creates a new instance of Cycles */
-    public CyclePackage() 
+
+    /**
+     * Creates a new instance of Cycles.
+     */
+    public CyclePackage()
     {
     }
-    
+
     public List getPackageList()
     {
-        if(packageList == null)
+        if ( packageList == null )
         {
             packageList = new ArrayList();
         }
         return this.packageList;
     }
-    
-    public void addPackageList(Object object)
+
+    public void addPackageList( Object object )
     {
-        getPackageList().add(object);
+        getPackageList().add( object );
     }
 
-    public String getName() 
+    public String getName()
     {
         return name;
     }
 
-    public void setName(String name) 
+    public void setName( String name )
     {
         this.name = name;
     }

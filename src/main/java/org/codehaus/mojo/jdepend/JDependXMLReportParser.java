@@ -1,3 +1,5 @@
+package org.codehaus.mojo.jdepend;
+
 /*
  * Copyright 2001-2005 The Apache Software Foundation.
  *
@@ -14,18 +16,6 @@
  * limitations under the License.
  */
 
-package org.codehaus.mojo.jdepend;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
-
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-
 import org.codehaus.mojo.jdepend.objects.CyclePackage;
 import org.codehaus.mojo.jdepend.objects.JDPackage;
 import org.codehaus.mojo.jdepend.objects.Stats;
@@ -33,8 +23,16 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-public class JDependXMLReportParser
-    extends DefaultHandler
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
+public class JDependXMLReportParser extends DefaultHandler
 {
     protected List packages;
 
@@ -55,9 +53,10 @@ public class JDependXMLReportParser
     private boolean errFlag = false;
 
     /**
-     * Creates a new instance of JDependXMLReportParser 
-     * @throws SAXException 
-     * @throws ParserConfigurationException 
+     * Creates a new instance of JDependXMLReportParser.
+     *
+     * @throws SAXException
+     * @throws ParserConfigurationException
      * @throws IOException
      */
     public JDependXMLReportParser( File xmlFile )

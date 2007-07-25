@@ -1,3 +1,4 @@
+package org.codehaus.mojo.jdepend.objects;
 
 /*
  * Copyright 2001-2005 The Apache Software Foundation.
@@ -15,118 +16,113 @@
  * limitations under the License.
  */
 
-package org.codehaus.mojo.jdepend.objects;
-
-
-public class Stats 
+public class Stats
 {
     private String totalClasses;
-    
+
     private String concreteClasses;
-    
+
     private String abstractClasses;
-    
+
     private String Ca;
-    
+
     private String Ce;
-    
+
     private String A;
-    
+
     private String I;
-    
+
     private String D;
-    
+
     private String V;
 
-    public String getTotalClasses() 
+    public String getTotalClasses()
     {
         return totalClasses;
     }
 
-    public void setTotalClasses(String totalClasses) 
+    public void setTotalClasses( String totalClasses )
     {
         this.totalClasses = totalClasses;
     }
 
-    public String getConcreteClasses() 
+    public String getConcreteClasses()
     {
         return concreteClasses;
     }
 
-    public void setConcreteClasses(String concreteClasses) 
+    public void setConcreteClasses( String concreteClasses )
     {
         this.concreteClasses = concreteClasses;
     }
 
-    public String getAbstractClasses() 
+    public String getAbstractClasses()
     {
         return abstractClasses;
     }
 
-    public void setAbstractClasses(String abstractClasses) 
+    public void setAbstractClasses( String abstractClasses )
     {
         this.abstractClasses = abstractClasses;
     }
 
-    public String getCa() 
+    public String getCa()
     {
         return Ca;
     }
 
-    public void setCa(String Ca) 
+    public void setCa( String Ca )
     {
         this.Ca = Ca;
     }
 
-    public String getCe() 
+    public String getCe()
     {
         return Ce;
     }
 
-    public void setCe(String Ce) 
+    public void setCe( String Ce )
     {
         this.Ce = Ce;
     }
 
-    public String getA() 
+    public String getA()
     {
         return A;
     }
 
-    public void setA(String A) 
+    public void setA( String A )
     {
         this.A = A;
     }
 
-    public String getI() 
+    public String getI()
     {
         return I;
     }
 
-    public void setI(String I) 
+    public void setI( String I )
     {
         this.I = I;
     }
 
-    public String getD() 
+    public String getD()
     {
         return D;
     }
 
-    public void setD(String D) 
+    public void setD( String D )
     {
         this.D = D;
     }
 
-    public String getV() 
+    public String getV()
     {
         return V;
     }
 
-    public void setV(String V) 
+    public void setV( String V )
     {
         this.V = V;
     }
-    
-    
 }
