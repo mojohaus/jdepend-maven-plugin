@@ -29,16 +29,15 @@ import org.apache.maven.reporting.MavenReportException;
 import org.codehaus.doxia.sink.Sink;
 import org.codehaus.doxia.site.renderer.SiteRenderer;
 
-
 /**
- * Runs jdepend and generates a site report.
+ * Run JDepend and generate a site report.
+ * 
  * @goal generate
  * @execute phase="compile"
- * @description Goal which generate the jdepend metrics.
+ * @description Goal which generate the JDepend metrics.
  * @author aramirez@exist.com
  * @version $Id$
  */
-
 public class JDependMojo extends AbstractMavenReport
 {
     /**
@@ -48,20 +47,23 @@ public class JDependMojo extends AbstractMavenReport
     private MavenProject project;
     
     /**
-     * Directory where the generated output site files will be located
+     * Directory where the generated output site files will be located.
+     *
      * @parameter expression="${project.build.directory}/site"
      * @required
      */
     private String outputDirectory;
     
     /**
-     * Directory of the project
+     * Directory of the project.
+     *
      * @parameter expression="${basedir}"
      */
     private String projectDirectory;
     
     /**
      * Directory containing the class files.
+     *
      * @parameter expression="${project.build.outputDirectory}"
      * @required
      */
@@ -74,7 +76,8 @@ public class JDependMojo extends AbstractMavenReport
     private String argument;
     
     /**
-     * Location of the generated jdepend xml report
+     * Location of the generated JDepend xml report.
+     *
      * @parameter expression="${project.build.directory}/jdepend-report.xml"
      * @required
      * @readonly
@@ -136,11 +139,11 @@ public class JDependMojo extends AbstractMavenReport
     }
     
     /**
-     * Sets and get the arguments passed for the jdepend.
+     * Sets and get the arguments passed for the JDepend.
      * @param argument             Accepts parameter with "-file" string.
-     * @param reportFile           Accepts the location of the generated jdepend xml report file.
+     * @param reportFile           Accepts the location of the generated JDepend xml report file.
      * @param classDir             Accepts the location of the classes.
-     * @return String[]            Returns the array to be pass as parameters for jdepend.            
+     * @return String[]            Returns the array to be pass as parameters for JDepend.
      */
     private String[] getArgumentList( String argument, String reportFile, String classDir )
     {
@@ -167,7 +170,7 @@ public class JDependMojo extends AbstractMavenReport
         }
         catch(Exception e)
         {
-            throw new MavenReportException( "Failed to generate jdepend report", e );
+            throw new MavenReportException( "Failed to generate JDepend report", e );
         }
     }
     

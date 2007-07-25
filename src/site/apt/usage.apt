@@ -1,57 +1,37 @@
  ------
- Maven 2 JDepend Plugin
+ Usage
  ------
  Allan Ramirez
  <aramirez@exist.com>
  ------
  September 2, 2005
+ ------
 
-Maven 2 JDepend Plugin
+Usage
 
- This plug-in produces a nicely formatted metrics report based on your project.  
- 
-*Available Configuration Options
- 
-*-------------------------+--------------*-----------------------------------------------------------------------------------------------------+
- <<Parameter>>            | <<Optional>> | <<Description>>                                                                                     
-*-------------------------+----------*--------------------------------------------------------------------------------------------------------------+
- outputDirectory          | Yes      | Directory where the output files will be located. Default to ${project.build.directory}/build.
-*-------------------------+----------*--------------------------------------------------------------------------------------------------------------+
- projectDirectory         | Yes      | Directory of your project. Default to ${basedir}.
-*-------------------------+----------*---------------------------------------------------------------------------------------------------------------+ 
- classDirectory           | required | Directory containing the class files. Default to ${project.build.directory}/classes.
-*-------------------------+----------*---------------------------------------------------------------------------------------------------------------+ 
-
-
-
-
-*How to Use
-
- 
-  In the pom.xml, insert this segment.
+  In your <<<pom.xml>>>, insert this segment.
 
 -------------------
 <project>
-   ...
-      <build>
-         ...
-      </build>
-
-      <reporting>
-        <plugins>
-          <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>jdepend-maven-plugin</artifactId>
-          </plugin>
-        </plugins>
-      </reporting>
-   ...
+  ...
+  <build>
+    ...
+  </build>
+  ...
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>jdepend-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </reporting>
+  ...
 </project>
 -------------------
 
-  Generate the metrics by executing the m2 site plugin.
+  Generate the metrics report by executing the maven-site-plugin.
 
 -------------------
-  mvn site:site
+mvn site:site
 -------------------
-
