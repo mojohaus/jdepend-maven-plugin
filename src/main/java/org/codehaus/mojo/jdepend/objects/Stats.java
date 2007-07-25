@@ -27,17 +27,17 @@ public class Stats
 
     private String abstractClasses;
 
-    private String Ca;
+    private String ca;
 
-    private String Ce;
+    private String ce;
 
-    private String A;
+    private String a;
 
-    private String I;
+    private String i;
 
-    private String D;
+    private String d;
 
-    private String V;
+    private String v;
 
     public String getTotalClasses()
     {
@@ -71,61 +71,61 @@ public class Stats
 
     public String getCa()
     {
-        return Ca;
+        return ca;
     }
 
-    public void setCa( String Ca )
+    public void setCa( String ca )
     {
-        this.Ca = Ca;
+        this.ca = ca;
     }
 
     public String getCe()
     {
-        return Ce;
+        return ce;
     }
 
-    public void setCe( String Ce )
+    public void setCe( String ce )
     {
-        this.Ce = Ce;
+        this.ce = ce;
     }
 
     public String getA()
     {
-        return A;
+        return a;
     }
 
-    public void setA( String A )
+    public void setA( String a )
     {
-        this.A = A;
+        this.a = a;
     }
 
     public String getI()
     {
-        return I;
+        return i;
     }
 
-    public void setI( String I )
+    public void setI( String i )
     {
-        this.I = I;
+        this.i = i;
     }
 
     public String getD()
     {
-        return D;
+        return d;
     }
 
-    public void setD( String D )
+    public void setD( String d )
     {
-        this.D = D;
+        this.d = d;
     }
 
     public String getV()
     {
-        return V;
+        return v;
     }
 
-    public void setV( String V )
+    public void setV( String v )
     {
-        this.V = V;
+        this.v = v;
     }
 }
