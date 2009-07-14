@@ -19,10 +19,11 @@ package org.codehaus.mojo.jdepend;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.StringTokenizer;
 
 import jdepend.xmlui.JDepend;
 import junit.framework.TestCase;
+
+import org.codehaus.plexus.util.IOUtil;
 
 public class JDependMojoTest
     extends TestCase
@@ -53,48 +54,9 @@ public class JDependMojoTest
         args[2] = classDirectory.getCanonicalPath();
         
         JDepend.main( args );
-        
+        ;
         assertTrue( "Generated report xml is not equal to expected output",
-                    compareFiles( generatedReport, reportXML ) );
+                    IOUtil.contentEquals( new FileInputStream( generatedReport ), new FileInputStream( reportXML ) ) );
     }
     
-    public boolean compareFiles( File f1, File f2 )
-        throws IOException
-    {
-        String content1 = getContent( f1 );
-        
-        String content2 = getContent( f2 );
-        
-        StringTokenizer tokenizer1 = new StringTokenizer( content1 );
-        
-        StringTokenizer tokenizer2 = new StringTokenizer( content2 );
-        
-        if( tokenizer1.countTokens() != tokenizer2.countTokens() )
-        {
-            return false;
-        }
-        
-        while( tokenizer1.hasMoreTokens() )
-        {
-           if( !tokenizer1.nextToken().equalsIgnoreCase( tokenizer2.nextToken() ) )
-           {
-               return false;
-           }
-        }
-        return true;
-    }
-    
-    public String getContent( File file )
-        throws IOException
-    {
-        FileInputStream fIn = new FileInputStream( file );
-        
-        byte bytes[] = new byte[ fIn.available() ];
-        
-        fIn.read( bytes );
-        
-        fIn.close();
-        
-        return new String( bytes );
-    }
 }
