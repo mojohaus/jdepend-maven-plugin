@@ -22,6 +22,14 @@
             <error>No stats available: package referenced, but not analyzed.</error>
         </Package>
 
+        <Package name="org.apache.maven.plugin">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="org.apache.maven.plugin.logging">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
         <Package name="org.apache.maven.project">
             <error>No stats available: package referenced, but not analyzed.</error>
         </Package>
@@ -40,11 +48,11 @@
 
         <Package name="org.codehaus.mojo.jdepend">
             <Stats>
-                <TotalClasses>3</TotalClasses>
-                <ConcreteClasses>3</ConcreteClasses>
+                <TotalClasses>4</TotalClasses>
+                <ConcreteClasses>4</ConcreteClasses>
                 <AbstractClasses>0</AbstractClasses>
                 <Ca>0</Ca>
-                <Ce>12</Ce>
+                <Ce>14</Ce>
                 <A>0</A>
                 <I>1</I>
                 <D>0</D>
@@ -55,6 +63,9 @@
             </AbstractClasses>
 
             <ConcreteClasses>
+                <Class sourceFile="HelpMojo.java">
+                    org.codehaus.mojo.jdepend.HelpMojo
+                </Class>
                 <Class sourceFile="JDependMojo.java">
                     org.codehaus.mojo.jdepend.JDependMojo
                 </Class>
@@ -72,6 +83,8 @@
                 <Package>java.util</Package>
                 <Package>javax.xml.parsers</Package>
                 <Package>jdepend.xmlui</Package>
+                <Package>org.apache.maven.plugin</Package>
+                <Package>org.apache.maven.plugin.logging</Package>
                 <Package>org.apache.maven.project</Package>
                 <Package>org.apache.maven.reporting</Package>
                 <Package>org.codehaus.doxia.sink</Package>

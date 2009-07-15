@@ -86,13 +86,13 @@ public class JDependReportParserTest
                 Stats stats = jdpackage.getStats();
                 
                 assertEquals( "Stats Total Classes is not equal to expected output", 
-                              "3",  stats.getTotalClasses() );
+                              "4",  stats.getTotalClasses() );
                 assertEquals( "Stats Concrete classes is not equal to expected output", 
-                              "3", stats.getConcreteClasses() );
+                              "4", stats.getConcreteClasses() );
                 assertEquals( "Stats Abstract Classes is not equal to expected output", 
                               "0", stats.getAbstractClasses() );
                 assertEquals( "0", stats.getCa()  );
-                assertEquals( "12", stats.getCe() );
+                assertEquals( "14", stats.getCe() );
                 assertEquals( "0", stats.getA() );
                 assertEquals( "1", stats.getI() );
                 assertEquals( "0", stats.getD() );
@@ -163,7 +163,7 @@ public class JDependReportParserTest
             if( jdpackage.getPackageName().equals( "org.codehaus.mojo.jdepend" ) )
             {
                 count = jdpackage.getDependsUpon().size();
-                assertEquals( 12, count );
+                assertEquals( 14, count );
             }
             if( jdpackage.getPackageName().equals( "org.codehaus.mojo.jdepend.objects" ) )
             {
