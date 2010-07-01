@@ -19,7 +19,7 @@ package org.codehaus.mojo.jdepend;
  * under the License.
  */
 
-import org.codehaus.doxia.sink.Sink;
+import org.apache.maven.doxia.sink.Sink;
 import org.codehaus.mojo.jdepend.objects.CyclePackage;
 import org.codehaus.mojo.jdepend.objects.JDPackage;
 import org.codehaus.mojo.jdepend.objects.Stats;

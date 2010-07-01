@@ -22,6 +22,14 @@
             <error>No stats available: package referenced, but not analyzed.</error>
         </Package>
 
+        <Package name="org.apache.maven.doxia.sink">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="org.apache.maven.doxia.siterenderer">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
         <Package name="org.apache.maven.plugin">
             <error>No stats available: package referenced, but not analyzed.</error>
         </Package>
@@ -35,14 +43,6 @@
         </Package>
 
         <Package name="org.apache.maven.reporting">
-            <error>No stats available: package referenced, but not analyzed.</error>
-        </Package>
-
-        <Package name="org.codehaus.doxia.sink">
-            <error>No stats available: package referenced, but not analyzed.</error>
-        </Package>
-
-        <Package name="org.codehaus.doxia.site.renderer">
             <error>No stats available: package referenced, but not analyzed.</error>
         </Package>
 
@@ -83,12 +83,12 @@
                 <Package>java.util</Package>
                 <Package>javax.xml.parsers</Package>
                 <Package>jdepend.xmlui</Package>
+                <Package>org.apache.maven.doxia.sink</Package>
+                <Package>org.apache.maven.doxia.siterenderer</Package>
                 <Package>org.apache.maven.plugin</Package>
                 <Package>org.apache.maven.plugin.logging</Package>
                 <Package>org.apache.maven.project</Package>
                 <Package>org.apache.maven.reporting</Package>
-                <Package>org.codehaus.doxia.sink</Package>
-                <Package>org.codehaus.doxia.site.renderer</Package>
                 <Package>org.codehaus.mojo.jdepend.objects</Package>
                 <Package>org.xml.sax</Package>
                 <Package>org.xml.sax.helpers</Package>

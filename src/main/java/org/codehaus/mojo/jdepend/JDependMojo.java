@@ -20,11 +20,12 @@ package org.codehaus.mojo.jdepend;
  */
 
 import jdepend.xmlui.JDepend;
+
+import org.apache.maven.doxia.sink.Sink;
+import org.apache.maven.doxia.siterenderer.Renderer;
 import org.apache.maven.project.MavenProject;
 import org.apache.maven.reporting.AbstractMavenReport;
 import org.apache.maven.reporting.MavenReportException;
-import org.codehaus.doxia.sink.Sink;
-import org.codehaus.doxia.site.renderer.SiteRenderer;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -80,17 +81,18 @@ public class JDependMojo extends AbstractMavenReport
     /**
      * Location of the generated JDepend xml report.
      *
-     * @parameter expression="${project.build.directory}/jdepend-report.xml"
+     * @parameter default-value="${project.build.directory}/jdepend-report.xml"
      * @required
      * @readonly
      */
     private String reportFile;
 
     /**
-     * @parameter expression="${component.org.codehaus.doxia.site.renderer.SiteRenderer}"
-     * @readonly
+     * Doxia Site Renderer
+     *
+     * @component
      */
-    private SiteRenderer siteRenderer;
+    private Renderer siteRenderer;
 
     JDependXMLReportParser xmlParser;
 
@@ -239,12 +241,12 @@ public class JDependMojo extends AbstractMavenReport
         this.reportFile = reportFile;
     }
 
-    public SiteRenderer getSiteRenderer()
+    public Renderer getSiteRenderer()
     {
         return siteRenderer;
     }
 
-    public void setSiteRenderer( SiteRenderer siteRenderer )
+    public void setSiteRenderer( Renderer siteRenderer )
     {
         this.siteRenderer = siteRenderer;
     }
