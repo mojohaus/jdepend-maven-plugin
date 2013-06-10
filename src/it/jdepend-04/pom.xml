@@ -11,17 +11,19 @@
 	<plugins>
 	  <plugin>
 	    <groupId>org.apache.maven.plugins</groupId>
-		<artifactId>maven-verifier-plugin</artifactId>
-		<configuration>
-		  <verificationFile>src/verifier/verifications.xml</verificationFile>
-		</configuration>
+            <artifactId>maven-verifier-plugin</artifactId>
+            <version>1.0</version>
+            <configuration>
+              <verificationFile>src/verifier/verifications.xml</verificationFile>
+            </configuration>
 	  </plugin>
 	  <plugin>
 	    <groupId>org.codehaus.mojo</groupId>
-		<artifactId>jdepend-maven-plugin</artifactId>
-		<configuration>
-		  <outputDirectory>${basedir}/${project.build.directory}/output-site-directory</outputDirectory>
-		</configuration>
+            <artifactId>jdepend-maven-plugin</artifactId>
+            <version>@project.version@</version>
+            <configuration>
+              <outputDirectory>${project.build.directory}/output-site-directory</outputDirectory>
+            </configuration>
 	  </plugin>
 	</plugins>
   </build>

@@ -55,7 +55,7 @@ public class JDependMojoTest
         
         JDepend.main( args );
         ;
-        assertTrue( "Generated report xml is not equal to expected output",
+        assertTrue( "Generated report xml from " + generatedReport + " is not equal to expected output " + reportXML,
                     IOUtil.contentEquals( new FileInputStream( generatedReport ), new FileInputStream( reportXML ) ) );
     }
     

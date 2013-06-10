@@ -1,3 +1,0 @@
-clean
-org.codehaus.mojo:jdepend-maven-plugin:generate
-verifier:verify

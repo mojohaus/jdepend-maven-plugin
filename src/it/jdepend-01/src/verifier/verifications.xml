@@ -25,7 +25,7 @@
       <location>target/site/mail-lists.html</location>
     </file>
     <file>
-      <location>target/site/maven-reports.html</location>
+      <location>target/site/project-reports.html</location>
     </file>
     <file>
       <location>target/site/project-info.html</location>

@@ -11,10 +11,16 @@
 	<plugins>
 	  <plugin>
 	    <groupId>org.apache.maven.plugins</groupId>
-		<artifactId>maven-verifier-plugin</artifactId>
-		<configuration>
-		  <verificationFile>src/verifier/verifications.xml</verificationFile>
-		</configuration>
+            <artifactId>maven-verifier-plugin</artifactId>
+            <version>1.0</version>
+            <configuration>
+              <verificationFile>src/verifier/verifications.xml</verificationFile>
+            </configuration>
+	  </plugin>
+	  <plugin>
+	    <groupId>org.codehaus.mojo</groupId>
+            <artifactId>jdepend-maven-plugin</artifactId>
+            <version>@project.version@</version>
 	  </plugin>
 	</plugins>
   </build>
