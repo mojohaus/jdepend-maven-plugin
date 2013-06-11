@@ -31,67 +31,58 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import org.apache.maven.plugins.annotations.Component;
+import org.apache.maven.plugins.annotations.Execute;
+import org.apache.maven.plugins.annotations.LifecyclePhase;
+import org.apache.maven.plugins.annotations.Mojo;
+import org.apache.maven.plugins.annotations.Parameter;
 
 /**
  * Run JDepend and generate a site report.
- *
+ * Goal which generate the JDepend metrics.
  * @author aramirez@exist.com
  * @version $Id$
- * @goal generate
- * @execute phase="compile"
- * @description Goal which generate the JDepend metrics.
  */
+@Mojo(name = "generate", requiresProject = true)
+@Execute(phase = LifecyclePhase.COMPILE)
 public class JDependMojo extends AbstractMavenReport
 {
-    /**
-     * @parameter expression="${project}"
-     * @readonly
-     */
+    @Parameter(defaultValue = "${project}", readonly = true, required = true)
     private MavenProject project;
 
     /**
      * Directory where the generated output site files will be located.
-     *
-     * @parameter expression="${project.build.directory}/site"
-     * @required
      */
+    @Parameter(defaultValue = "${project.build.directory}/site", required = true)
     private String outputDirectory;
 
     /**
      * Directory of the project.
-     *
-     * @parameter expression="${basedir}"
      */
+    @Parameter(defaultValue = "${basedir}")
     private String projectDirectory;
 
     /**
      * Directory containing the class files.
-     *
-     * @parameter expression="${project.build.outputDirectory}"
-     * @required
      */
+    @Parameter(defaultValue = "${project.build.outputDirectory}", required = true)
     private String classDirectory;
 
     /**
-     * @parameter default-value="-file"
-     * @readonly
      */
+    @Parameter(defaultValue = "-file", readonly = true)
     private String argument;
 
     /**
      * Location of the generated JDepend xml report.
-     *
-     * @parameter default-value="${project.build.directory}/jdepend-report.xml"
-     * @required
-     * @readonly
      */
+    @Parameter(defaultValue = "${project.build.directory}/jdepend-report.xml", required = true, readonly = true)
     private String reportFile;
 
     /**
      * Doxia Site Renderer
-     *
-     * @component
      */
+    @Component
     private Renderer siteRenderer;
 
     JDependXMLReportParser xmlParser;
