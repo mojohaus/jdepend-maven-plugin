@@ -53,25 +53,20 @@ public class JDependMojo extends AbstractMavenReport
     /**
      * Directory where the generated output site files will be located.
      */
-    @Parameter(defaultValue = "${project.build.directory}/site", required = true)
+    @Parameter(defaultValue = "${project.build.directory}/site", property = "jdepend.outputDirectory", required = true)
     private String outputDirectory;
 
     /**
      * Directory of the project.
      */
-    @Parameter(defaultValue = "${basedir}")
+    @Parameter(defaultValue = "${basedir}", property = "jdepend.projectDirectory")
     private String projectDirectory;
 
     /**
      * Directory containing the class files.
      */
-    @Parameter(defaultValue = "${project.build.outputDirectory}", required = true)
+    @Parameter(defaultValue = "${project.build.outputDirectory}", property = "jdepend.classDirectory", required = true)
     private String classDirectory;
-
-    /**
-     */
-    @Parameter(defaultValue = "-file", readonly = true)
-    private String argument;
 
     /**
      * Location of the generated JDepend xml report.
@@ -79,6 +74,12 @@ public class JDependMojo extends AbstractMavenReport
     @Parameter(defaultValue = "${project.build.directory}/jdepend-report.xml", required = true, readonly = true)
     private String reportFile;
 
+    /**
+     * Skip execution of the plugin.
+     */
+    @Parameter(defaultValue = "false", property = "jdepend.skip")
+    private boolean skip;
+    
     /**
      * Doxia Site Renderer
      */
@@ -93,6 +94,11 @@ public class JDependMojo extends AbstractMavenReport
     public void executeReport( Locale locale )
         throws MavenReportException
     {
+        if ( skip ) {
+            getLog().info( "Skipping execution on behalf of user");
+            return;
+        }
+
         try
         {
             File outputDirFile = new File( outputDirectory );
@@ -214,12 +220,7 @@ public class JDependMojo extends AbstractMavenReport
 
     public String getArgument()
     {
-        return argument;
-    }
-
-    public void setArgument( String argument )
-    {
-        this.argument = argument;
+        return "-file";
     }
 
     public String getReportFile()
