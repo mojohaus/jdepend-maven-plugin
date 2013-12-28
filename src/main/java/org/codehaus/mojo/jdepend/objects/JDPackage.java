@@ -32,13 +32,13 @@ public class JDPackage
 
     private String packageName;
 
-    private List abstractClasses;
+    private List<String> abstractClasses;
 
-    private List concreteClasses;
+    private List<String> concreteClasses;
 
-    private List dependsUpon;
+    private List<String> dependsUpon;
 
-    private List usedBy;
+    private List<String> usedBy;
 
     /**
      * Creates a new instance of JDPackage.
@@ -67,58 +67,58 @@ public class JDPackage
         this.stats = stats;
     }
 
-    public List getAbstractClasses()
+    public List<String> getAbstractClasses()
     {
         if ( abstractClasses == null )
         {
-            abstractClasses = new ArrayList();
+            abstractClasses = new ArrayList<String>();
         }
         return abstractClasses;
     }
 
-    public void addAbstractClasses( Object object )
+    public void addAbstractClasses( String object )
     {
         getAbstractClasses().add( object );
     }
 
-    public List getConcreteClasses()
+    public List<String> getConcreteClasses()
     {
         if ( concreteClasses == null )
         {
-            concreteClasses = new ArrayList();
+            concreteClasses = new ArrayList<String>();
         }
         return concreteClasses;
     }
 
-    public void addConcreteClasses( Object object )
+    public void addConcreteClasses( String object )
     {
         getConcreteClasses().add( object );
     }
 
-    public List getDependsUpon()
+    public List<String> getDependsUpon()
     {
         if ( dependsUpon == null )
         {
-            dependsUpon = new ArrayList();
+            dependsUpon = new ArrayList<String>();
         }
         return dependsUpon;
     }
 
-    public void addDependsUpon( Object object )
+    public void addDependsUpon( String object )
     {
         getDependsUpon().add( object );
     }
 
-    public void addUsedBy( Object object )
+    public void addUsedBy( String object )
     {
         getUsedBy().add( object );
     }
 
-    public List getUsedBy()
+    public List<String> getUsedBy()
     {
         if ( usedBy == null )
         {
-            usedBy = new ArrayList();
+            usedBy = new ArrayList<String>();
         }
         return usedBy;
     }

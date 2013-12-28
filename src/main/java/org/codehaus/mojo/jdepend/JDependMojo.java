@@ -19,23 +19,24 @@ package org.codehaus.mojo.jdepend;
  * under the License.
  */
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 import jdepend.xmlui.JDepend;
 
 import org.apache.maven.doxia.sink.Sink;
 import org.apache.maven.doxia.siterenderer.Renderer;
-import org.apache.maven.project.MavenProject;
-import org.apache.maven.reporting.AbstractMavenReport;
-import org.apache.maven.reporting.MavenReportException;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Locale;
-import java.util.ResourceBundle;
 import org.apache.maven.plugins.annotations.Component;
 import org.apache.maven.plugins.annotations.Execute;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
+import org.apache.maven.project.MavenProject;
+import org.apache.maven.reporting.AbstractMavenReport;
+import org.apache.maven.reporting.MavenReportException;
 
 /**
  * Run JDepend and generate a site report. Goal which generate the JDepend metrics.
@@ -149,7 +150,7 @@ public class JDependMojo
      */
     private String[] getArgumentList( String argument, String locationXMLreportFile, String classDir )
     {
-        ArrayList argList = new ArrayList();
+        List<String> argList = new ArrayList<String>();
 
         argList.add( argument );
 

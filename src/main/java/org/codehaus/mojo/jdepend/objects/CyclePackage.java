@@ -27,7 +27,7 @@ import java.util.List;
  */
 public class CyclePackage
 {
-    private List packageList;
+    private List<String> packageList;
 
     private String name;
 
@@ -38,16 +38,16 @@ public class CyclePackage
     {
     }
 
-    public List getPackageList()
+    public List<String> getPackageList()
     {
         if ( packageList == null )
         {
-            packageList = new ArrayList();
+            packageList = new ArrayList<String>();
         }
         return this.packageList;
     }
 
-    public void addPackageList( Object object )
+    public void addPackageList( String object )
     {
         getPackageList().add( object );
     }

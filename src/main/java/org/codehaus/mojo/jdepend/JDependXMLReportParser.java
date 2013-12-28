@@ -19,6 +19,16 @@ package org.codehaus.mojo.jdepend;
  * under the License.
  */
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
 import org.codehaus.mojo.jdepend.objects.CyclePackage;
 import org.codehaus.mojo.jdepend.objects.JDPackage;
 import org.codehaus.mojo.jdepend.objects.Stats;
@@ -26,22 +36,13 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
-
 /**
  * @author Who ever this implemented first.
  */
 public class JDependXMLReportParser
     extends DefaultHandler
 {
-    protected List packages;
+    protected List<JDPackage> packages;
 
     protected JDPackage jdpackage;
 
@@ -49,9 +50,9 @@ public class JDependXMLReportParser
 
     protected StringBuffer buffer = null;
 
-    protected Stack stack;
+    protected Stack<String> stack;
 
-    protected List cycles;
+    protected List<CyclePackage> cycles;
 
     protected CyclePackage cyclePackage;
 
@@ -73,7 +74,7 @@ public class JDependXMLReportParser
         SAXParserFactory factory = SAXParserFactory.newInstance();
 
         /* Create an empty stack */
-        stack = new Stack();
+        stack = new Stack<String>();
 
         SAXParser saxParser = factory.newSAXParser();
 
@@ -97,7 +98,7 @@ public class JDependXMLReportParser
 
         if ( qName.equals( "Packages" ) )
         {
-            packages = new ArrayList();
+            packages = new ArrayList<JDPackage>();
         }
         else if ( qName.equals( "Package" ) )
         {
@@ -126,7 +127,7 @@ public class JDependXMLReportParser
         }
         else if ( qName.equals( "Cycles" ) )
         {
-            cycles = new ArrayList();
+            cycles = new ArrayList<CyclePackage>();
         }
     }
 
@@ -253,7 +254,7 @@ public class JDependXMLReportParser
     /**
      * @return Packages.
      */
-    public java.util.List getPackages()
+    public List<JDPackage> getPackages()
     {
         return this.packages;
     }

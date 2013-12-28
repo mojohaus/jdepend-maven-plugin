@@ -1,5 +1,8 @@
 package org.codehaus.mojo.jdepend.objects;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -24,7 +27,7 @@ package org.codehaus.mojo.jdepend.objects;
  */
 public class Packages
 {
-    private java.util.List jdpackage;
+    private List<JDPackage> jdpackage;
 
     private String[] attributes;
 
@@ -36,13 +39,14 @@ public class Packages
     }
 
     /**
+     * @return 
      * @return packages.
      */
-    public java.util.List getPackages()
+    public List<JDPackage> getPackages()
     {
         if ( this.jdpackage == null )
         {
-            this.jdpackage = new java.util.ArrayList();
+            this.jdpackage = new ArrayList<JDPackage>();
         }
 
         return this.jdpackage;
@@ -51,7 +55,7 @@ public class Packages
     /**
      * @param jdpackage
      */
-    public void setPackages( java.util.List jdpackage )
+    public void setPackages( List<JDPackage> jdpackage )
     {
         this.jdpackage = jdpackage;
     }
