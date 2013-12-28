@@ -38,48 +38,49 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 
 /**
- * Run JDepend and generate a site report.
- * Goal which generate the JDepend metrics.
+ * Run JDepend and generate a site report. Goal which generate the JDepend metrics.
+ * 
  * @author aramirez@exist.com
  * @version $Id$
  */
-@Mojo(name = "generate", requiresProject = true)
-@Execute(phase = LifecyclePhase.COMPILE)
-public class JDependMojo extends AbstractMavenReport
+@Mojo( name = "generate", requiresProject = true )
+@Execute( phase = LifecyclePhase.COMPILE )
+public class JDependMojo
+    extends AbstractMavenReport
 {
-    @Parameter(defaultValue = "${project}", readonly = true, required = true)
+    @Parameter( defaultValue = "${project}", readonly = true, required = true )
     private MavenProject project;
 
     /**
      * Directory where the generated output site files will be located.
      */
-    @Parameter(defaultValue = "${project.build.directory}/site", property = "jdepend.outputDirectory", required = true)
+    @Parameter( defaultValue = "${project.build.directory}/site", property = "jdepend.outputDirectory", required = true )
     private String outputDirectory;
 
     /**
      * Directory of the project.
      */
-    @Parameter(defaultValue = "${basedir}", property = "jdepend.projectDirectory")
+    @Parameter( defaultValue = "${basedir}", property = "jdepend.projectDirectory" )
     private String projectDirectory;
 
     /**
      * Directory containing the class files.
      */
-    @Parameter(defaultValue = "${project.build.outputDirectory}", property = "jdepend.classDirectory", required = true)
+    @Parameter( defaultValue = "${project.build.outputDirectory}", property = "jdepend.classDirectory", required = true )
     private String classDirectory;
 
     /**
      * Location of the generated JDepend xml report.
      */
-    @Parameter(defaultValue = "${project.build.directory}/jdepend-report.xml", required = true, readonly = true)
+    @Parameter( defaultValue = "${project.build.directory}/jdepend-report.xml", required = true, readonly = true )
     private String reportFile;
 
     /**
      * Skip execution of the plugin.
      */
-    @Parameter(defaultValue = "false", property = "jdepend.skip")
+    @Parameter( defaultValue = "false", property = "jdepend.skip" )
     private boolean skip;
-    
+
     /**
      * Doxia Site Renderer
      */
@@ -88,14 +89,15 @@ public class JDependMojo extends AbstractMavenReport
 
     JDependXMLReportParser xmlParser;
 
-    /**
-     * Execute the generate of reports.
+    /* (non-Javadoc)
+     * @see org.apache.maven.reporting.AbstractMavenReport#executeReport(java.util.Locale)
      */
     public void executeReport( Locale locale )
         throws MavenReportException
     {
-        if ( skip ) {
-            getLog().info( "Skipping execution on behalf of user");
+        if ( skip )
+        {
+            getLog().info( "Skipping execution on behalf of user" );
             return;
         }
 
@@ -124,10 +126,8 @@ public class JDependMojo extends AbstractMavenReport
         }
     }
 
-    /**
-     * Cf. overriden method documentation.
-     *
-     * @see org.apache.maven.reporting.MavenReport#canGenerateReport()
+    /* (non-Javadoc)
+     * @see org.apache.maven.reporting.AbstractMavenReport#canGenerateReport()
      */
     public boolean canGenerateReport()
     {
@@ -141,19 +141,19 @@ public class JDependMojo extends AbstractMavenReport
 
     /**
      * Sets and get the arguments passed for the JDepend.
-     *
-     * @param argument   Accepts parameter with "-file" string.
-     * @param reportFile Accepts the location of the generated JDepend xml report file.
-     * @param classDir   Accepts the location of the classes.
-     * @return String[]  Returns the array to be pass as parameters for JDepend.
+     * 
+     * @param argument Accepts parameter with "-file" string.
+     * @param locationXMLreportFile Accepts the location of the generated JDepend xml report file.
+     * @param classDir Accepts the location of the classes.
+     * @return String[] Returns the array to be pass as parameters for JDepend.
      */
-    private String[] getArgumentList( String argument, String reportFile, String classDir )
+    private String[] getArgumentList( String argument, String locationXMLreportFile, String classDir )
     {
         ArrayList argList = new ArrayList();
 
         argList.add( argument );
 
-        argList.add( reportFile );
+        argList.add( locationXMLreportFile );
 
         argList.add( classDir );
 
@@ -177,11 +177,17 @@ public class JDependMojo extends AbstractMavenReport
         }
     }
 
+    /* (non-Javadoc)
+     * @see org.apache.maven.reporting.MavenReport#getDescription(java.util.Locale)
+     */
     public String getDescription( Locale locale )
     {
         return getBundle( locale ).getString( "report.jdepend.description" );
     }
 
+    /* (non-Javadoc)
+     * @see org.apache.maven.reporting.MavenReport#getName(java.util.Locale)
+     */
     public String getName( Locale locale )
     {
         return getBundle( locale ).getString( "report.jdepend.name" );
@@ -193,21 +199,33 @@ public class JDependMojo extends AbstractMavenReport
                                          this.getClass().getClassLoader() );
     }
 
+    /* (non-Javadoc)
+     * @see org.apache.maven.reporting.MavenReport#getOutputName()
+     */
     public String getOutputName()
     {
         return "jdepend-report";
     }
 
+    /* (non-Javadoc)
+     * @see org.apache.maven.reporting.AbstractMavenReport#getProject()
+     */
     public MavenProject getProject()
     {
         return project;
     }
 
+    /**
+     * @param project
+     */
     public void setProject( MavenProject project )
     {
         this.project = project;
     }
 
+    /* (non-Javadoc)
+     * @see org.apache.maven.reporting.AbstractMavenReport#getOutputDirectory()
+     */
     public String getOutputDirectory()
     {
         return outputDirectory;
@@ -218,11 +236,17 @@ public class JDependMojo extends AbstractMavenReport
         this.outputDirectory = outputDirectory;
     }
 
+    /**
+     * @return The argument.
+     */
     public String getArgument()
     {
         return "-file";
     }
 
+    /**
+     * @return
+     */
     public String getReportFile()
     {
         return reportFile;
@@ -233,6 +257,9 @@ public class JDependMojo extends AbstractMavenReport
         this.reportFile = reportFile;
     }
 
+    /* (non-Javadoc)
+     * @see org.apache.maven.reporting.AbstractMavenReport#getSiteRenderer()
+     */
     public Renderer getSiteRenderer()
     {
         return siteRenderer;

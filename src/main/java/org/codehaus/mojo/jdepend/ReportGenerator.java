@@ -133,49 +133,7 @@ public class ReportGenerator
         sink.lineBreak();
 
         sink.table();
-        sink.tableRow();
-
-        sink.tableHeaderCell();
-        sink.text( bundle.getString( "report.package.title" ) ); //$NON-NLS-1$
-        sink.tableHeaderCell_();
-
-        sink.tableHeaderCell();
-        sink.text( bundle.getString( "report.TC" ) ); //$NON-NLS-1$
-        sink.tableHeaderCell_();
-
-        sink.tableHeaderCell();
-        sink.text( bundle.getString( "report.CC" ) ); //$NON-NLS-1$
-        sink.tableHeaderCell_();
-
-        sink.tableHeaderCell();
-        sink.text( bundle.getString( "report.AC" ) ); //$NON-NLS-1$
-        sink.tableHeaderCell_();
-
-        sink.tableHeaderCell();
-        sink.text( bundle.getString( "report.Ca" ) ); //$NON-NLS-1$
-        sink.tableHeaderCell_();
-
-        sink.tableHeaderCell();
-        sink.text( bundle.getString( "report.Ce" ) ); //$NON-NLS-1$
-        sink.tableHeaderCell_();
-
-        sink.tableHeaderCell();
-        sink.text( bundle.getString( "report.A" ) ); //$NON-NLS-1$
-        sink.tableHeaderCell_();
-
-        sink.tableHeaderCell();
-        sink.text( bundle.getString( "report.I" ) ); //$NON-NLS-1$
-        sink.tableHeaderCell_();
-
-        sink.tableHeaderCell();
-        sink.text( bundle.getString( "report.D" ) ); //$NON-NLS-1$
-        sink.tableHeaderCell_();
-
-        sink.tableHeaderCell();
-        sink.text( bundle.getString( "report.V" ) ); //$NON-NLS-1$
-        sink.tableHeaderCell_();
-
-        sink.tableRow_();
+        generateHeaderRow( bundle, sink );
 
         list = jdepend.packages;
 
@@ -233,6 +191,53 @@ public class ReportGenerator
 
         sink.table_();
 
+    }
+
+    private void generateHeaderRow( ResourceBundle bundle, Sink sink )
+    {
+        sink.tableRow();
+
+        sink.tableHeaderCell();
+        sink.text( bundle.getString( "report.package.title" ) ); //$NON-NLS-1$
+        sink.tableHeaderCell_();
+
+        sink.tableHeaderCell();
+        sink.text( bundle.getString( "report.TC" ) ); //$NON-NLS-1$
+        sink.tableHeaderCell_();
+
+        sink.tableHeaderCell();
+        sink.text( bundle.getString( "report.CC" ) ); //$NON-NLS-1$
+        sink.tableHeaderCell_();
+
+        sink.tableHeaderCell();
+        sink.text( bundle.getString( "report.AC" ) ); //$NON-NLS-1$
+        sink.tableHeaderCell_();
+
+        sink.tableHeaderCell();
+        sink.text( bundle.getString( "report.Ca" ) ); //$NON-NLS-1$
+        sink.tableHeaderCell_();
+
+        sink.tableHeaderCell();
+        sink.text( bundle.getString( "report.Ce" ) ); //$NON-NLS-1$
+        sink.tableHeaderCell_();
+
+        sink.tableHeaderCell();
+        sink.text( bundle.getString( "report.A" ) ); //$NON-NLS-1$
+        sink.tableHeaderCell_();
+
+        sink.tableHeaderCell();
+        sink.text( bundle.getString( "report.I" ) ); //$NON-NLS-1$
+        sink.tableHeaderCell_();
+
+        sink.tableHeaderCell();
+        sink.text( bundle.getString( "report.D" ) ); //$NON-NLS-1$
+        sink.tableHeaderCell_();
+
+        sink.tableHeaderCell();
+        sink.text( bundle.getString( "report.V" ) ); //$NON-NLS-1$
+        sink.tableHeaderCell_();
+
+        sink.tableRow_();
     }
 
     public void doPackagesSection( ResourceBundle bundle, Sink sink )
@@ -339,7 +344,7 @@ public class ReportGenerator
                 sink.tableRow();
 
                 /*
-                 * Headers 
+                 * Headers
                  */
 
                 sink.tableHeaderCell();

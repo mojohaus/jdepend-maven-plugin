@@ -19,6 +19,9 @@ package org.codehaus.mojo.jdepend.objects;
  * under the License.
  */
 
+/**
+ * @author Who ever this implemented first.
+ */
 public class Stats
 {
     private String totalClasses;
@@ -39,46 +42,73 @@ public class Stats
 
     private String v;
 
+    /**
+     * @return total classes.
+     */
     public String getTotalClasses()
     {
         return totalClasses;
     }
 
+    /**
+     * @param totalClasses
+     */
     public void setTotalClasses( String totalClasses )
     {
         this.totalClasses = totalClasses;
     }
 
+    /**
+     * @return concrete classes.
+     */
     public String getConcreteClasses()
     {
         return concreteClasses;
     }
 
+    /**
+     * @param concreteClasses
+     */
     public void setConcreteClasses( String concreteClasses )
     {
         this.concreteClasses = concreteClasses;
     }
 
+    /**
+     * @return get abstract classes.
+     */
     public String getAbstractClasses()
     {
         return abstractClasses;
     }
 
+    /**
+     * @param abstractClasses
+     */
     public void setAbstractClasses( String abstractClasses )
     {
         this.abstractClasses = abstractClasses;
     }
 
+    /**
+     * @return ca.
+     */
     public String getCa()
     {
         return ca;
     }
 
+    /**
+     * @param ca
+     */
     public void setCa( String ca )
     {
         this.ca = ca;
     }
 
+    /**
+     * @return Ce
+     */
     public String getCe()
     {
         return ce;
@@ -89,41 +119,65 @@ public class Stats
         this.ce = ce;
     }
 
+    /**
+     * @return A
+     */
     public String getA()
     {
         return a;
     }
 
+    /**
+     * @param a
+     */
     public void setA( String a )
     {
         this.a = a;
     }
 
+    /**
+     * @return I
+     */
     public String getI()
     {
         return i;
     }
 
+    /**
+     * @param i
+     */
     public void setI( String i )
     {
         this.i = i;
     }
 
+    /**
+     * @return D
+     */
     public String getD()
     {
         return d;
     }
 
+    /**
+     * @param d
+     */
     public void setD( String d )
     {
         this.d = d;
     }
 
+    /**
+     * @return V
+     */
     public String getV()
     {
         return v;
     }
 
+    /**
+     * @param v
+     */
     public void setV( String v )
     {
         this.v = v;

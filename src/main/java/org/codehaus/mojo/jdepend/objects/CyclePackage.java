@@ -22,6 +22,9 @@ package org.codehaus.mojo.jdepend.objects;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Who ever this implemented first.
+ */
 public class CyclePackage
 {
     private List packageList;

@@ -35,7 +35,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-public class JDependXMLReportParser extends DefaultHandler
+/**
+ * @author Who ever this implemented first.
+ */
+public class JDependXMLReportParser
+    extends DefaultHandler
 {
     protected List packages;
 
@@ -57,9 +61,10 @@ public class JDependXMLReportParser extends DefaultHandler
 
     /**
      * Creates a new instance of JDependXMLReportParser.
-     *
-     * @throws SAXException
+     * 
+     * @param xmlFile
      * @throws ParserConfigurationException
+     * @throws SAXException
      * @throws IOException
      */
     public JDependXMLReportParser( File xmlFile )
@@ -76,6 +81,9 @@ public class JDependXMLReportParser extends DefaultHandler
 
     }
 
+    /* (non-Javadoc)
+     * @see org.xml.sax.helpers.DefaultHandler#startElement(java.lang.String, java.lang.String, java.lang.String, org.xml.sax.Attributes)
+     */
     public void startElement( String namespaceURI, String sName, String qName, Attributes attrs )
         throws SAXException
     {
@@ -83,7 +91,8 @@ public class JDependXMLReportParser extends DefaultHandler
         /* Push element name into stack */
         stack.push( qName );
 
-        //TODO only create a new buffer when the element is expected to have text
+        // TODO only create a new buffer when the element is expected to have
+        // text
         buffer = new StringBuffer();
 
         if ( qName.equals( "Packages" ) )
@@ -121,6 +130,9 @@ public class JDependXMLReportParser extends DefaultHandler
         }
     }
 
+    /* (non-Javadoc)
+     * @see org.xml.sax.helpers.DefaultHandler#endElement(java.lang.String, java.lang.String, java.lang.String)
+     */
     public void endElement( String namespaceURI, String sName, String qName )
         throws SAXException
     {
@@ -226,6 +238,9 @@ public class JDependXMLReportParser extends DefaultHandler
         buffer = null;
     }
 
+    /* (non-Javadoc)
+     * @see org.xml.sax.helpers.DefaultHandler#characters(char[], int, int)
+     */
     public void characters( char[] buff, int offset, int len )
         throws SAXException
     {
@@ -235,16 +250,25 @@ public class JDependXMLReportParser extends DefaultHandler
         }
     }
 
+    /**
+     * @return Packages.
+     */
     public java.util.List getPackages()
     {
         return this.packages;
     }
 
+    /**
+     * @return stats.
+     */
     public Stats getStats()
     {
         return this.stats;
     }
 
+    /**
+     * @return parent index.
+     */
     private int getParentIndex()
     {
         int parentIndex = 0;
@@ -254,6 +278,10 @@ public class JDependXMLReportParser extends DefaultHandler
         return parentIndex;
     }
 
+    /**
+     * @param parentElement
+     * @return true otherwise false.
+     */
     private boolean isParentElement( String parentElement )
     {
         boolean isParent = false;

@@ -19,6 +19,9 @@ package org.codehaus.mojo.jdepend.objects;
  * under the License.
  */
 
+/**
+ * @author Who ever this implemented first.
+ */
 public class Packages
 {
     private java.util.List jdpackage;
@@ -32,6 +35,9 @@ public class Packages
     {
     }
 
+    /**
+     * @return packages.
+     */
     public java.util.List getPackages()
     {
         if ( this.jdpackage == null )
@@ -42,16 +48,25 @@ public class Packages
         return this.jdpackage;
     }
 
+    /**
+     * @param jdpackage
+     */
     public void setPackages( java.util.List jdpackage )
     {
         this.jdpackage = jdpackage;
     }
 
+    /**
+     * @param jdpackage
+     */
     public void addPackage( JDPackage jdpackage )
     {
         getPackages().add( jdpackage );
     }
 
+    /**
+     * @param attrs
+     */
     public void setAttribute( String[] attrs )
     {
         this.attributes = attrs;
