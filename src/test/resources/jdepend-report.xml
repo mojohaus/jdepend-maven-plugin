@@ -48,18 +48,21 @@
 
         <Package name="org.codehaus.mojo.jdepend">
             <Stats>
-                <TotalClasses>4</TotalClasses>
-                <ConcreteClasses>4</ConcreteClasses>
-                <AbstractClasses>0</AbstractClasses>
+                <TotalClasses>6</TotalClasses>
+                <ConcreteClasses>5</ConcreteClasses>
+                <AbstractClasses>1</AbstractClasses>
                 <Ca>0</Ca>
                 <Ce>15</Ce>
-                <A>0</A>
+                <A>0.17</A>
                 <I>1</I>
-                <D>0</D>
+                <D>0.17</D>
                 <V>1</V>
             </Stats>
 
             <AbstractClasses>
+                <Class sourceFile="AbstractJDependMojo.java">
+                    org.codehaus.mojo.jdepend.AbstractJDependMojo
+                </Class>
             </AbstractClasses>
 
             <ConcreteClasses>
@@ -68,6 +71,9 @@
                 </Class>
                 <Class sourceFile="JDependMojo.java">
                     org.codehaus.mojo.jdepend.JDependMojo
+                </Class>
+                <Class sourceFile="JDependNoForkMojo.java">
+                    org.codehaus.mojo.jdepend.JDependNoForkMojo
                 </Class>
                 <Class sourceFile="JDependXMLReportParser.java">
                     org.codehaus.mojo.jdepend.JDependXMLReportParser
