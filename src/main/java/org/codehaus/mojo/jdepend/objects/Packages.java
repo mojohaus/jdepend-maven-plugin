@@ -29,8 +29,6 @@ public class Packages
 {
     private List<JDPackage> jdpackage;
 
-    private String[] attributes;
-
     /**
      * Creates a new instance of Packages.
      */
@@ -39,7 +37,6 @@ public class Packages
     }
 
     /**
-     * @return 
      * @return packages.
      */
     public List<JDPackage> getPackages()
@@ -53,7 +50,7 @@ public class Packages
     }
 
     /**
-     * @param jdpackage
+     * @param jdpackage The List of JDPackage
      */
     public void setPackages( List<JDPackage> jdpackage )
     {
@@ -61,18 +58,11 @@ public class Packages
     }
 
     /**
-     * @param jdpackage
+     * @param jdpackage Add a single package.
      */
     public void addPackage( JDPackage jdpackage )
     {
         getPackages().add( jdpackage );
     }
 
-    /**
-     * @param attrs
-     */
-    public void setAttribute( String[] attrs )
-    {
-        this.attributes = attrs;
-    }
 }
