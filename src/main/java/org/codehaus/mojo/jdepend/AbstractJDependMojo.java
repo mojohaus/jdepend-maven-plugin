@@ -36,44 +36,54 @@ import java.util.ResourceBundle;
 /**
  * @author Karl-Heinz Marbaise
  */
-public abstract class AbstractJDependMojo extends AbstractMavenReport {
+public abstract class AbstractJDependMojo
+    extends AbstractMavenReport
+{
     JDependXMLReportParser xmlParser;
+
     @Parameter( defaultValue = "${project}", readonly = true, required = true )
     private MavenProject project;
+
     /**
      * Directory where the generated output site files will be located.
      */
     @Parameter( defaultValue = "${project.build.directory}/site", property = "jdepend.outputDirectory", required = true )
     private String outputDirectory;
+
     /**
      * Directory of the project.
      */
     @Parameter( defaultValue = "${basedir}", property = "jdepend.projectDirectory" )
     private String projectDirectory;
+
     /**
      * Directory containing the class files.
      */
     @Parameter( defaultValue = "${project.build.outputDirectory}", property = "jdepend.classDirectory", required = true )
     private String classDirectory;
+
     /**
      * Location of the generated JDepend xml report.
      */
     @Parameter( defaultValue = "${project.build.directory}/jdepend-report.xml", required = true, readonly = true )
     private String reportFile;
+
     /**
      * Skip execution of the plugin.
      */
     @Parameter( defaultValue = "false", property = "jdepend.skip" )
     private boolean skip;
+
     /**
      * Doxia Site Renderer
      */
     @Component
     private Renderer siteRenderer;
 
-    /* (non-Javadoc)
-         * @see org.apache.maven.reporting.AbstractMavenReport#executeReport(java.util.Locale)
-         */
+    /*
+     * (non-Javadoc)
+     * @see org.apache.maven.reporting.AbstractMavenReport#executeReport(java.util.Locale)
+     */
     public void executeReport( Locale locale )
         throws MavenReportException
     {
@@ -96,7 +106,7 @@ public abstract class AbstractJDependMojo extends AbstractMavenReport {
                 }
             }
 
-            JDepend.main(getArgumentList(getArgument(), getReportFile(), getClassDirectory()));
+            JDepend.main( getArgumentList( getArgument(), getReportFile(), getClassDirectory() ) );
 
             xmlParser = new JDependXMLReportParser( new File( getReportFile() ) );
 
@@ -108,9 +118,10 @@ public abstract class AbstractJDependMojo extends AbstractMavenReport {
         }
     }
 
-    /* (non-Javadoc)
-         * @see org.apache.maven.reporting.AbstractMavenReport#canGenerateReport()
-         */
+    /*
+     * (non-Javadoc)
+     * @see org.apache.maven.reporting.AbstractMavenReport#canGenerateReport()
+     */
     public boolean canGenerateReport()
     {
         File srcDir = new File( classDirectory );
@@ -123,7 +134,7 @@ public abstract class AbstractJDependMojo extends AbstractMavenReport {
 
     /**
      * Sets and get the arguments passed for the JDepend.
-     *
+     * 
      * @param argument Accepts parameter with "-file" string.
      * @param locationXMLreportFile Accepts the location of the generated JDepend xml report file.
      * @param classDir Accepts the location of the classes.
@@ -159,17 +170,19 @@ public abstract class AbstractJDependMojo extends AbstractMavenReport {
         }
     }
 
-    /* (non-Javadoc)
-         * @see org.apache.maven.reporting.MavenReport#getDescription(java.util.Locale)
-         */
+    /*
+     * (non-Javadoc)
+     * @see org.apache.maven.reporting.MavenReport#getDescription(java.util.Locale)
+     */
     public String getDescription( Locale locale )
     {
         return getBundle( locale ).getString( "report.jdepend.description" );
     }
 
-    /* (non-Javadoc)
-         * @see org.apache.maven.reporting.MavenReport#getName(java.util.Locale)
-         */
+    /*
+     * (non-Javadoc)
+     * @see org.apache.maven.reporting.MavenReport#getName(java.util.Locale)
+     */
     public String getName( Locale locale )
     {
         return getBundle( locale ).getString( "report.jdepend.name" );
@@ -181,17 +194,19 @@ public abstract class AbstractJDependMojo extends AbstractMavenReport {
                                          this.getClass().getClassLoader() );
     }
 
-    /* (non-Javadoc)
-         * @see org.apache.maven.reporting.MavenReport#getOutputName()
-         */
+    /*
+     * (non-Javadoc)
+     * @see org.apache.maven.reporting.MavenReport#getOutputName()
+     */
     public String getOutputName()
     {
         return "jdepend-report";
     }
 
-    /* (non-Javadoc)
-         * @see org.apache.maven.reporting.AbstractMavenReport#getProject()
-         */
+    /*
+     * (non-Javadoc)
+     * @see org.apache.maven.reporting.AbstractMavenReport#getProject()
+     */
     public MavenProject getProject()
     {
         return project;
@@ -205,9 +220,10 @@ public abstract class AbstractJDependMojo extends AbstractMavenReport {
         this.project = project;
     }
 
-    /* (non-Javadoc)
-         * @see org.apache.maven.reporting.AbstractMavenReport#getOutputDirectory()
-         */
+    /*
+     * (non-Javadoc)
+     * @see org.apache.maven.reporting.AbstractMavenReport#getOutputDirectory()
+     */
     public String getOutputDirectory()
     {
         return outputDirectory;
@@ -239,9 +255,10 @@ public abstract class AbstractJDependMojo extends AbstractMavenReport {
         this.reportFile = reportFile;
     }
 
-    /* (non-Javadoc)
-         * @see org.apache.maven.reporting.AbstractMavenReport#getSiteRenderer()
-         */
+    /*
+     * (non-Javadoc)
+     * @see org.apache.maven.reporting.AbstractMavenReport#getSiteRenderer()
+     */
     public Renderer getSiteRenderer()
     {
         return siteRenderer;

@@ -82,8 +82,10 @@ public class JDependXMLReportParser
 
     }
 
-    /* (non-Javadoc)
-     * @see org.xml.sax.helpers.DefaultHandler#startElement(java.lang.String, java.lang.String, java.lang.String, org.xml.sax.Attributes)
+    /*
+     * (non-Javadoc)
+     * @see org.xml.sax.helpers.DefaultHandler#startElement(java.lang.String, java.lang.String, java.lang.String,
+     * org.xml.sax.Attributes)
      */
     public void startElement( String namespaceURI, String sName, String qName, Attributes attrs )
         throws SAXException
@@ -131,7 +133,8 @@ public class JDependXMLReportParser
         }
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.xml.sax.helpers.DefaultHandler#endElement(java.lang.String, java.lang.String, java.lang.String)
      */
     public void endElement( String namespaceURI, String sName, String qName )
@@ -239,7 +242,8 @@ public class JDependXMLReportParser
         buffer = null;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see org.xml.sax.helpers.DefaultHandler#characters(char[], int, int)
      */
     public void characters( char[] buff, int offset, int len )
