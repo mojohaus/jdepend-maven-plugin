@@ -15,15 +15,17 @@ JDepend Maven Plugin
 
 ~~  General Information about the goals.
 
-  * {{{generate-mojo.html}jdepend:generate}} Run JDepend and generate a site report.
+  * {{{./generate-mojo.html}jdepend:generate}} Run JDepend and generate a site report.
+
+  * {{{./generate-no-fork-mojo.html}jdepend:generate-no-fork}} Run JDepend and generate a site report (without forking the life cycle).
 
 * Usage
 
-  Instructions on how to use the JDepend Maven Plugin can be found on the {{{usage.html}usage page}}.
+  Instructions on how to use the JDepend Maven Plugin can be found on the {{{./usage.html}usage page}}.
 
 * Examples
 
   To provide you with better understanding of some usages of the JDepend
   Maven Plugin, you can take a look into the following example:
 
-  * {{{examples/jdepend-report.html}JDepend Sample Report}}
+  * {{{./examples/jdepend-report.html}JDepend Sample Report}}

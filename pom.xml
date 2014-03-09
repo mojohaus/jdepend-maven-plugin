@@ -10,17 +10,50 @@
   <version>2.0-SNAPSHOT</version>
   <packaging>maven-plugin</packaging>
   <name>JDepend Maven Plugin</name>
-  <description>Maven 2 plugin that generates JDepend reports for your projects.</description>
+  <description>Maven 2/3 plugin that generates JDepend reports for your projects.</description>
   <inceptionYear>2006</inceptionYear>
+
+  <issueManagement>
+    <system>jira</system>
+    <url>http://jira.codehaus.org/browse/MJDEPEND</url>
+  </issueManagement>
+  <ciManagement>
+    <system>bamboo</system>
+    <url>http://bamboo.ci.codehaus.org/browse/MOJO-MJDEPEND</url>
+  </ciManagement>
+
+
   <licenses>
     <license>
       <name>BSD</name>
       <url>http://www.clarkware.com/software/license.txt</url>
     </license>
   </licenses>
+
+  <developers>
+    <developer>
+      <id>khmarbaise</id>
+      <name>Karl Heinz Marbaise</name>
+      <email>khmarbaise@codehaus.org</email>
+      <timezone>Europe/Berlin</timezone>
+    </developer>
+    <developer>
+      <id>rfscholte</id>
+      <name>Robert Scholte</name>
+      <email>rfscholte@codehaus.org</email>
+      <timezone>Europe/Amsterdam</timezone>
+    </developer>
+    <developer>
+      <id>mfriedenhagen</id>
+      <name>Mirko Friedenhagen</name>
+      <timezone>Europe/Berlin</timezone>
+    </developer>
+  </developers>
+
   <prerequisites>
     <maven>${mavenVersion}</maven>
   </prerequisites>
+
   <properties>
     <mavenVersion>2.2.1</mavenVersion>
   </properties>
@@ -164,6 +197,9 @@
                     <extraArtifact>org.codehaus.plexus:plexus-utils:1.1:jar</extraArtifact> 
                     <extraArtifact>org.apache.maven.plugins:maven-site-plugin:2.4:maven-plugin</extraArtifact>
                     <extraArtifact>org.apache.maven.plugins:maven-project-info-reports-plugin:2.1:maven-plugin</extraArtifact>
+
+                    <!-- jdepend-example -->
+                    <extraArtifact>commons-io:commons-io:1.1:jar</extraArtifact>
                   </extraArtifacts>
                 </configuration>
               </execution>
