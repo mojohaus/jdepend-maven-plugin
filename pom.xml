@@ -112,23 +112,23 @@
         <artifactId>license-maven-plugin</artifactId>
         <version>1.6</version>
         <configuration>
+          <licenseName>asf-2.0</licenseName>
+          <licenseResolver>${project.baseUri}src/license</licenseResolver>
           <verbose>false</verbose>
           <addSvnKeyWords>false</addSvnKeyWords>
+          <licenseName>asf-2.0</licenseName>
+          <roots>
+            <root>src/main/java</root>
+            <root>src/test/java</root>
+          </roots>
         </configuration>
         <executions>
           <execution>
-            <id></id>
+            <id>check-license-header</id>
             <goals>
-              <goal>update-file-header</goal>
+              <goal>check-file-header</goal>
             </goals>
             <phase>process-sources</phase>
-            <configuration>
-              <licenseName>apache_v2</licenseName>
-              <roots>
-                <root>src/main/java</root>
-                <root>src/test/java</root>
-              </roots>
-            </configuration>
           </execution>
         </executions>
       </plugin>
