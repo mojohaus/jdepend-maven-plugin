@@ -30,6 +30,9 @@ JDepend Maven Plugin
 
   This plugin produces a nicely formatted metrics report based on your project.
 
+  This plugin uses the {{{http://clarkware.com/software/JDepend.html}JDepend library in version 2.9.1}} 
+  to fulfill it's purposes.
+
 * Goals Overview
 
 ~~  General Information about the goals.
