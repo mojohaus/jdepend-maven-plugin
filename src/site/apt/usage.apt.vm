@@ -42,6 +42,7 @@ Usage
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>jdepend-maven-plugin</artifactId>
+        <version>${project.version}</version>
       </plugin>
     </plugins>
   </reporting>
@@ -52,5 +53,5 @@ Usage
   Generate the metrics report by executing the maven-site-plugin.
 
 -------------------
-mvn site:site
+mvn site
 -------------------
