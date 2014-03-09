@@ -113,7 +113,7 @@
         <version>1.6</version>
         <configuration>
           <licenseName>asf-2.0</licenseName>
-          <licenseResolver>${project.baseUri}src/license</licenseResolver>
+          <licenseResolver>${project.baseUri}/src/license</licenseResolver>
           <verbose>false</verbose>
           <addSvnKeyWords>false</addSvnKeyWords>
           <licenseName>asf-2.0</licenseName>
