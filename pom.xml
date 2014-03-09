@@ -25,6 +25,11 @@
     <url>http://bamboo.ci.codehaus.org/browse/MOJO-MJDEPEND</url>
   </ciManagement>
 
+  <scm>
+    <connection>scm:svn:http://svn.codehaus.org/mojo/trunk/mojo/jdepend-maven-plugin</connection>
+    <developerConnection>scm:svn:https://svn.codehaus.org/mojo/trunk/mojo/jdepend-maven-plugin</developerConnection>
+    <url>http://fisheye.codehaus.org/browse/mojo/trunk/mojo/jdepend-maven-plugin</url>
+  </scm>
 
   <licenses>
     <license>
