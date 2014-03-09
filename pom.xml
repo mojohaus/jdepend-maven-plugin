@@ -198,8 +198,17 @@
                     <extraArtifact>org.apache.maven.plugins:maven-site-plugin:2.4:maven-plugin</extraArtifact>
                     <extraArtifact>org.apache.maven.plugins:maven-project-info-reports-plugin:2.1:maven-plugin</extraArtifact>
 
-                    <!-- jdepend-example -->
+                    <!-- jdepend-example should be made different to have only a single list of extraArtifact -->
                     <extraArtifact>commons-io:commons-io:1.1:jar</extraArtifact>
+                    <extraArtifact>org.apache.maven.plugins:maven-checkstyle-plugin:2.11:maven-plugin</extraArtifact>
+                    <extraArtifact>org.apache.maven.plugins:maven-javadoc-plugin:2.9.1:maven-plugin</extraArtifact>
+                    <extraArtifact>org.apache.maven.plugins:maven-jxr-plugin:2.4:maven-plugin</extraArtifact>
+                    <extraArtifact>org.apache.maven.plugins:maven-pmd-plugin:3.0.1:maven-plugin</extraArtifact>
+                    <extraArtifact>org.apache.maven.plugins:maven-surefire-report-plugin:2.16:maven-plugin</extraArtifact>
+                    <extraArtifact>org.codehaus.mojo:taglist-maven-plugin:2.4:maven-plugin</extraArtifact>
+                     <!-- I don't know why i need to define them separately. I assumed it will be downloaded by javadoc plugin as transitive dependencies -->
+                    <extraArtifact>org.apache.maven.plugin-tools:maven-plugin-tools-javadoc:3.2:jar</extraArtifact>
+                    <extraArtifact>org.codehaus.plexus:plexus-component-javadoc:1.5.5:jar</extraArtifact>
                   </extraArtifacts>
                 </configuration>
               </execution>
