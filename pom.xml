@@ -15,10 +15,12 @@
   <name>JDepend Maven Plugin</name>
   <description>Maven plugin that generates JDepend reports for your projects.</description>
   <inceptionYear>2006</inceptionYear>
+
   <licenses>
     <license>
-      <name>BSD</name>
-      <url>http://clarkware.com/software/JDepend.html#license</url>
+      <name>Apache License 2</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
     </license>
   </licenses>
 
@@ -28,6 +30,11 @@
       <name>Karl Heinz Marbaise</name>
       <email>khmarbaise@codehaus.org</email>
       <timezone>Europe/Berlin</timezone>
+    </developer>
+    <developer>
+      <id>afloom</id>
+      <name>Anders Hammar</name>
+      <email>afloom@codehaus.org</email>
     </developer>
     <developer>
       <id>rfscholte</id>
@@ -100,6 +107,31 @@
 
   <build>
     <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>license-maven-plugin</artifactId>
+        <version>1.6</version>
+        <configuration>
+          <verbose>false</verbose>
+          <addSvnKeyWords>false</addSvnKeyWords>
+        </configuration>
+        <executions>
+          <execution>
+            <id></id>
+            <goals>
+              <goal>update-file-header</goal>
+            </goals>
+            <phase>process-sources</phase>
+            <configuration>
+              <licenseName>apache_v2</licenseName>
+              <roots>
+                <root>src/main/java</root>
+                <root>src/test/java</root>
+              </roots>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-plugin-plugin</artifactId>
