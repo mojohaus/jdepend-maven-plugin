@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
@@ -12,29 +11,16 @@
   <artifactId>jdepend-maven-plugin</artifactId>
   <version>2.0</version>
   <packaging>maven-plugin</packaging>
+
   <name>JDepend Maven Plugin</name>
-  <description>Maven 2/3 plugin that generates JDepend reports for your projects.</description>
+  <description>Maven plugin that generates JDepend reports for your projects.</description>
   <inceptionYear>2006</inceptionYear>
-
-  <issueManagement>
-    <system>jira</system>
-    <url>http://jira.codehaus.org/browse/MJDEPEND</url>
-  </issueManagement>
-  <ciManagement>
-    <system>bamboo</system>
-    <url>http://bamboo.ci.codehaus.org/browse/MOJO-MJDEPEND</url>
-  </ciManagement>
-
-  <scm>
-    <connection>scm:svn:http://svn.codehaus.org/mojo/tags/jdepend-maven-plugin-2.0</connection>
-    <developerConnection>scm:svn:https://svn.codehaus.org/mojo/tags/jdepend-maven-plugin-2.0</developerConnection>
-    <url>http://fisheye.codehaus.org/browse/mojo/tags/jdepend-maven-plugin-2.0</url>
-  </scm>
 
   <licenses>
     <license>
-      <name>BSD</name>
-      <url>http://clarkware.com/software/JDepend.html#license</url>
+      <name>Apache License 2</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
     </license>
   </licenses>
 
@@ -44,6 +30,11 @@
       <name>Karl Heinz Marbaise</name>
       <email>khmarbaise@codehaus.org</email>
       <timezone>Europe/Berlin</timezone>
+    </developer>
+    <developer>
+      <id>afloom</id>
+      <name>Anders Hammar</name>
+      <email>afloom@codehaus.org</email>
     </developer>
     <developer>
       <id>rfscholte</id>
@@ -62,9 +53,25 @@
     <maven>${mavenVersion}</maven>
   </prerequisites>
 
+  <scm>
+    <connection>scm:svn:http://svn.codehaus.org/mojo/tags/jdepend-maven-plugin-2.0</connection>
+    <developerConnection>scm:svn:https://svn.codehaus.org/mojo/tags/jdepend-maven-plugin-2.0</developerConnection>
+    <url>http://fisheye.codehaus.org/browse/mojo/tags/jdepend-maven-plugin-2.0</url>
+  </scm>
+  <issueManagement>
+    <system>jira</system>
+    <url>http://jira.codehaus.org/browse/MJDEPEND</url>
+  </issueManagement>
+  <ciManagement>
+    <system>bamboo</system>
+    <url>http://bamboo.ci.codehaus.org/browse/MOJO-MJDEPEND</url>
+  </ciManagement>
+
   <properties>
     <mavenVersion>2.2.1</mavenVersion>
+    <jdependVersion>2.9.1</jdependVersion>
   </properties>
+
   <dependencies>
     <dependency>
       <groupId>org.apache.maven.plugin-tools</groupId>
@@ -95,11 +102,37 @@
     <dependency>
       <groupId>jdepend</groupId>
       <artifactId>jdepend</artifactId>
-      <version>2.9.1</version>
+      <version>${jdependVersion}</version>
     </dependency>
   </dependencies>
+
   <build>
     <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>license-maven-plugin</artifactId>
+        <version>1.6</version>
+        <configuration>
+          <licenseName>asf-2.0</licenseName>
+          <licenseResolver>${project.baseUri}/src/license</licenseResolver>
+          <verbose>false</verbose>
+          <addSvnKeyWords>false</addSvnKeyWords>
+          <licenseName>asf-2.0</licenseName>
+          <roots>
+            <root>src/main/java</root>
+            <root>src/test/java</root>
+          </roots>
+        </configuration>
+        <executions>
+          <execution>
+            <id>check-license-header</id>
+            <goals>
+              <goal>check-file-header</goal>
+            </goals>
+            <phase>process-sources</phase>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-plugin-plugin</artifactId>
@@ -124,14 +157,15 @@
           </execution>
         </executions>
       </plugin>
-    </plugins>      
+    </plugins>
   </build>
+
   <reporting>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-changes-plugin</artifactId>
-        <version>2.4</version>
+        <version>2.9</version>
         <configuration>
           <onlyCurrentVersion>true</onlyCurrentVersion>
           <columnNames>Type,Key,Summary,Status,Resolution,Assignee</columnNames>
@@ -147,6 +181,7 @@
       </plugin>
     </plugins>
   </reporting>
+
   <profiles>
     <profile>
       <id>run-its</id>
@@ -202,7 +237,7 @@
                     <!-- Running integration tests with Maven 2.2.1 -->
 
                     <!-- plexus-utils:1.1: seemed to be missing by the download of the above maven-compiler-plugin:3.1 ? Check this. -->
-                    <extraArtifact>org.codehaus.plexus:plexus-utils:1.1:jar</extraArtifact> 
+                    <extraArtifact>org.codehaus.plexus:plexus-utils:1.1:jar</extraArtifact>
                     <extraArtifact>org.apache.maven.plugins:maven-site-plugin:2.4:maven-plugin</extraArtifact>
                     <extraArtifact>org.apache.maven.plugins:maven-project-info-reports-plugin:2.1:maven-plugin</extraArtifact>
 
