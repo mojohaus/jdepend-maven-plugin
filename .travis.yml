@@ -1,15 +1,8 @@
+---
 language: java
+script: mvn verify -B
 jdk:
-  - openjdk6
-  - oraclejdk7
-  - oraclejdk8
-script: "mvn --show-version --errors --batch-mode clean verify"
-cache:
-    directories:
-    - $HOME/.m2
-branches:
-    except:
-        - gh-pages
-notifications:
-    email:
-        - khmarbaise@apache.org
+ - oraclejdk8
+ - oraclejdk7
+ - openjdk7
+ - openjdk6
