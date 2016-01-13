@@ -76,6 +76,12 @@ public abstract class AbstractJDependMojo
     private boolean skip;
 
     /**
+     * Ignore missing class directory.
+     */
+    @Parameter( defaultValue = "true", property = "jdepend.ignoreMissingClassDirectory" )
+    private boolean ignoreMissingClassDirectory;
+
+    /**
      * Doxia Site Renderer
      */
     @Component
@@ -92,6 +98,19 @@ public abstract class AbstractJDependMojo
         {
             getLog().info( "Skipping execution on behalf of user" );
             return;
+        }
+
+        if ( !canGenerateReport() )
+        {
+            if ( ignoreMissingClassDirectory )
+            {
+                getLog().debug("Skipping execution on behalf of missing folder");
+                return;
+            }
+            else
+            {
+                throw new MavenReportException( "Class directory " + classDirectory + " does not exist!" );
+            }
         }
 
         try
