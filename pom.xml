@@ -69,7 +69,7 @@
 
   <properties>
     <mavenVersion>2.2.1</mavenVersion>
-    <jdependVersion>2.9.1</jdependVersion>
+    <jdependVersion>2.9.5</jdependVersion>
     <mojo.java.target>1.5</mojo.java.target>
     <scmpublish.content>target/staging/${project.artifactId}</scmpublish.content>
   </properties>
@@ -101,7 +101,7 @@
       <version>3.0.20</version>
     </dependency>
     <dependency>
-      <groupId>jdepend</groupId>
+      <groupId>guru.nidi</groupId>
       <artifactId>jdepend</artifactId>
       <version>${jdependVersion}</version>
     </dependency>
