@@ -68,7 +68,7 @@
   </ciManagement>
 
   <properties>
-    <mavenVersion>2.2.1</mavenVersion>
+    <mavenVersion>3.2.5</mavenVersion>
     <jdependVersion>2.9.1</jdependVersion>
     <mojo.java.target>1.8</mojo.java.target>
     <scmpublish.content>target/staging/${project.artifactId}</scmpublish.content>
@@ -88,22 +88,27 @@
     <dependency>
       <groupId>org.apache.maven.reporting</groupId>
       <artifactId>maven-reporting-api</artifactId>
-      <version>${mavenVersion}</version>
+      <version>3.1.0</version>
     </dependency>
     <dependency>
       <groupId>org.apache.maven.reporting</groupId>
       <artifactId>maven-reporting-impl</artifactId>
-      <version>2.3</version>
+      <version>3.1.0</version>
     </dependency>
     <dependency>
       <groupId>org.codehaus.plexus</groupId>
       <artifactId>plexus-utils</artifactId>
-      <version>3.0.20</version>
+      <version>3.4.1</version>
     </dependency>
     <dependency>
       <groupId>jdepend</groupId>
       <artifactId>jdepend</artifactId>
       <version>${jdependVersion}</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 
@@ -161,28 +166,6 @@
     </plugins>
   </build>
 
-  <reporting>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-changes-plugin</artifactId>
-        <version>2.9</version>
-        <configuration>
-          <onlyCurrentVersion>true</onlyCurrentVersion>
-          <columnNames>Type,Key,Summary,Status,Resolution,Assignee</columnNames>
-          <sortColumnNames>Type,Key</sortColumnNames>
-        </configuration>
-        <reportSets>
-          <reportSet>
-            <reports>
-              <report>jira-report</report>
-            </reports>
-          </reportSet>
-        </reportSets>
-      </plugin>
-    </plugins>
-  </reporting>
-
   <profiles>
     <profile>
       <id>run-its</id>
@@ -191,7 +174,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-invoker-plugin</artifactId>
-            <version>1.9</version>
+            <version>3.2.2</version>
             <configuration>
               <addTestClassPath>true</addTestClassPath>
               <debug>true</debug>
@@ -250,8 +233,6 @@
                     <extraArtifact>org.apache.maven.plugins:maven-pmd-plugin:3.0.1:maven-plugin</extraArtifact>
                     <extraArtifact>org.apache.maven.plugins:maven-surefire-report-plugin:2.16:maven-plugin</extraArtifact>
                     <extraArtifact>org.codehaus.mojo:taglist-maven-plugin:2.4:maven-plugin</extraArtifact>
-                     <!-- I don't know why i need to define them separately. I assumed it will be downloaded by javadoc plugin as transitive dependencies -->
-                    <extraArtifact>org.apache.maven.plugin-tools:maven-plugin-tools-javadoc:3.2:jar</extraArtifact>
                     <extraArtifact>org.codehaus.plexus:plexus-component-javadoc:1.5.5:jar</extraArtifact>
                   </extraArtifacts>
                 </configuration>

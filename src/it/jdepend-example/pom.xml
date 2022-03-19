@@ -36,7 +36,7 @@
   <name>JDepend Example Report</name>
   <url>http://mojo.codehaus.org</url>
   <properties>
-    <mavenVersion>2.2.1</mavenVersion>
+    <mavenVersion>3.2.5</mavenVersion>
   </properties>
   <reporting>
     <plugins>
