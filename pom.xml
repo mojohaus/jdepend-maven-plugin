@@ -226,7 +226,7 @@
                     <extraArtifact>org.apache.maven.plugins:maven-project-info-reports-plugin:2.1:maven-plugin</extraArtifact>
 
                     <!-- jdepend-example should be made different to have only a single list of extraArtifact -->
-                    <extraArtifact>commons-io:commons-io:1.1:jar</extraArtifact>
+                    <extraArtifact>commons-io:commons-io:2.7:jar</extraArtifact>
                     <extraArtifact>org.apache.maven.plugins:maven-checkstyle-plugin:2.11:maven-plugin</extraArtifact>
                     <extraArtifact>org.apache.maven.plugins:maven-javadoc-plugin:2.9.1:maven-plugin</extraArtifact>
                     <extraArtifact>org.apache.maven.plugins:maven-jxr-plugin:2.4:maven-plugin</extraArtifact>
