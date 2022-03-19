@@ -44,7 +44,7 @@ public class Packages
     {
         if ( this.jdpackage == null )
         {
-            this.jdpackage = new ArrayList<JDPackage>();
+            this.jdpackage = new ArrayList<>();
         }
 
         return this.jdpackage;

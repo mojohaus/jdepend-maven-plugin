@@ -25,27 +25,31 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 import jdepend.xmlui.JDepend;
-import junit.framework.TestCase;
 
 import org.codehaus.plexus.util.IOUtil;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.assertTrue;
 
 public class JDependMojoTest
-    extends TestCase
 {
     JDependXMLReportParser parser;
 
     public static final String REPORT_PATH = "target/test-classes/jdepend-report.xml";
 
-    private String basedir = System.getProperty( "basedir" );
+    private final String basedir = System.getProperty( "basedir" );
 
-    private File reportXML = new File( basedir, REPORT_PATH );
+    private final File reportXML = new File( basedir, REPORT_PATH );
 
+    @Before
     public void setUp()
         throws Exception
     {
         parser = new JDependXMLReportParser( reportXML );
     }
 
+    @Test
     public void testJDependReportContent()
         throws IOException
     {
@@ -59,7 +63,7 @@ public class JDependMojoTest
         args[2] = classDirectory.getCanonicalPath();
 
         JDepend.main( args );
-        ;
+
         assertTrue( "Generated report xml from " + generatedReport + " is not equal to expected output " + reportXML,
                     IOUtil.contentEquals( new FileInputStream( generatedReport ), new FileInputStream( reportXML ) ) );
     }

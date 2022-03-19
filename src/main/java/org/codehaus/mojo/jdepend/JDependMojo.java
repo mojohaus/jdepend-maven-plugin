@@ -30,7 +30,7 @@ import org.apache.maven.plugins.annotations.Mojo;
  * @author aramirez@exist.com
  * @version $Id$
  */
-@Mojo( name = "generate", requiresProject = true )
+@Mojo( name = "generate" )
 @Execute( phase = LifecyclePhase.COMPILE )
 public class JDependMojo
     extends AbstractJDependMojo

@@ -72,7 +72,7 @@ public class JDPackage
     {
         if ( abstractClasses == null )
         {
-            abstractClasses = new ArrayList<String>();
+            abstractClasses = new ArrayList<>();
         }
         return abstractClasses;
     }
@@ -86,7 +86,7 @@ public class JDPackage
     {
         if ( concreteClasses == null )
         {
-            concreteClasses = new ArrayList<String>();
+            concreteClasses = new ArrayList<>();
         }
         return concreteClasses;
     }
@@ -100,7 +100,7 @@ public class JDPackage
     {
         if ( dependsUpon == null )
         {
-            dependsUpon = new ArrayList<String>();
+            dependsUpon = new ArrayList<>();
         }
         return dependsUpon;
     }
@@ -119,7 +119,7 @@ public class JDPackage
     {
         if ( usedBy == null )
         {
-            usedBy = new ArrayList<String>();
+            usedBy = new ArrayList<>();
         }
         return usedBy;
     }

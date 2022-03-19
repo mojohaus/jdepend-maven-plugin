@@ -20,22 +20,28 @@ package org.codehaus.mojo.jdepend;
  * #L%
  */
 
-import junit.framework.TestCase;
 import org.codehaus.mojo.jdepend.objects.JDPackage;
 import org.codehaus.mojo.jdepend.objects.Stats;
+import org.junit.Before;
+import org.junit.Test;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 public class JDependReportParserTest
-    extends TestCase
 {
     private JDependXMLReportParser parser;
 
     private List<JDPackage> packages;
 
-    private String basedir = System.getProperty( "basedir" );
+    private final String basedir = System.getProperty( "basedir" );
 
+    @Before
     public void setUp()
         throws Exception
     {
@@ -45,14 +51,16 @@ public class JDependReportParserTest
         packages = parser.packages;
     }
 
+    @Test
     public void testTotalNumberPackages()
     {
         assertEquals( "Total number of packages is not equal to expected output", 2, parser.packages.size() );
     }
 
+    @Test
     public void testPackageNames()
     {
-        List<String> packageNames = new ArrayList<String>();
+        List<String> packageNames = new ArrayList<>();
 
         for (JDPackage jdpackage : packages)
         {
@@ -62,9 +70,10 @@ public class JDependReportParserTest
         assertTrue( packageNames.contains( "org.codehaus.mojo.jdepend.objects" ) );
     }
 
+    @Test
     public void testPackageNamesNotContainingInList()
     {
-        List<String> packageNames = new ArrayList<String>();
+        List<String> packageNames = new ArrayList<>();
 
         for (JDPackage jdpackage : packages)
         {
@@ -74,6 +83,7 @@ public class JDependReportParserTest
         assertFalse( packageNames.contains( "test2" ) );
     }
 
+    @Test
     public void testStats()
     {
         for (JDPackage jdpackage : packages)
@@ -109,13 +119,14 @@ public class JDependReportParserTest
         }
     }
 
+    @Test
     public void testConcreteClasses()
     {
         for (JDPackage jdpackage : packages)
         {
             if ( jdpackage.getPackageName().equals( "org.codehaus.mojo.jdepend" ) )
             {
-                List concretes = jdpackage.getConcreteClasses();
+                List<String> concretes = jdpackage.getConcreteClasses();
 
                 assertTrue( concretes.contains( "org.codehaus.mojo.jdepend.JDependMojo" ) );
                 assertTrue( concretes.contains( "org.codehaus.mojo.jdepend.JDependXMLReportParser" ) );
@@ -123,7 +134,7 @@ public class JDependReportParserTest
             }
             if ( jdpackage.getPackageName().equals( "org.codehaus.mojo.jdepend.objects" ) )
             {
-                List concretes = jdpackage.getConcreteClasses();
+                List<String> concretes = jdpackage.getConcreteClasses();
 
                 assertTrue( concretes.contains( "org.codehaus.mojo.jdepend.objects.CyclePackage" ) );
                 assertTrue( concretes.contains( "org.codehaus.mojo.jdepend.objects.JDPackage" ) );
@@ -137,6 +148,7 @@ public class JDependReportParserTest
         }
     }
 
+    @Test
     public void testCountOfDependsUpon()
     {
         for (JDPackage jdpackage : packages)

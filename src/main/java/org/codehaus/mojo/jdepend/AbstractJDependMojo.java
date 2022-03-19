@@ -125,12 +125,7 @@ public abstract class AbstractJDependMojo
      */
     public boolean canGenerateReport()
     {
-        File srcDir = new File( classDirectory );
-        if ( !srcDir.exists() )
-        {
-            return false;
-        }
-        return true;
+        return new File( classDirectory ).exists();
     }
 
     /**
@@ -143,7 +138,7 @@ public abstract class AbstractJDependMojo
      */
     private String[] getArgumentList( String argument, String locationXMLreportFile, String classDir )
     {
-        List<String> argList = new ArrayList<String>();
+        List<String> argList = new ArrayList<>();
 
         argList.add( argument );
 
@@ -151,7 +146,7 @@ public abstract class AbstractJDependMojo
 
         argList.add( classDir );
 
-        return (String[]) argList.toArray( new String[argList.size()] );
+        return argList.toArray( new String[0] );
     }
 
     public void generateReport( Locale locale )

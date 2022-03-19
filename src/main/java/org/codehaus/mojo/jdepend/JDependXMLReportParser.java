@@ -75,7 +75,7 @@ public class JDependXMLReportParser
         SAXParserFactory factory = SAXParserFactory.newInstance();
 
         /* Create an empty stack */
-        stack = new Stack<String>();
+        stack = new Stack<>();
 
         SAXParser saxParser = factory.newSAXParser();
 
@@ -89,7 +89,6 @@ public class JDependXMLReportParser
      * org.xml.sax.Attributes)
      */
     public void startElement( String namespaceURI, String sName, String qName, Attributes attrs )
-        throws SAXException
     {
 
         /* Push element name into stack */
@@ -99,38 +98,37 @@ public class JDependXMLReportParser
         // text
         buffer = new StringBuffer();
 
-        if ( qName.equals( "Packages" ) )
+        switch ( qName )
         {
-            packages = new ArrayList<JDPackage>();
-        }
-        else if ( qName.equals( "Package" ) )
-        {
-            if ( isParentElement( "Packages" ) )
-            {
-                jdpackage = new JDPackage();
-
-                if ( attrs != null )
+            case "Packages":
+                packages = new ArrayList<>();
+                break;
+            case "Package":
+                if ( isParentElement( "Packages" ) )
                 {
-                    jdpackage.setPackageName( attrs.getValue( 0 ) );
-                }
-            }
-            else if ( isParentElement( "Cycles" ) )
-            {
-                cyclePackage = new CyclePackage();
+                    jdpackage = new JDPackage();
 
-                if ( attrs != null )
-                {
-                    cyclePackage.setName( attrs.getValue( 0 ) );
+                    if ( attrs != null )
+                    {
+                        jdpackage.setPackageName( attrs.getValue( 0 ) );
+                    }
                 }
-            }
-        }
-        else if ( qName.equals( "Stats" ) )
-        {
-            stats = new Stats();
-        }
-        else if ( qName.equals( "Cycles" ) )
-        {
-            cycles = new ArrayList<CyclePackage>();
+                else if ( isParentElement( "Cycles" ) )
+                {
+                    cyclePackage = new CyclePackage();
+
+                    if ( attrs != null )
+                    {
+                        cyclePackage.setName( attrs.getValue( 0 ) );
+                    }
+                }
+                break;
+            case "Stats":
+                stats = new Stats();
+                break;
+            case "Cycles":
+                cycles = new ArrayList<>();
+                break;
         }
     }
 
@@ -139,99 +137,89 @@ public class JDependXMLReportParser
      * @see org.xml.sax.helpers.DefaultHandler#endElement(java.lang.String, java.lang.String, java.lang.String)
      */
     public void endElement( String namespaceURI, String sName, String qName )
-        throws SAXException
     {
 
         String elementValue = buffer != null ? buffer.toString().trim() : null;
 
-        if ( qName.equals( "Package" ) )
+        switch ( qName )
         {
-            if ( isParentElement( "Packages" ) )
-            {
-                if ( errFlag == false )
+            case "Package":
+                if ( isParentElement( "Packages" ) )
                 {
-                    jdpackage.setStats( stats );
+                    if ( !errFlag )
+                    {
+                        jdpackage.setStats( stats );
 
-                    packages.add( jdpackage );
+                        packages.add( jdpackage );
+                    }
+                    errFlag = false;
                 }
-                errFlag = false;
-            }
-            else if ( isParentElement( "DependsUpon" ) )
-            {
-                jdpackage.addDependsUpon( elementValue );
-            }
-            else if ( isParentElement( "UsedBy" ) )
-            {
-                jdpackage.addUsedBy( elementValue );
-            }
-            else if ( isParentElement( "Package" ) )
-            {
-                cyclePackage.addPackageList( elementValue );
-            }
-            else if ( isParentElement( "Cycles" ) )
-            {
-                cycles.add( cyclePackage );
-            }
-        }
-        else if ( qName.equals( "TotalClasses" ) )
-        {
-            stats.setTotalClasses( elementValue );
-        }
-        else if ( qName.equals( "ConcreteClasses" ) )
-        {
-            if ( isParentElement( "Stats" ) )
-            {
-                stats.setConcreteClasses( elementValue );
-            }
-        }
-        else if ( qName.equals( "AbstractClasses" ) )
-        {
-            if ( isParentElement( "Stats" ) )
-            {
-                stats.setAbstractClasses( elementValue );
-            }
-        }
-        else if ( qName.equals( "Ca" ) )
-        {
-            stats.setCa( elementValue );
-        }
-        else if ( qName.equals( "Ce" ) )
-        {
-            stats.setCe( elementValue );
-        }
-        else if ( qName.equals( "A" ) )
-        {
-            stats.setA( elementValue );
-        }
-        else if ( qName.equals( "I" ) )
-        {
-            stats.setI( elementValue );
-        }
-        else if ( qName.equals( "D" ) )
-        {
-            stats.setD( elementValue );
-        }
-        else if ( qName.equals( "V" ) )
-        {
-            stats.setV( elementValue );
-        }
-        else if ( qName.equals( "Class" ) )
-        {
-            if ( isParentElement( "AbstractClasses" ) )
-            {
-                jdpackage.addAbstractClasses( elementValue );
-            }
-            else if ( isParentElement( "ConcreteClasses" ) )
-            {
-                jdpackage.addConcreteClasses( elementValue );
-            }
-        }
-        else if ( qName.equals( "error" ) )
-        {
-            if ( isParentElement( "Package" ) )
-            {
-                errFlag = true;
-            }
+                else if ( isParentElement( "DependsUpon" ) )
+                {
+                    jdpackage.addDependsUpon( elementValue );
+                }
+                else if ( isParentElement( "UsedBy" ) )
+                {
+                    jdpackage.addUsedBy( elementValue );
+                }
+                else if ( isParentElement( "Package" ) )
+                {
+                    cyclePackage.addPackageList( elementValue );
+                }
+                else if ( isParentElement( "Cycles" ) )
+                {
+                    cycles.add( cyclePackage );
+                }
+                break;
+            case "TotalClasses":
+                stats.setTotalClasses( elementValue );
+                break;
+            case "ConcreteClasses":
+                if ( isParentElement( "Stats" ) )
+                {
+                    stats.setConcreteClasses( elementValue );
+                }
+                break;
+            case "AbstractClasses":
+                if ( isParentElement( "Stats" ) )
+                {
+                    stats.setAbstractClasses( elementValue );
+                }
+                break;
+            case "Ca":
+                stats.setCa( elementValue );
+                break;
+            case "Ce":
+                stats.setCe( elementValue );
+                break;
+            case "A":
+                stats.setA( elementValue );
+                break;
+            case "I":
+                stats.setI( elementValue );
+                break;
+            case "D":
+                stats.setD( elementValue );
+                break;
+            case "V":
+                stats.setV( elementValue );
+                break;
+            case "Class":
+                if ( isParentElement( "AbstractClasses" ) )
+                {
+                    jdpackage.addAbstractClasses( elementValue );
+                }
+                else if ( isParentElement( "ConcreteClasses" ) )
+                {
+                    jdpackage.addConcreteClasses( elementValue );
+                }
+                break;
+            case "error":
+                if ( isParentElement( "Package" ) )
+                {
+                    errFlag = true;
+                }
+                break;
         }
 
         if ( stack.size() != 0 )
@@ -248,7 +236,6 @@ public class JDependXMLReportParser
      * @see org.xml.sax.helpers.DefaultHandler#characters(char[], int, int)
      */
     public void characters( char[] buff, int offset, int len )
-        throws SAXException
     {
         if ( buffer != null )
         {
@@ -277,11 +264,7 @@ public class JDependXMLReportParser
      */
     private int getParentIndex()
     {
-        int parentIndex = 0;
-
-        parentIndex = stack.size() - 2;
-
-        return parentIndex;
+        return stack.size() - 2;
     }
 
     /**
@@ -290,10 +273,6 @@ public class JDependXMLReportParser
      */
     private boolean isParentElement( String parentElement )
     {
-        boolean isParent = false;
-
-        isParent = stack.get( getParentIndex() ).toString().equals( parentElement );
-
-        return isParent;
+        return stack.get( getParentIndex() ).equals( parentElement );
     }
 }

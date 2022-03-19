@@ -43,7 +43,7 @@ public class CyclePackage
     {
         if ( packageList == null )
         {
-            packageList = new ArrayList<String>();
+            packageList = new ArrayList<>();
         }
         return this.packageList;
     }

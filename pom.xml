@@ -70,7 +70,7 @@
   <properties>
     <mavenVersion>2.2.1</mavenVersion>
     <jdependVersion>2.9.1</jdependVersion>
-    <mojo.java.target>1.5</mojo.java.target>
+    <mojo.java.target>1.8</mojo.java.target>
     <scmpublish.content>target/staging/${project.artifactId}</scmpublish.content>
   </properties>
 

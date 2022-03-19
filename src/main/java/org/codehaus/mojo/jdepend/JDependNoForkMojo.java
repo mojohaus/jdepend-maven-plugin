@@ -28,7 +28,7 @@ import org.apache.maven.plugins.annotations.Mojo;
  * 
  * @author Karl-Heinz Marbaise
  */
-@Mojo( name = "generate-no-fork", requiresProject = true, defaultPhase = LifecyclePhase.SITE )
+@Mojo( name = "generate-no-fork", defaultPhase = LifecyclePhase.SITE )
 public class JDependNoForkMojo
     extends AbstractJDependMojo
 {

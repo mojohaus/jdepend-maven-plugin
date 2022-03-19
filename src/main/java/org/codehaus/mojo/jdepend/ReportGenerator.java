@@ -32,13 +32,9 @@ public class ReportGenerator
 {
     private JDependXMLReportParser jdepend;
 
-    private JDPackage jdpackage;
-
     private Stats stats;
 
-    private List list;
-
-    private CyclePackage cyclepackage;
+    private List<JDPackage> list;
 
     /**
      * Creates a new instance of ReportGenerator.
@@ -138,16 +134,15 @@ public class ReportGenerator
 
         list = jdepend.packages;
 
-        for ( int i = 0; i < list.size(); i++ )
+        for ( JDPackage o : list )
         {
-            jdpackage = (JDPackage) list.get( i );
 
-            stats = jdpackage.getStats();
+            stats = o.getStats();
 
             sink.tableRow();
             sink.tableCell();
-            sink.link( bundle.getString( "report.dash" ) + jdpackage.getPackageName() ); //$NON-NLS-1$
-            sink.text( jdpackage.getPackageName() );
+            sink.link( bundle.getString( "report.dash" ) + o.getPackageName() ); //$NON-NLS-1$
+            sink.text( o.getPackageName() );
             sink.link_();
             sink.tableCell_();
 
@@ -270,10 +265,8 @@ public class ReportGenerator
         }
         else
         {
-            for ( int i = 0; i < list.size(); i++ )
+            for ( JDPackage jdpackage : list )
             {
-                jdpackage = (JDPackage) list.get( i );
-
                 stats = jdpackage.getStats();
 
                 sink.anchor( jdpackage.getPackageName() );
@@ -373,7 +366,7 @@ public class ReportGenerator
                 sink.tableRow();
 
                 /* Abstract Classes */
-                List abstractList = jdpackage.getAbstractClasses();
+                List<String> abstractList = jdpackage.getAbstractClasses();
 
                 sink.tableCell();
 
@@ -385,16 +378,16 @@ public class ReportGenerator
                 }
                 else
                 {
-                    for ( int j = 0; j < abstractList.size(); j++ )
+                    for ( String value : abstractList )
                     {
-                        sink.text( (String) abstractList.get( j ) );
+                        sink.text( value );
                         sink.lineBreak();
                     }
                 }
                 sink.tableCell_();
 
                 /* Concrete Classes */
-                java.util.List concreteList = jdpackage.getConcreteClasses();
+                List<String> concreteList = jdpackage.getConcreteClasses();
 
                 sink.tableCell();
 
@@ -406,16 +399,16 @@ public class ReportGenerator
                 }
                 else
                 {
-                    for ( int j = 0; j < concreteList.size(); j++ )
+                    for ( String s : concreteList )
                     {
-                        sink.text( (String) concreteList.get( j ) );
+                        sink.text( s );
                         sink.lineBreak();
                     }
                 }
                 sink.tableCell_();
 
                 /* Used By Packages */
-                List aList = jdpackage.getUsedBy();
+                List<String> aList = jdpackage.getUsedBy();
 
                 sink.tableCell();
 
@@ -427,15 +420,13 @@ public class ReportGenerator
                 }
                 else
                 {
-                    for ( int j = 0; j < aList.size(); j++ )
+                    for ( String s : aList )
                     {
-                        sink.text( (String) aList.get( j ) );
+                        sink.text( s );
                         sink.lineBreak();
                     }
                 }
                 sink.tableCell_();
-
-                aList = null;
 
                 /* Uses Package */
                 aList = jdpackage.getDependsUpon();
@@ -450,9 +441,9 @@ public class ReportGenerator
                 }
                 else
                 {
-                    for ( int j = 0; j < aList.size(); j++ )
+                    for ( String s : aList )
                     {
-                        sink.text( (String) aList.get( j ) );
+                        sink.text( s );
                         sink.lineBreak();
                     }
                 }
@@ -488,7 +479,7 @@ public class ReportGenerator
     public void doCycles( ResourceBundle bundle, Sink sink )
     {
 
-        List cycleList = jdepend.cycles;
+        List<CyclePackage> cycleList = jdepend.cycles;
 
         if ( cycleList.size() <= 0 )
         {
@@ -509,18 +500,17 @@ public class ReportGenerator
             sink.tableHeaderCell_();
             sink.tableRow_();
 
-            for ( int i = 0; i < cycleList.size(); i++ )
+            for ( CyclePackage cyclePackage : cycleList )
             {
-                cyclepackage = (CyclePackage) cycleList.get( i );
 
                 sink.tableRow();
                 sink.tableCell();
-                sink.text( cyclepackage.getName() );
+                sink.text( cyclePackage.getName() );
                 sink.tableCell_();
 
                 /* Package Dependencies List */
 
-                List packageList = cyclepackage.getPackageList();
+                List<String> packageList = cyclePackage.getPackageList();
                 sink.tableCell();
                 if ( packageList.size() <= 0 )
                 {
@@ -530,9 +520,9 @@ public class ReportGenerator
                 }
                 else
                 {
-                    for ( int j = 0; j < packageList.size(); j++ )
+                    for ( String s : packageList )
                     {
-                        sink.text( (String) packageList.get( j ) );
+                        sink.text( s );
                         sink.lineBreak();
                     }
                 }
@@ -653,12 +643,6 @@ public class ReportGenerator
 
     private String convertToPercent( String value )
     {
-        float ival = 0;
-
-        ival = Float.parseFloat( value );
-        ival = ival * 100;
-        value = String.valueOf( ival ) + "%"; //$NON-NLS-1$
-
-        return value;
+        return Float.parseFloat( value ) * 100 + "%"; //$NON-NLS-1$
     }
 }
