@@ -15,17 +15,14 @@
 # specific language governing permissions and limitations
 # under the License.
 
-name: Verify
+name: GitHub CI
 
-on:
-  push:
-  pull_request:
+on: [push, pull_request]
 
 jobs:
   build:
     name: Verify
-    uses: apache/maven-gh-actions-shared/.github/workflows/maven-verify.yml@v2
+    uses: apache/maven-gh-actions-shared/.github/workflows/maven-verify.yml@v3
     with:
-      os-matrix: '[ "ubuntu-latest" ]'
-      jdk-matrix: '[ "17" ]'
-      jdk-distribution-matrix: '[ "temurin" ]'
+      ff-maven: "3.8.6"                     # Maven version for fail-fast-build
+      maven-matrix: '[ "3.2.5", "3.8.6" ]'  # Maven versions matrix for verify builds
