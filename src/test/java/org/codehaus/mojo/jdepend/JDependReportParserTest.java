@@ -54,7 +54,7 @@ public class JDependReportParserTest
     @Test
     public void testTotalNumberPackages()
     {
-        assertEquals( "Total number of packages is not equal to expected output", 2, parser.packages.size() );
+        assertEquals( "Total number of packages is not equal to expected output", 3, parser.packages.size() );
     }
 
     @Test
@@ -92,14 +92,14 @@ public class JDependReportParserTest
             {
                 Stats stats = jdpackage.getStats();
 
-                assertEquals( "Stats Total Classes is not equal to expected output", "6", stats.getTotalClasses() );
-                assertEquals( "Stats Concrete classes is not equal to expected output", "5", stats.getConcreteClasses() );
+                assertEquals( "Stats Total Classes is not equal to expected output", "5", stats.getTotalClasses() );
+                assertEquals( "Stats Concrete classes is not equal to expected output", "4", stats.getConcreteClasses() );
                 assertEquals( "Stats Abstract Classes is not equal to expected output", "1", stats.getAbstractClasses() );
                 assertEquals( "0", stats.getCa() );
-                assertEquals( "15", stats.getCe() );
-                assertEquals( "0.17", stats.getA() );
+                assertEquals( "13", stats.getCe() );
+                assertEquals( "0.2", stats.getA() );
                 assertEquals( "1", stats.getI() );
-                assertEquals( "0.17", stats.getD() );
+                assertEquals( "0.2", stats.getD() );
                 assertEquals( "1", stats.getV() );
             }
             if ( jdpackage.getPackageName().equals( "org.codehaus.mojo.jdepend.objects" ) )
@@ -156,7 +156,7 @@ public class JDependReportParserTest
             if ( jdpackage.getPackageName().equals( "org.codehaus.mojo.jdepend" ) )
             {
                 int count = jdpackage.getDependsUpon().size();
-                assertEquals( 15, count );
+                assertEquals( 13, count );
             }
             if ( jdpackage.getPackageName().equals( "org.codehaus.mojo.jdepend.objects" ) )
             {

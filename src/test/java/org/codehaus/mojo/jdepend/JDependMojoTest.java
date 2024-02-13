@@ -23,6 +23,7 @@ package org.codehaus.mojo.jdepend;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Files;
 
 import jdepend.xmlui.JDepend;
 
@@ -65,7 +66,7 @@ public class JDependMojoTest
         JDepend.main( args );
 
         assertTrue( "Generated report xml from " + generatedReport + " is not equal to expected output " + reportXML,
-                    IOUtil.contentEquals( new FileInputStream( generatedReport ), new FileInputStream( reportXML ) ) );
+                    IOUtil.contentEquals(Files.newInputStream(generatedReport.toPath()), Files.newInputStream(reportXML.toPath())) );
     }
 
 }

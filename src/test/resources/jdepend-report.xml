@@ -48,14 +48,14 @@
 
         <Package name="org.codehaus.mojo.jdepend">
             <Stats>
-                <TotalClasses>6</TotalClasses>
-                <ConcreteClasses>5</ConcreteClasses>
+                <TotalClasses>5</TotalClasses>
+                <ConcreteClasses>4</ConcreteClasses>
                 <AbstractClasses>1</AbstractClasses>
                 <Ca>0</Ca>
-                <Ce>15</Ce>
-                <A>0.17</A>
+                <Ce>13</Ce>
+                <A>0.2</A>
                 <I>1</I>
-                <D>0.17</D>
+                <D>0.2</D>
                 <V>1</V>
             </Stats>
 
@@ -66,9 +66,6 @@
             </AbstractClasses>
 
             <ConcreteClasses>
-                <Class sourceFile="HelpMojo.java">
-                    org.codehaus.mojo.jdepend.HelpMojo
-                </Class>
                 <Class sourceFile="JDependMojo.java">
                     org.codehaus.mojo.jdepend.JDependMojo
                 </Class>
@@ -91,12 +88,10 @@
                 <Package>jdepend.xmlui</Package>
                 <Package>org.apache.maven.doxia.sink</Package>
                 <Package>org.apache.maven.doxia.siterenderer</Package>
-                <Package>org.apache.maven.plugin</Package>
                 <Package>org.apache.maven.plugin.logging</Package>
                 <Package>org.apache.maven.project</Package>
                 <Package>org.apache.maven.reporting</Package>
                 <Package>org.codehaus.mojo.jdepend.objects</Package>
-                <Package>org.w3c.dom</Package>
                 <Package>org.xml.sax</Package>
                 <Package>org.xml.sax.helpers</Package>
             </DependsUpon>
@@ -143,6 +138,43 @@
 
             <UsedBy>
                 <Package>org.codehaus.mojo.jdepend</Package>
+            </UsedBy>
+        </Package>
+
+        <Package name="org.codehaus.mojo.jdepend_maven_plugin">
+            <Stats>
+                <TotalClasses>1</TotalClasses>
+                <ConcreteClasses>1</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>0</Ca>
+                <Ce>8</Ce>
+                <A>0</A>
+                <I>1</I>
+                <D>0</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="HelpMojo.java">
+                    org.codehaus.mojo.jdepend_maven_plugin.HelpMojo
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>java.io</Package>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+                <Package>javax.xml.parsers</Package>
+                <Package>org.apache.maven.plugin</Package>
+                <Package>org.apache.maven.plugin.logging</Package>
+                <Package>org.w3c.dom</Package>
+                <Package>org.xml.sax</Package>
+            </DependsUpon>
+
+            <UsedBy>
             </UsedBy>
         </Package>
 
