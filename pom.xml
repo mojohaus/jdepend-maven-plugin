@@ -62,10 +62,7 @@
     <system>github</system>
     <url>https://github.com/mojohaus/jdepend-maven-plugin/issues</url>
   </issueManagement>
-  <ciManagement>
-    <system>Travis-CI</system>
-    <url>https://travis-ci.org/mojohaus/jdepend-maven-plugin</url>
-  </ciManagement>
+
 
   <properties>
     <mavenVersion>3.2.5</mavenVersion>
