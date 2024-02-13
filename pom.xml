@@ -200,16 +200,17 @@
                 </goals>
                 <configuration>
                   <extraArtifacts>
-                    <extraArtifact>org.apache.maven.plugins:maven-project-info-reports-plugin:2.7:maven-plugin</extraArtifact>
-                    <extraArtifact>org.apache.maven.plugins:maven-compiler-plugin:3.1:maven-plugin</extraArtifact>
-                    <extraArtifact>org.apache.maven.plugins:maven-install-plugin:2.4:maven-plugin</extraArtifact>
-                    <extraArtifact>org.apache.maven.plugins:maven-clean-plugin:2.5:maven-plugin</extraArtifact>
-                    <extraArtifact>org.apache.maven.plugins:maven-surefire-plugin:2.16:maven-plugin</extraArtifact>
-                    <extraArtifact>org.apache.maven.plugins:maven-assembly-plugin:2.4:maven-plugin</extraArtifact>
-                    <extraArtifact>org.apache.maven.plugins:maven-jar-plugin:2.4:maven-plugin</extraArtifact>
-                    <extraArtifact>org.apache.maven.plugins:maven-war-plugin:2.3:maven-plugin</extraArtifact>
-                    <extraArtifact>org.apache.maven.plugins:maven-resources-plugin:2.6:maven-plugin</extraArtifact>
-                    <extraArtifact>org.apache.maven.plugins:maven-site-plugin:3.3:maven-plugin</extraArtifact>
+                    <extraArtifact>org.apache.maven.plugins:maven-project-info-reports-plugin:3.5.0:maven-plugin</extraArtifact>
+                    <extraArtifact>org.apache.maven.plugins:maven-compiler-plugin:3.12.1:maven-plugin</extraArtifact>
+                    <extraArtifact>org.apache.maven.plugins:maven-install-plugin:3.1.1:maven-plugin</extraArtifact>
+                    <extraArtifact>org.apache.maven.plugins:maven-clean-plugin:3.3.1:maven-plugin</extraArtifact>
+                    <extraArtifact>org.apache.maven.plugins:maven-assembly-plugin:3.6.0:maven-plugin</extraArtifact>
+                    <extraArtifact>org.apache.maven.plugins:maven-jar-plugin:3.3.0:maven-plugin</extraArtifact>
+                    <extraArtifact>org.apache.maven.plugins:maven-war-plugin:3.4.0:maven-plugin</extraArtifact>
+                    <extraArtifact>org.apache.maven.plugins:maven-resources-plugin:3.3.1:maven-plugin</extraArtifact>
+                    <extraArtifact>org.apache.maven.plugins:maven-surefire-plugin:3.2.5:maven-plugin</extraArtifact>
+                    <extraArtifact>org.apache.maven.plugins:maven-site-plugin:3.9.1:maven-plugin</extraArtifact>
+                    <extraArtifact>org.apache.maven.plugins:maven-site-plugin:3.9.1:jar</extraArtifact>
                     <extraArtifact>org.apache.maven.plugins:maven-verifier-plugin:1.0:maven-plugin</extraArtifact>
                     <extraArtifact>org.apache.maven.skins:maven-default-skin:1.0:jar</extraArtifact>
                     <!-- I have to recheck who is really using the following two artifacts. -->
