@@ -24,8 +24,8 @@ on:
 jobs:
   build:
     name: Verify
-    uses: apache/maven-gh-actions-shared/.github/workflows/maven-verify.yml@v2
-    with:
-      os-matrix: '[ "ubuntu-latest" ]'
-      jdk-matrix: '[ "17" ]'
-      jdk-distribution-matrix: '[ "temurin" ]'
+    uses: apache/maven-gh-actions-shared/.github/workflows/maven-verify.yml@v3
+#    with:
+#      os-matrix: '[ "ubuntu-latest" ]'
+#      jdk-matrix: '[ "17" ]'
+#      jdk-distribution-matrix: '[ "temurin" ]'
