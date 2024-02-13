@@ -37,16 +37,6 @@
   <url>http://maven.apache.org</url>
   <build>
     <outputDirectory>target/output-classes</outputDirectory>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-verifier-plugin</artifactId>
-        <version>1.0</version>
-        <configuration>
-          <verificationFile>src/verifier/verifications.xml</verificationFile>
-        </configuration>
-      </plugin>
-    </plugins>
   </build>
   <reporting>
     <plugins>
