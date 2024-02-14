@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.codehaus.mojo</groupId>
     <artifactId>mojo-parent</artifactId>
-    <version>65</version>
+    <version>78</version>
   </parent>
 
   <artifactId>jdepend-maven-plugin</artifactId>
@@ -67,7 +67,7 @@
   <properties>
     <mavenVersion>3.2.5</mavenVersion>
     <jdependVersion>2.9.1</jdependVersion>
-    <mojo.java.target>1.8</mojo.java.target>
+    <mojo.java.target>8</mojo.java.target>
     <scmpublish.content>target/staging/${project.artifactId}</scmpublish.content>
   </properties>
 
