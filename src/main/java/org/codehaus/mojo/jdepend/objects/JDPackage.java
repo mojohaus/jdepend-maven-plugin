@@ -9,9 +9,9 @@ package org.codehaus.mojo.jdepend.objects;
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *    http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -26,8 +26,7 @@ import java.util.List;
 /**
  * @author Who ever this implemented first.
  */
-public class JDPackage
-{
+public class JDPackage {
     /* Elements */
     private Stats stats;
 
@@ -44,81 +43,63 @@ public class JDPackage
     /**
      * Creates a new instance of JDPackage.
      */
-    public JDPackage()
-    {
-    }
+    public JDPackage() {}
 
-    public String getPackageName()
-    {
+    public String getPackageName() {
         return this.packageName;
     }
 
-    public void setPackageName( String name )
-    {
+    public void setPackageName(String name) {
         this.packageName = name;
     }
 
-    public Stats getStats()
-    {
+    public Stats getStats() {
         return stats;
     }
 
-    public void setStats( Stats stats )
-    {
+    public void setStats(Stats stats) {
         this.stats = stats;
     }
 
-    public List<String> getAbstractClasses()
-    {
-        if ( abstractClasses == null )
-        {
+    public List<String> getAbstractClasses() {
+        if (abstractClasses == null) {
             abstractClasses = new ArrayList<>();
         }
         return abstractClasses;
     }
 
-    public void addAbstractClasses( String object )
-    {
-        getAbstractClasses().add( object );
+    public void addAbstractClasses(String object) {
+        getAbstractClasses().add(object);
     }
 
-    public List<String> getConcreteClasses()
-    {
-        if ( concreteClasses == null )
-        {
+    public List<String> getConcreteClasses() {
+        if (concreteClasses == null) {
             concreteClasses = new ArrayList<>();
         }
         return concreteClasses;
     }
 
-    public void addConcreteClasses( String object )
-    {
-        getConcreteClasses().add( object );
+    public void addConcreteClasses(String object) {
+        getConcreteClasses().add(object);
     }
 
-    public List<String> getDependsUpon()
-    {
-        if ( dependsUpon == null )
-        {
+    public List<String> getDependsUpon() {
+        if (dependsUpon == null) {
             dependsUpon = new ArrayList<>();
         }
         return dependsUpon;
     }
 
-    public void addDependsUpon( String object )
-    {
-        getDependsUpon().add( object );
+    public void addDependsUpon(String object) {
+        getDependsUpon().add(object);
     }
 
-    public void addUsedBy( String object )
-    {
-        getUsedBy().add( object );
+    public void addUsedBy(String object) {
+        getUsedBy().add(object);
     }
 
-    public List<String> getUsedBy()
-    {
-        if ( usedBy == null )
-        {
+    public List<String> getUsedBy() {
+        if (usedBy == null) {
             usedBy = new ArrayList<>();
         }
         return usedBy;

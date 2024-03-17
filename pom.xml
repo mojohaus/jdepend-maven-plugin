@@ -63,7 +63,6 @@
     <url>https://github.com/mojohaus/jdepend-maven-plugin/issues</url>
   </issueManagement>
 
-
   <properties>
     <mavenVersion>3.6.3</mavenVersion>
     <jdependVersion>2.9.1</jdependVersion>
