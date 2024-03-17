@@ -9,9 +9,9 @@ package org.codehaus.mojo.jdepend.objects;
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *    http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -26,8 +26,7 @@ import java.util.List;
 /**
  * @author Who ever this implemented first.
  */
-public class CyclePackage
-{
+public class CyclePackage {
     private List<String> packageList;
 
     private String name;
@@ -35,31 +34,24 @@ public class CyclePackage
     /**
      * Creates a new instance of Cycles.
      */
-    public CyclePackage()
-    {
-    }
+    public CyclePackage() {}
 
-    public List<String> getPackageList()
-    {
-        if ( packageList == null )
-        {
+    public List<String> getPackageList() {
+        if (packageList == null) {
             packageList = new ArrayList<>();
         }
         return this.packageList;
     }
 
-    public void addPackageList( String object )
-    {
-        getPackageList().add( object );
+    public void addPackageList(String object) {
+        getPackageList().add(object);
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    public void setName( String name )
-    {
+    public void setName(String name) {
         this.name = name;
     }
 }
