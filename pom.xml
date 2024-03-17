@@ -71,6 +71,20 @@
     <scmpublish.content>target/staging/${project.artifactId}</scmpublish.content>
   </properties>
 
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.codehaus.plexus</groupId>
+        <artifactId>plexus-utils</artifactId>
+        <version>4.0.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.codehaus.plexus</groupId>
+        <artifactId>plexus-xml</artifactId>
+        <version>3.0.0</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
   <dependencies>
     <dependency>
       <groupId>org.apache.maven.plugin-tools</groupId>
@@ -94,7 +108,10 @@
     <dependency>
       <groupId>org.codehaus.plexus</groupId>
       <artifactId>plexus-utils</artifactId>
-      <version>4.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.plexus</groupId>
+      <artifactId>plexus-xml</artifactId>
     </dependency>
     <dependency>
       <groupId>jdepend</groupId>
@@ -186,7 +203,7 @@
               <preBuildHookScript>setup</preBuildHookScript>
               <postBuildHookScript>verify</postBuildHookScript>
               <settingsFile>src/it/settings.xml</settingsFile>
-              <!-- Currently working with more than one thread does not work, cause it is not guaranteed that the setup-config project 
+              <!-- Currently working with more than one thread does not work, cause it is not guaranteed that the setup-config project
                 is build at first. see also http://jira.codehaus.org/browse/MINVOKER-147 -->
               <parallelThreads>1</parallelThreads>
             </configuration>
