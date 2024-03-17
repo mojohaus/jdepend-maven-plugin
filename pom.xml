@@ -65,7 +65,7 @@
 
 
   <properties>
-    <mavenVersion>3.2.5</mavenVersion>
+    <mavenVersion>3.6.3</mavenVersion>
     <jdependVersion>2.9.1</jdependVersion>
     <mojo.java.target>8</mojo.java.target>
     <scmpublish.content>target/staging/${project.artifactId}</scmpublish.content>
@@ -80,6 +80,7 @@
     <dependency>
       <groupId>org.apache.maven</groupId>
       <artifactId>maven-plugin-api</artifactId>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.maven.reporting</groupId>
@@ -186,7 +187,7 @@
               <preBuildHookScript>setup</preBuildHookScript>
               <postBuildHookScript>verify</postBuildHookScript>
               <settingsFile>src/it/settings.xml</settingsFile>
-              <!-- Currently working with more than one thread does not work, cause it is not guaranteed that the setup-config project 
+              <!-- Currently working with more than one thread does not work, cause it is not guaranteed that the setup-config project
                 is build at first. see also http://jira.codehaus.org/browse/MINVOKER-147 -->
               <parallelThreads>1</parallelThreads>
             </configuration>
