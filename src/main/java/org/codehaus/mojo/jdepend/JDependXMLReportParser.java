@@ -20,6 +20,7 @@ package org.codehaus.mojo.jdepend;
  * #L%
  */
 
+import javax.xml.XMLConstants;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -74,7 +75,8 @@ public class JDependXMLReportParser extends DefaultHandler {
         stack = new Stack<>();
 
         SAXParser saxParser = factory.newSAXParser();
-
+        saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, false);
+        saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, false);
         saxParser.parse(xmlFile, this);
     }
 
