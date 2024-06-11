@@ -75,8 +75,8 @@ public class JDependXMLReportParser extends DefaultHandler {
         stack = new Stack<>();
 
         SAXParser saxParser = factory.newSAXParser();
-        saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, false);
-        saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, false);
+        saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "false");
+        saxParser.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "false");
         saxParser.parse(xmlFile, this);
     }
 
