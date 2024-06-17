@@ -85,7 +85,7 @@ public class JDependReportParserTest {
                 assertEquals("Stats Concrete classes is not equal to expected output", "4", stats.getConcreteClasses());
                 assertEquals("Stats Abstract Classes is not equal to expected output", "1", stats.getAbstractClasses());
                 assertEquals("0", stats.getCa());
-                assertEquals("13", stats.getCe());
+                assertEquals("14", stats.getCe());
                 assertEquals("0.2", stats.getA());
                 assertEquals("1", stats.getI());
                 assertEquals("0.2", stats.getD());
@@ -137,7 +137,7 @@ public class JDependReportParserTest {
         for (JDPackage jdpackage : packages) {
             if (jdpackage.getPackageName().equals("org.codehaus.mojo.jdepend")) {
                 int count = jdpackage.getDependsUpon().size();
-                assertEquals(13, count);
+                assertEquals(14, count);
             }
             if (jdpackage.getPackageName().equals("org.codehaus.mojo.jdepend.objects")) {
                 int count = jdpackage.getDependsUpon().size();

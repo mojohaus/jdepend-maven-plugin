@@ -22,14 +22,14 @@ package org.codehaus.mojo.jdepend;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 
 import jdepend.xmlui.JDepend;
-import org.codehaus.plexus.util.IOUtil;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.assertTrue;
+import org.xmlunit.builder.DiffBuilder;
+import org.xmlunit.builder.Input;
+import org.xmlunit.diff.Diff;
 
 public class JDependMojoTest {
     JDependXMLReportParser parser;
@@ -58,9 +58,11 @@ public class JDependMojoTest {
 
         JDepend.main(args);
 
-        assertTrue(
-                "Generated report xml from " + generatedReport + " is not equal to expected output " + reportXML,
-                IOUtil.contentEquals(
-                        Files.newInputStream(generatedReport.toPath()), Files.newInputStream(reportXML.toPath())));
+        Diff myDiff = DiffBuilder.compare(Input.fromFile(reportXML))
+                .withTest(Input.fromFile(generatedReport))
+                .ignoreComments()
+                .build();
+
+        Assert.assertFalse(myDiff.toString(), myDiff.hasDifferences());
     }
 }
