@@ -24,12 +24,13 @@ import java.io.File;
 import java.io.IOException;
 
 import jdepend.xmlui.JDepend;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.xmlunit.builder.DiffBuilder;
 import org.xmlunit.builder.Input;
 import org.xmlunit.diff.Diff;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class JDependMojoTest {
     JDependXMLReportParser parser;
@@ -40,7 +41,7 @@ public class JDependMojoTest {
 
     private final File reportXML = new File(basedir, REPORT_PATH);
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         parser = new JDependXMLReportParser(reportXML);
     }
@@ -63,6 +64,6 @@ public class JDependMojoTest {
                 .ignoreComments()
                 .build();
 
-        Assert.assertFalse(myDiff.toString(), myDiff.hasDifferences());
+        assertFalse(myDiff.hasDifferences(), myDiff.toString());
     }
 }
