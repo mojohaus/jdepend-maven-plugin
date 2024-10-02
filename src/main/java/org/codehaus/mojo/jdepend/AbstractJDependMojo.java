@@ -29,7 +29,6 @@ import java.util.ResourceBundle;
 import jdepend.xmlui.JDepend;
 import org.apache.maven.doxia.sink.Sink;
 import org.apache.maven.doxia.siterenderer.Renderer;
-import org.apache.maven.plugins.annotations.Component;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 import org.apache.maven.reporting.AbstractMavenReport;
@@ -41,14 +40,11 @@ import org.apache.maven.reporting.MavenReportException;
 public abstract class AbstractJDependMojo extends AbstractMavenReport {
     JDependXMLReportParser xmlParser;
 
-    @Parameter(defaultValue = "${project}", readonly = true, required = true)
-    private MavenProject project;
-
     /**
      * Directory where the generated output site files will be located.
      */
     @Parameter(defaultValue = "${project.build.directory}/site", property = "jdepend.outputDirectory", required = true)
-    private String outputDirectory;
+    protected String outputDirectory;
 
     /**
      * Directory of the project.
@@ -73,12 +69,6 @@ public abstract class AbstractJDependMojo extends AbstractMavenReport {
      */
     @Parameter(defaultValue = "false", property = "jdepend.skip")
     private boolean skip;
-
-    /**
-     * Doxia Site Renderer
-     */
-    @Component
-    private Renderer siteRenderer;
 
     /*
      * (non-Javadoc)
