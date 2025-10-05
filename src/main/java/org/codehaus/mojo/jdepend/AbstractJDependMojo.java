@@ -30,7 +30,6 @@ import jdepend.xmlui.JDepend;
 import org.apache.maven.doxia.sink.Sink;
 import org.apache.maven.doxia.siterenderer.Renderer;
 import org.apache.maven.plugins.annotations.Parameter;
-import org.apache.maven.project.MavenProject;
 import org.apache.maven.reporting.AbstractMavenReport;
 import org.apache.maven.reporting.MavenReportException;
 
@@ -169,21 +168,6 @@ public abstract class AbstractJDependMojo extends AbstractMavenReport {
      */
     public String getOutputName() {
         return "jdepend-report";
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see org.apache.maven.reporting.AbstractMavenReport#getProject()
-     */
-    public MavenProject getProject() {
-        return project;
-    }
-
-    /**
-     * @param project
-     */
-    public void setProject(MavenProject project) {
-        this.project = project;
     }
 
     /*
