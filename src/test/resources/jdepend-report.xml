@@ -42,10 +42,6 @@
             <error>No stats available: package referenced, but not analyzed.</error>
         </Package>
 
-        <Package name="org.apache.maven.project">
-            <error>No stats available: package referenced, but not analyzed.</error>
-        </Package>
-
         <Package name="org.apache.maven.reporting">
             <error>No stats available: package referenced, but not analyzed.</error>
         </Package>
@@ -56,7 +52,7 @@
                 <ConcreteClasses>4</ConcreteClasses>
                 <AbstractClasses>1</AbstractClasses>
                 <Ca>0</Ca>
-                <Ce>14</Ce>
+                <Ce>13</Ce>
                 <A>0.2</A>
                 <I>1</I>
                 <D>0.2</D>
@@ -94,7 +90,6 @@
                 <Package>org.apache.maven.doxia.sink</Package>
                 <Package>org.apache.maven.doxia.siterenderer</Package>
                 <Package>org.apache.maven.plugin.logging</Package>
-                <Package>org.apache.maven.project</Package>
                 <Package>org.apache.maven.reporting</Package>
                 <Package>org.codehaus.mojo.jdepend.objects</Package>
                 <Package>org.xml.sax</Package>
