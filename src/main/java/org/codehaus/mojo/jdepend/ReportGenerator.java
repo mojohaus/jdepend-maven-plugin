@@ -122,6 +122,9 @@ public class ReportGenerator {
         sink.lineBreak();
 
         sink.table();
+        sink.tableCaption();
+        sink.text(bundle.getString("report.summary.title"));
+        sink.tableCaption_();
         generateHeaderRow(bundle, sink);
 
         list = jdepend.packages;
@@ -259,6 +262,9 @@ public class ReportGenerator {
                 sink.sectionTitle2_();
 
                 sink.table();
+                sink.tableCaption();
+                sink.text(bundle.getString("report.packages.title"));
+                sink.tableCaption_();
 
                 /* Headers */
 
@@ -317,6 +323,9 @@ public class ReportGenerator {
                 /* New Table */
 
                 sink.table();
+                sink.tableCaption();
+                sink.text(bundle.getString("report.packages.title"));
+                sink.tableCaption_();
                 sink.tableRow();
 
                 /*
@@ -448,6 +457,9 @@ public class ReportGenerator {
             sink.lineBreak();
         } else {
             sink.table();
+            sink.tableCaption();
+            sink.text(bundle.getString("report.cycles.title"));
+            sink.tableCaption_();
 
             sink.tableRow();
             sink.tableHeaderCell();
@@ -507,6 +519,9 @@ public class ReportGenerator {
         sink.lineBreak();
 
         sink.table();
+        sink.tableCaption();
+        sink.text(bundle.getString("report.explanation.title"));
+        sink.tableCaption_();
 
         sink.tableRow();
         sink.tableHeaderCell();
