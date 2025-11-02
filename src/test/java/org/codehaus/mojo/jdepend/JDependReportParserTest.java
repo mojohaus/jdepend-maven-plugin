@@ -33,7 +33,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class JDependReportParserTest {
+class JDependReportParserTest {
     private JDependXMLReportParser parser;
 
     private List<JDPackage> packages;
@@ -41,7 +41,7 @@ public class JDependReportParserTest {
     private final String basedir = System.getProperty("basedir");
 
     @BeforeEach
-    public void setUp() throws Exception {
+    void setUp() throws Exception {
         File reportXML = new File(basedir, JDependMojoTest.REPORT_PATH);
         parser = new JDependXMLReportParser(reportXML);
 
@@ -49,12 +49,12 @@ public class JDependReportParserTest {
     }
 
     @Test
-    public void testTotalNumberPackages() {
+    void totalNumberPackages() {
         assertEquals(3, parser.packages.size(), "Total number of packages is not equal to expected output");
     }
 
     @Test
-    public void testPackageNames() {
+    void packageNames() {
         List<String> packageNames = new ArrayList<>();
 
         for (JDPackage jdpackage : packages) {
@@ -65,7 +65,7 @@ public class JDependReportParserTest {
     }
 
     @Test
-    public void testPackageNamesNotContainingInList() {
+    void packageNamesNotContainingInList() {
         List<String> packageNames = new ArrayList<>();
 
         for (JDPackage jdpackage : packages) {
@@ -76,7 +76,7 @@ public class JDependReportParserTest {
     }
 
     @Test
-    public void testStats() {
+    void stats() {
         for (JDPackage jdpackage : packages) {
             if (jdpackage.getPackageName().equals("org.codehaus.mojo.jdepend")) {
                 Stats stats = jdpackage.getStats();
@@ -108,7 +108,7 @@ public class JDependReportParserTest {
     }
 
     @Test
-    public void testConcreteClasses() {
+    void concreteClasses() {
         for (JDPackage jdpackage : packages) {
             if (jdpackage.getPackageName().equals("org.codehaus.mojo.jdepend")) {
                 List<String> concretes = jdpackage.getConcreteClasses();
@@ -133,7 +133,7 @@ public class JDependReportParserTest {
     }
 
     @Test
-    public void testCountOfDependsUpon() {
+    void countOfDependsUpon() {
         for (JDPackage jdpackage : packages) {
             if (jdpackage.getPackageName().equals("org.codehaus.mojo.jdepend")) {
                 int count = jdpackage.getDependsUpon().size();

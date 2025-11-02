@@ -21,7 +21,6 @@ package org.codehaus.mojo.jdepend;
  */
 
 import java.io.File;
-import java.io.IOException;
 
 import jdepend.xmlui.JDepend;
 import org.junit.jupiter.api.BeforeEach;
@@ -42,12 +41,12 @@ public class JDependMojoTest {
     private final File reportXML = new File(basedir, REPORT_PATH);
 
     @BeforeEach
-    public void setUp() throws Exception {
+    void setUp() throws Exception {
         parser = new JDependXMLReportParser(reportXML);
     }
 
     @Test
-    public void testJDependReportContent() throws IOException {
+    void jDependReportContent() throws Exception {
         File generatedReport = new File(basedir, "target/jdepend-report.xml");
         File classDirectory = new File(basedir, "target/classes");
 
