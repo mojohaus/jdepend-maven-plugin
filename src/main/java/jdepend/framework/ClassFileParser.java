@@ -36,6 +36,9 @@ public class ClassFileParser extends AbstractParser {
     public static final int CONSTANT_METHOD_TYPE = 16;
     public static final int CONSTANT_INVOKEDYNAMIC = 18;
 
+    public static final int CONSTANT_DYNAMIC = 17;
+    public static final int CONSTANT_MODULE = 19;
+    public static final int CONSTANT_PACKAGE = 20;
     public static final char CLASS_DESCRIPTOR = 'L';
     public static final int ACC_INTERFACE = 0x200;
     public static final int ACC_ABSTRACT = 0x400;
@@ -51,7 +54,6 @@ public class ClassFileParser extends AbstractParser {
     private FieldOrMethodInfo[] methods;
     private AttributeInfo[] attributes;
     private DataInputStream in;
-
 
     public ClassFileParser() {
         this(new PackageFilter());
@@ -173,8 +175,7 @@ public class ClassFileParser extends AbstractParser {
             //
             // 8-byte constants use two constant pool entries
             //
-            if (constant.getTag() == CONSTANT_DOUBLE
-                    || constant.getTag() == CONSTANT_LONG) {
+            if (constant.getTag() == CONSTANT_DOUBLE || constant.getTag() == CONSTANT_LONG) {
                 i++;
             }
         }
@@ -273,19 +274,20 @@ public class ClassFileParser extends AbstractParser {
         byte tag = in.readByte();
 
         switch (tag) {
-
             case (ClassFileParser.CONSTANT_CLASS):
             case (ClassFileParser.CONSTANT_STRING):
             case (ClassFileParser.CONSTANT_METHOD_TYPE):
+            case (ClassFileParser.CONSTANT_MODULE):
+            case (ClassFileParser.CONSTANT_PACKAGE):
                 result = new Constant(tag, in.readUnsignedShort());
                 break;
             case (ClassFileParser.CONSTANT_FIELD):
             case (ClassFileParser.CONSTANT_METHOD):
             case (ClassFileParser.CONSTANT_INTERFACEMETHOD):
             case (ClassFileParser.CONSTANT_NAMEANDTYPE):
+            case (ClassFileParser.CONSTANT_DYNAMIC):
             case (ClassFileParser.CONSTANT_INVOKEDYNAMIC):
-                result = new Constant(tag, in.readUnsignedShort(), in
-                        .readUnsignedShort());
+                result = new Constant(tag, in.readUnsignedShort(), in.readUnsignedShort());
                 break;
             case (ClassFileParser.CONSTANT_INTEGER):
                 result = new Constant(tag, new Integer(in.readInt()));
@@ -314,9 +316,8 @@ public class ClassFileParser extends AbstractParser {
 
     private FieldOrMethodInfo parseFieldOrMethodInfo() throws IOException {
 
-        FieldOrMethodInfo result = new FieldOrMethodInfo(
-                in.readUnsignedShort(), in.readUnsignedShort(), in
-                .readUnsignedShort());
+        FieldOrMethodInfo result =
+                new FieldOrMethodInfo(in.readUnsignedShort(), in.readUnsignedShort(), in.readUnsignedShort());
 
         int attributesCount = in.readUnsignedShort();
         for (int a = 0; a < attributesCount; a++) {
@@ -387,8 +388,7 @@ public class ClassFileParser extends AbstractParser {
                 debug("Parser: class type = " + slashesToDots(name));
             }
 
-            if (constantPool[j].getTag() == CONSTANT_DOUBLE
-                    || constantPool[j].getTag() == CONSTANT_LONG) {
+            if (constantPool[j].getTag() == CONSTANT_DOUBLE || constantPool[j].getTag() == CONSTANT_LONG) {
                 j++;
             }
         }
@@ -481,7 +481,7 @@ public class ClassFileParser extends AbstractParser {
     }
 
     private int u2(byte[] data, int index) {
-        return (data[index] << 8 & 0xFF00)  | (data[index+1] & 0xFF);
+        return (data[index] << 8 & 0xFF00) | (data[index + 1] & 0xFF);
     }
 
     private String getClassConstantName(int entryIndex) throws IOException {
@@ -499,8 +499,7 @@ public class ClassFileParser extends AbstractParser {
             return (String) entry.getValue();
         }
 
-        throw new IOException("Constant pool entry is not a UTF8 type: "
-                + entryIndex);
+        throw new IOException("Constant pool entry is not a UTF8 type: " + entryIndex);
     }
 
     private void addImport(String importPackage) {
@@ -656,11 +655,9 @@ public class ClassFileParser extends AbstractParser {
 
             try {
 
-                s.append("\n    name (#" + getNameIndex() + ") = "
-                        + toUTF8(getNameIndex()));
+                s.append("\n    name (#" + getNameIndex() + ") = " + toUTF8(getNameIndex()));
 
-                s.append("\n    signature (#" + getDescriptorIndex() + ") = "
-                        + toUTF8(getDescriptorIndex()));
+                s.append("\n    signature (#" + getDescriptorIndex() + ") = " + toUTF8(getDescriptorIndex()));
 
                 String[] types = descriptorToTypes(toUTF8(getDescriptorIndex()));
                 for (int t = 0; t < types.length; t++) {
@@ -715,8 +712,7 @@ public class ClassFileParser extends AbstractParser {
             for (int i = 1; i < constantPool.length; i++) {
                 Constant entry = getConstantPoolEntry(i);
                 s.append("    " + i + ". " + entry.toString() + "\n");
-                if (entry.getTag() == CONSTANT_DOUBLE
-                        || entry.getTag() == CONSTANT_LONG) {
+                if (entry.getTag() == CONSTANT_DOUBLE || entry.getTag() == CONSTANT_LONG) {
                     i++;
                 }
             }

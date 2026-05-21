@@ -10,14 +10,6 @@
             <error>No stats available: package referenced, but not analyzed.</error>
         </Package>
 
-        <Package name="java.nio.charset">
-            <error>No stats available: package referenced, but not analyzed.</error>
-        </Package>
-
-        <Package name="java.nio.file">
-            <error>No stats available: package referenced, but not analyzed.</error>
-        </Package>
-
         <Package name="java.util">
             <error>No stats available: package referenced, but not analyzed.</error>
         </Package>
@@ -31,7 +23,44 @@
         </Package>
 
         <Package name="jdepend.framework">
-            <error>No stats available: package referenced, but not analyzed.</error>
+            <Stats>
+                <TotalClasses>4</TotalClasses>
+                <ConcreteClasses>4</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>0</Ca>
+                <Ce>3</Ce>
+                <A>0</A>
+                <I>1</I>
+                <D>0</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="ClassFileParser.java">
+                    jdepend.framework.ClassFileParser
+                </Class>
+                <Class sourceFile="ClassFileParser.java">
+                    jdepend.framework.ClassFileParser$AttributeInfo
+                </Class>
+                <Class sourceFile="ClassFileParser.java">
+                    jdepend.framework.ClassFileParser$Constant
+                </Class>
+                <Class sourceFile="ClassFileParser.java">
+                    jdepend.framework.ClassFileParser$FieldOrMethodInfo
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>java.io</Package>
+                <Package>java.lang</Package>
+                <Package>java.util</Package>
+            </DependsUpon>
+
+            <UsedBy>
+            </UsedBy>
         </Package>
 
         <Package name="jdepend.xmlui">
@@ -64,7 +93,7 @@
                 <ConcreteClasses>4</ConcreteClasses>
                 <AbstractClasses>1</AbstractClasses>
                 <Ca>0</Ca>
-                <Ce>16</Ce>
+                <Ce>13</Ce>
                 <A>0.2</A>
                 <I>1</I>
                 <D>0.2</D>
@@ -95,12 +124,9 @@
             <DependsUpon>
                 <Package>java.io</Package>
                 <Package>java.lang</Package>
-                <Package>java.nio.charset</Package>
-                <Package>java.nio.file</Package>
                 <Package>java.util</Package>
                 <Package>javax.xml</Package>
                 <Package>javax.xml.parsers</Package>
-                <Package>jdepend.framework</Package>
                 <Package>jdepend.xmlui</Package>
                 <Package>org.apache.maven.doxia.sink</Package>
                 <Package>org.apache.maven.doxia.siterenderer</Package>
@@ -203,6 +229,42 @@
 
         <Package name="org.xml.sax.helpers">
             <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+        <Package name="org.codehaus.mojo.modernjava">
+            <Stats>
+                <TotalClasses>2</TotalClasses>
+                <ConcreteClasses>2</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>0</Ca>
+                <Ce>5</Ce>
+                <A>0</A>
+                <I>1</I>
+                <D>0</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="LambdaSample.java">
+                    org.codehaus.mojo.modernjava.LambdaSample
+                </Class>
+                <Class sourceFile="RecordSample.java">
+                    org.codehaus.mojo.modernjava.RecordSample
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>java.io</Package>
+                <Package>java.lang</Package>
+                <Package>java.lang.invoke</Package>
+                <Package>java.lang.runtime</Package>
+                <Package>java.util</Package>
+            </DependsUpon>
+
+            <UsedBy>
+            </UsedBy>
         </Package>
     </Packages>
 
