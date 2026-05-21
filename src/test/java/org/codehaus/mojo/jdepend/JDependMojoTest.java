@@ -28,6 +28,7 @@ import org.junit.jupiter.api.Test;
 import org.xmlunit.builder.DiffBuilder;
 import org.xmlunit.builder.Input;
 import org.xmlunit.diff.Diff;
+import org.xmlunit.diff.Difference;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
@@ -62,6 +63,24 @@ public class JDependMojoTest {
                 .withTest(Input.fromFile(generatedReport))
                 .ignoreComments()
                 .build();
+
+        if (myDiff.hasDifferences()) {
+            System.out.println("\n=== [XMLUNIT DETAILED INSPECTION] ===");
+            int count = 1;
+            for (Difference difference : myDiff.getDifferences()) {
+                System.out.format("Difference #%d:\n", count++);
+                System.out.println("  Type: " + difference.getComparison().getType());
+                System.out.println("  Expected (Control) XPath: "
+                        + difference.getComparison().getControlDetails().getXPath());
+                System.out.println("  Expected Value          : ["
+                        + difference.getComparison().getControlDetails().getValue() + "]");
+                System.out.println("  Actual (Test) XPath     : "
+                        + difference.getComparison().getTestDetails().getXPath());
+                System.out.println("  Actual Value            : ["
+                        + difference.getComparison().getTestDetails().getValue() + "]");
+                System.out.println("--------------------------------------------------");
+            }
+        }
 
         assertFalse(myDiff.hasDifferences(), myDiff.toString());
     }
