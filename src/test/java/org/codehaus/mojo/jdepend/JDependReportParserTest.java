@@ -50,7 +50,7 @@ class JDependReportParserTest {
 
     @Test
     void totalNumberPackages() {
-        assertEquals(5, parser.packages.size(), "Total number of packages is not equal to expected output");
+        assertEquals(4, parser.packages.size(), "Total number of packages is not equal to expected output");
     }
 
     @Test

@@ -230,42 +230,6 @@
         <Package name="org.xml.sax.helpers">
             <error>No stats available: package referenced, but not analyzed.</error>
         </Package>
-        <Package name="org.codehaus.mojo.modernjava">
-            <Stats>
-                <TotalClasses>2</TotalClasses>
-                <ConcreteClasses>2</ConcreteClasses>
-                <AbstractClasses>0</AbstractClasses>
-                <Ca>0</Ca>
-                <Ce>5</Ce>
-                <A>0</A>
-                <I>1</I>
-                <D>0</D>
-                <V>1</V>
-            </Stats>
-
-            <AbstractClasses>
-            </AbstractClasses>
-
-            <ConcreteClasses>
-                <Class sourceFile="LambdaSample.java">
-                    org.codehaus.mojo.modernjava.LambdaSample
-                </Class>
-                <Class sourceFile="RecordSample.java">
-                    org.codehaus.mojo.modernjava.RecordSample
-                </Class>
-            </ConcreteClasses>
-
-            <DependsUpon>
-                <Package>java.io</Package>
-                <Package>java.lang</Package>
-                <Package>java.lang.invoke</Package>
-                <Package>java.lang.runtime</Package>
-                <Package>java.util</Package>
-            </DependsUpon>
-
-            <UsedBy>
-            </UsedBy>
-        </Package>
     </Packages>
 
     <Cycles>

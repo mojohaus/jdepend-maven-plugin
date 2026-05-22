@@ -30,13 +30,26 @@ def html = siteReport.getText( 'UTF-8' )
 
 import java.io.*
 File reportFile = new File(basedir, "target/jdepend-report.xml")
-assert reportFile.exists() : "¡Error: El archivo jdepend-report.xml no fue generado!"
-String content = reportFile.text
-assert content.contains("it.samples") : "¡Error: El reporte no contiene las métricas del paquete de prueba!"
-println "IT Test para Java 21 ejecutado de forma exitosa. ¡El Shadow Parser funciona!"
+assert reportFile.exists() : "Error: The file jdepend-report.xml not generated!"
+
+assert html.contains( 'org.codehaus.mojo.modernjava' )
+
+assert xml.contains( 'org.codehaus.mojo.modernjava' )
+assert xml.contains( 'org.codehaus.mojo.modernjava.another' )
+assert xml.contains( 'org.codehaus.mojo.modernjava.another.Another' )
+assert xml.contains( 'org.codehaus.mojo.modernjava.LambdaSample' )
+assert xml.contains( 'org.codehaus.mojo.modernjava.RecordSample' )
+
+assert html.contains( 'org.codehaus.mojo.modernjava' )
+assert html.contains( 'org.codehaus.mojo.modernjava.another' )
+
+
+
+println "IT Test  Java 21 success.The Shadow Parser works!"
 
 println "\n=== [REAL GENERATED XML REPORT] ==="
 println reportFile.text
 println "===================================\n"
+
 
 return true

@@ -42,23 +42,6 @@
         <maven.compiler.target>21</maven.compiler.target>
     </properties>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jdepend-maven-plugin</artifactId>
-                <version>@project.version@</version>
-            </plugin>
-        </plugins>
-    </build>
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
 
     <reporting>
         <plugins>
@@ -66,11 +49,6 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jdepend-maven-plugin</artifactId>
                 <version>@project.version@</version>
-                <configuration>
-                    <ignorePackages>
-                        <ignorePackage>org.codehaus.mojo.ignored*</ignorePackage>
-                    </ignorePackages>
-                </configuration>
             </plugin>
         </plugins>
     </reporting>
