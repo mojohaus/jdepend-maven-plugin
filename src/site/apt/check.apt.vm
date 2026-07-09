@@ -1,0 +1,70 @@
+~~~
+~~ #%L
+~~ JDepend Maven Plugin
+~~ %%
+~~ Copyright (C) 2006 - 2014 Codehaus
+~~ %%
+~~ Licensed under the Apache License, Version 2.0 (the "License");
+~~ you may not use this file except in compliance with the License.
+~~ You may obtain a copy of the License at
+~~
+~~      http://www.apache.org/licenses/LICENSE-2.0
+~~
+~~ Unless required by applicable law or agreed to in writing, software
+~~ distributed under the License is distributed on an "AS IS" BASIS,
+~~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+~~ See the License for the specific language governing permissions and
+~~ limitations under the License.
+~~ #L%
+~~~
+ ------
+ Checking Package Dependency Cycles
+ ------
+ ------
+ ------
+
+Checking Package Dependency Cycles
+
+  The <<<jdepend:check>>> goal analyzes compiled project classes and fails the build when it finds a package
+  dependency cycle. It does not generate an XML or HTML report.
+
+  Bind the goal to the build to run it during the <<<verify>>> phase:
+
+-------------------
+<project>
+  ...
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>jdepend-maven-plugin</artifactId>
+        <version>${project.version}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>check</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+  ...
+</project>
+-------------------
+
+  Run the configured check with:
+
+-------------------
+mvn verify
+-------------------
+
+  When invoking the goal directly, compile the project first:
+
+-------------------
+mvn compile jdepend:check
+-------------------
+
+  The goal uses the same <<<jdepend.classDirectory>>> and <<<jdepend.skip>>> user properties as the report goals.
+  If a cycle is found, the failure message lists representative dependency paths. Run <<<jdepend:generate>>> to
+  inspect the complete package dependency report.
