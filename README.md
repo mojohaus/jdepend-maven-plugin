@@ -5,7 +5,7 @@
 [![Build Status](https://travis-ci.org/mojohaus/jdepend-maven-plugin.svg?branch=master)](https://travis-ci.org/mojohaus/jdepend-maven-plugin)
 
 The [jdepend-maven-plugin](http://www.mojohaus.org/jdepend-maven-plugin/)
-plugin produces a nicely formatted metrics report based on your project.
+plugin produces a nicely formatted metrics report and can fail the build when it finds package dependency cycles.
 
 ## Releasing
 
