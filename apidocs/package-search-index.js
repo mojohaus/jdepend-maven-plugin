@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"org.codehaus.mojo.jdepend"},{"l":"org.codehaus.mojo.jdepend_maven_plugin"},{"l":"org.codehaus.mojo.jdepend.objects"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html","k":"18"},{"l":"org.codehaus.mojo.jdepend"},{"l":"org.codehaus.mojo.jdepend_maven_plugin"},{"l":"org.codehaus.mojo.jdepend.objects"}];updateSearchResults();
