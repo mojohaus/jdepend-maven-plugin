@@ -14,11 +14,19 @@
             <error>No stats available: package referenced, but not analyzed.</error>
         </Package>
 
+        <Package name="java.util.jar">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
         <Package name="javax.xml">
             <error>No stats available: package referenced, but not analyzed.</error>
         </Package>
 
         <Package name="javax.xml.parsers">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="jdepend.framework">
             <error>No stats available: package referenced, but not analyzed.</error>
         </Package>
 
@@ -48,14 +56,14 @@
 
         <Package name="org.codehaus.mojo.jdepend">
             <Stats>
-                <TotalClasses>5</TotalClasses>
-                <ConcreteClasses>4</ConcreteClasses>
+                <TotalClasses>6</TotalClasses>
+                <ConcreteClasses>5</ConcreteClasses>
                 <AbstractClasses>1</AbstractClasses>
                 <Ca>0</Ca>
-                <Ce>13</Ce>
-                <A>0.2</A>
+                <Ce>16</Ce>
+                <A>0.17</A>
                 <I>1</I>
-                <D>0.2</D>
+                <D>0.17</D>
                 <V>1</V>
             </Stats>
 
@@ -66,6 +74,9 @@
             </AbstractClasses>
 
             <ConcreteClasses>
+                <Class sourceFile="JDependCheckMojo.java">
+                    org.codehaus.mojo.jdepend.JDependCheckMojo
+                </Class>
                 <Class sourceFile="JDependMojo.java">
                     org.codehaus.mojo.jdepend.JDependMojo
                 </Class>
@@ -84,11 +95,14 @@
                 <Package>java.io</Package>
                 <Package>java.lang</Package>
                 <Package>java.util</Package>
+                <Package>java.util.jar</Package>
                 <Package>javax.xml</Package>
                 <Package>javax.xml.parsers</Package>
+                <Package>jdepend.framework</Package>
                 <Package>jdepend.xmlui</Package>
                 <Package>org.apache.maven.doxia.sink</Package>
                 <Package>org.apache.maven.doxia.siterenderer</Package>
+                <Package>org.apache.maven.plugin</Package>
                 <Package>org.apache.maven.plugin.logging</Package>
                 <Package>org.apache.maven.reporting</Package>
                 <Package>org.codehaus.mojo.jdepend.objects</Package>

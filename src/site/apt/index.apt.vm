@@ -41,9 +41,12 @@ JDepend Maven Plugin
 
   * {{{./generate-no-fork-mojo.html}jdepend:generate-no-fork}} Run JDepend and generate a site report (without forking the life cycle).
 
+  * {{{./check-mojo.html}jdepend:check}} Check compiled classes for package dependency cycles and fail the build when a cycle is found.
+
 * Usage
 
   Instructions on how to use the JDepend Maven Plugin can be found on the {{{./usage.html}usage page}}.
+  See the {{{./check.html}cycle check page}} for build-time package cycle enforcement.
 
 * Examples
 
