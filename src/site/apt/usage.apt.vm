@@ -55,3 +55,30 @@ Usage
 -------------------
 mvn site
 -------------------
+
+  Packages can be excluded from the JDepend analysis by configuring package
+  prefixes in <<<ignorePackages>>>. A trailing <<<*>>> is supported by
+  JDepend's package filter.
+
+-------------------
+<project>
+  ...
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>jdepend-maven-plugin</artifactId>
+        <version>${project.version}</version>
+        <configuration>
+          <ignorePackages>
+            <ignorePackage>java.*</ignorePackage>
+            <ignorePackage>javax.*</ignorePackage>
+            <ignorePackage>org.slf4j*</ignorePackage>
+          </ignorePackages>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
+  ...
+</project>
+-------------------

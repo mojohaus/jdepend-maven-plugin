@@ -121,7 +121,7 @@ public class ReportGenerator {
         sink.lineBreak();
         sink.lineBreak();
 
-        sink.table();
+        startTable(sink);
         sink.tableCaption();
         sink.text(bundle.getString("report.summary.title"));
         sink.tableCaption_();
@@ -179,7 +179,7 @@ public class ReportGenerator {
             sink.tableRow_();
         }
 
-        sink.table_();
+        endTable(sink);
     }
 
     private void generateHeaderRow(ResourceBundle bundle, Sink sink) {
@@ -261,7 +261,7 @@ public class ReportGenerator {
                 sink.text(jdpackage.getPackageName());
                 sink.sectionTitle2_();
 
-                sink.table();
+                startTable(sink);
                 sink.tableCaption();
                 sink.text(bundle.getString("report.packages.title"));
                 sink.tableCaption_();
@@ -318,11 +318,11 @@ public class ReportGenerator {
 
                 sink.tableRow_();
 
-                sink.table_();
+                endTable(sink);
 
                 /* New Table */
 
-                sink.table();
+                startTable(sink);
                 sink.tableCaption();
                 sink.text(bundle.getString("report.packages.title"));
                 sink.tableCaption_();
@@ -426,7 +426,7 @@ public class ReportGenerator {
 
                 sink.tableRow_();
 
-                sink.table_();
+                endTable(sink);
             }
         }
     }
@@ -456,7 +456,7 @@ public class ReportGenerator {
             sink.text(bundle.getString("report.nocyclicdependencies")); // $NON-NLS-1$
             sink.lineBreak();
         } else {
-            sink.table();
+            startTable(sink);
             sink.tableCaption();
             sink.text(bundle.getString("report.cycles.title"));
             sink.tableCaption_();
@@ -495,7 +495,7 @@ public class ReportGenerator {
                 sink.tableCell_();
                 sink.tableRow_();
             }
-            sink.table_();
+            endTable(sink);
         }
     }
 
@@ -518,7 +518,7 @@ public class ReportGenerator {
         sink.lineBreak();
         sink.lineBreak();
 
-        sink.table();
+        startTable(sink);
         sink.tableCaption();
         sink.text(bundle.getString("report.explanation.title"));
         sink.tableCaption_();
@@ -603,6 +603,16 @@ public class ReportGenerator {
         sink.tableCell_();
         sink.tableRow_();
 
+        endTable(sink);
+    }
+
+    private void startTable(Sink sink) {
+        sink.table();
+        sink.tableRows(null, false);
+    }
+
+    private void endTable(Sink sink) {
+        sink.tableRows_();
         sink.table_();
     }
 
