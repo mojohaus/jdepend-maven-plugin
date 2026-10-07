@@ -10,6 +10,14 @@
             <error>No stats available: package referenced, but not analyzed.</error>
         </Package>
 
+        <Package name="java.nio.charset">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="java.nio.file">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
         <Package name="java.util">
             <error>No stats available: package referenced, but not analyzed.</error>
         </Package>
@@ -19,6 +27,10 @@
         </Package>
 
         <Package name="javax.xml.parsers">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="jdepend.framework">
             <error>No stats available: package referenced, but not analyzed.</error>
         </Package>
 
@@ -52,7 +64,7 @@
                 <ConcreteClasses>4</ConcreteClasses>
                 <AbstractClasses>1</AbstractClasses>
                 <Ca>0</Ca>
-                <Ce>13</Ce>
+                <Ce>16</Ce>
                 <A>0.2</A>
                 <I>1</I>
                 <D>0.2</D>
@@ -83,9 +95,12 @@
             <DependsUpon>
                 <Package>java.io</Package>
                 <Package>java.lang</Package>
+                <Package>java.nio.charset</Package>
+                <Package>java.nio.file</Package>
                 <Package>java.util</Package>
                 <Package>javax.xml</Package>
                 <Package>javax.xml.parsers</Package>
+                <Package>jdepend.framework</Package>
                 <Package>jdepend.xmlui</Package>
                 <Package>org.apache.maven.doxia.sink</Package>
                 <Package>org.apache.maven.doxia.siterenderer</Package>
