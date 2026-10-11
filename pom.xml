@@ -67,7 +67,7 @@
   <properties>
     <!-- run the ITs in parallel, one per CPU core -->
     <invoker.parallelThreads>1C</invoker.parallelThreads>
-    <mavenVersion>3.9.16</mavenVersion>
+    <mavenVersion>3.10.0</mavenVersion>
     <jdependVersion>2.9.1</jdependVersion>
     <scmpublish.content>target/staging/${project.artifactId}</scmpublish.content>
   </properties>
