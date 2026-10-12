@@ -7,6 +7,8 @@
 The [jdepend-maven-plugin](http://www.mojohaus.org/jdepend-maven-plugin/)
 plugin produces a nicely formatted metrics report based on your project.
 
+Conventions for contributors and agents are in [AGENTS.md](AGENTS.md).
+
 ## Releasing
 
 * Make sure `gpg-agent` is running.
