@@ -5,7 +5,7 @@
 [![Build Status](https://github.com/mojohaus/jdepend-maven-plugin/actions/workflows/maven-verify.yml/badge.svg?branch=master)](https://github.com/mojohaus/jdepend-maven-plugin/actions/workflows/maven-verify.yml)
 
 The [jdepend-maven-plugin](http://www.mojohaus.org/jdepend-maven-plugin/)
-plugin produces a nicely formatted metrics report based on your project.
+plugin produces a nicely formatted metrics report and can fail the build when it finds package dependency cycles.
 
 Conventions for contributors and agents are in [AGENTS.md](AGENTS.md).
 
