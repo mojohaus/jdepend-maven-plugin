@@ -1,53 +1,50 @@
-~~~
-~~ #%L
-~~ JDepend Maven Plugin
-~~ %%
-~~ Copyright (C) 2006 - 2014 Codehaus
-~~ %%
-~~ Licensed under the Apache License, Version 2.0 (the "License");
-~~ you may not use this file except in compliance with the License.
-~~ You may obtain a copy of the License at
-~~ 
-~~      http://www.apache.org/licenses/LICENSE-2.0
-~~ 
-~~ Unless required by applicable law or agreed to in writing, software
-~~ distributed under the License is distributed on an "AS IS" BASIS,
-~~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-~~ See the License for the specific language governing permissions and
-~~ limitations under the License.
-~~ #L%
-~~~
- ------
- Introduction
- ------
- Dennis Lundberg
- ------
- 2007-07-26
- ------
+title: Introduction
+author: Dennis Lundberg
+date: 2007-07-26
 
+<!--
+#%L
+JDepend Maven Plugin
+%%
+Copyright (C) 2006 - 2014 Codehaus
+%%
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+#L%
+-->
 
 JDepend Maven Plugin
+====================
 
-  This plugin produces a nicely formatted metrics report based on your project.
+This plugin produces a nicely formatted metrics report based on your project.
 
-  This plugin uses the {{{http://clarkware.com/software/JDepend.html}JDepend library in version ${jdependVersion}}} 
-  to fulfill it's purposes.
+This plugin uses the [JDepend library in version ${jdependVersion}](http://clarkware.com/software/JDepend.html)
+to fulfill it's purposes.
 
-* Goals Overview
+Goals Overview
+--------------
 
-~~  General Information about the goals.
+- [jdepend:generate](./generate-mojo.html) Run JDepend and generate a site report.
+- [jdepend:generate-no-fork](./generate-no-fork-mojo.html) Run JDepend and generate a site report (without forking the life cycle).
 
-  * {{{./generate-mojo.html}jdepend:generate}} Run JDepend and generate a site report.
+Usage
+-----
 
-  * {{{./generate-no-fork-mojo.html}jdepend:generate-no-fork}} Run JDepend and generate a site report (without forking the life cycle).
+Instructions on how to use the JDepend Maven Plugin can be found on the [usage page](./usage.html).
 
-* Usage
+Examples
+--------
 
-  Instructions on how to use the JDepend Maven Plugin can be found on the {{{./usage.html}usage page}}.
+To provide you with better understanding of some usages of the JDepend
+Maven Plugin, you can take a look into the following example:
 
-* Examples
-
-  To provide you with better understanding of some usages of the JDepend
-  Maven Plugin, you can take a look into the following example:
-
-  * {{{./examples/jdepend-report.html}JDepend Sample Report}}
+- [JDepend Sample Report](./examples/jdepend-report.html)
