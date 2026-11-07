@@ -59,8 +59,9 @@ Both extend `AbstractJDependMojo`, which runs JDepend and renders the report wit
 
 ## Continuous integration
 
-- `.github/workflows/maven-verify.yml` calls the shared `maven-verify.yml@v5` workflow from
-  `apache/maven-gh-actions-shared`.
+- `.github/workflows/maven-verify.yml` calls the MojoHaus `maven-verify.yml` workflow in
+  `mojohaus/.github`, which sets the JDK and OS matrix, runs Maven 3.10 and Maven 4, and activates
+  `run-its`.
 - Branches pushed to this repository build under the `push` event.
 
 ## Dependencies
