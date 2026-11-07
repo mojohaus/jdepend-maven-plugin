@@ -17,23 +17,9 @@
 
 name: Verify
 
-on:
-  push:
-  pull_request:
+on: [push, pull_request, workflow_dispatch]
 
 jobs:
   build:
     name: Verify
-    uses: apache/maven-gh-actions-shared/.github/workflows/maven-verify.yml@v5
-    with:
-      maven4-enabled: true
-      matrix-exclude: >
-        [
-          {"os": "macos-latest", "jdk": "8"},
-          {"os": "macos-latest", "jdk": "21"},
-          {"os": "windows-latest", "jdk": "21"}
-        ]
-#    with:
-#      os-matrix: '[ "ubuntu-latest" ]'
-#      jdk-matrix: '[ "17" ]'
-#      jdk-distribution-matrix: '[ "temurin" ]'
+    uses: mojohaus/.github/.github/workflows/maven-verify.yml@master
