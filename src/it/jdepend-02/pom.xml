@@ -47,6 +47,7 @@
       </plugin>
     </plugins>
   </reporting>
+  <!-- any dependency will do: without one, the Dependencies report is not generated and dependencies.html is missing -->
   <dependencies>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
