@@ -17,15 +17,9 @@
 
 name: Verify
 
-on:
-  push:
-  pull_request:
+on: [push, pull_request, workflow_dispatch]
 
 jobs:
   build:
     name: Verify
-    uses: apache/maven-gh-actions-shared/.github/workflows/maven-verify.yml@v4
-#    with:
-#      os-matrix: '[ "ubuntu-latest" ]'
-#      jdk-matrix: '[ "17" ]'
-#      jdk-distribution-matrix: '[ "temurin" ]'
+    uses: mojohaus/.github/.github/workflows/maven-verify.yml@master

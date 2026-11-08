@@ -3,8 +3,31 @@ updates:
   - package-ecosystem: "maven"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "monthly"
+    groups:
+      maven:
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
+    ignore:
+      # Stay on the Maven 3.9.x line; 3.10 is not the plugin baseline yet
+      - dependency-name: "org.apache.maven:maven-core"
+        versions: [">= 3.10.0"]
+      - dependency-name: "org.apache.maven:maven-plugin-api"
+        versions: [">= 3.10.0"]
+      # plexus-xml 4.x depends on the Maven 4 XML API
+      - dependency-name: "org.codehaus.plexus:plexus-xml"
+        versions: [">= 4.0.0"]
+      # Report plugin: maven-site-plugin 3.22 and older load maven-reporting-api 4.0.0
+      - dependency-name: "org.apache.maven.reporting:maven-reporting-api"
+        versions: [">= 4.1.0"]
+      # doxia-site-renderer 2.1.0 needs doxia-site-model 2.1.0, but maven-reporting-impl 4.0.0
+      # still pulls 2.0.0, so the report fails with NoSuchMethodError on SiteModel.getMermaid
+      - dependency-name: "org.apache.maven.doxia:*"
+        versions: [">= 2.1.0"]
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "monthly"
+    groups:
+      github-actions:
+        patterns: ["*"]

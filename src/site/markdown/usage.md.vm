@@ -1,0 +1,81 @@
+title: Usage
+author: Allan Ramirez <aramirez@exist.com>
+date: September 2, 2005
+
+<!--
+#%L
+JDepend Maven Plugin
+%%
+Copyright (C) 2006 - 2014 Codehaus
+%%
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+#L%
+-->
+
+Usage
+=====
+
+In your `pom.xml`, insert this segment.
+
+```xml
+<project>
+  ...
+  <build>
+    ...
+  </build>
+  ...
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>jdepend-maven-plugin</artifactId>
+        <version>${project.version}</version>
+      </plugin>
+    </plugins>
+  </reporting>
+  ...
+</project>
+```
+
+Generate the metrics report by executing the maven-site-plugin.
+
+```sh
+mvn site
+```
+
+Packages can be excluded from the JDepend analysis by configuring package
+prefixes in `ignorePackages`. A trailing `*` is supported by
+JDepend's package filter.
+
+```xml
+<project>
+  ...
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>jdepend-maven-plugin</artifactId>
+        <version>${project.version}</version>
+        <configuration>
+          <ignorePackages>
+            <ignorePackage>java.*</ignorePackage>
+            <ignorePackage>javax.*</ignorePackage>
+            <ignorePackage>org.slf4j*</ignorePackage>
+          </ignorePackages>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
+  ...
+</project>
+```

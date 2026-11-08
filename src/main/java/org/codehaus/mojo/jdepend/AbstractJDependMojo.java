@@ -21,11 +21,16 @@ package org.codehaus.mojo.jdepend;
  */
 
 import java.io.File;
-import java.util.ArrayList;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import jdepend.framework.PackageFilter;
 import jdepend.xmlui.JDepend;
 import org.apache.maven.doxia.sink.Sink;
 import org.apache.maven.doxia.siterenderer.Renderer;
@@ -69,6 +74,12 @@ public abstract class AbstractJDependMojo extends AbstractMavenReport {
     @Parameter(defaultValue = "false", property = "jdepend.skip")
     private boolean skip;
 
+    /**
+     * Package name prefixes to exclude from the JDepend analysis.
+     */
+    @Parameter
+    private List<String> ignorePackages;
+
     /*
      * (non-Javadoc)
      * @see org.apache.maven.reporting.AbstractMavenReport#executeReport(java.util.Locale)
@@ -89,7 +100,7 @@ public abstract class AbstractJDependMojo extends AbstractMavenReport {
                 }
             }
 
-            JDepend.main(getArgumentList(getArgument(), getReportFile(), getClassDirectory()));
+            generateJDependXmlReport();
 
             xmlParser = new JDependXMLReportParser(new File(getReportFile()));
 
@@ -107,24 +118,28 @@ public abstract class AbstractJDependMojo extends AbstractMavenReport {
         return new File(classDirectory).exists();
     }
 
-    /**
-     * Sets and get the arguments passed for the JDepend.
-     *
-     * @param argument Accepts parameter with "-file" string.
-     * @param locationXMLreportFile Accepts the location of the generated JDepend xml report file.
-     * @param classDir Accepts the location of the classes.
-     * @return String[] Returns the array to be pass as parameters for JDepend.
-     */
-    private String[] getArgumentList(String argument, String locationXMLreportFile, String classDir) {
-        List<String> argList = new ArrayList<>();
+    private void generateJDependXmlReport() throws IOException {
+        try (PrintWriter writer =
+                new PrintWriter(Files.newBufferedWriter(Paths.get(getReportFile()), StandardCharsets.UTF_8))) {
+            JDepend jdepend = new JDepend(writer);
+            jdepend.setFilter(createPackageFilter());
+            jdepend.addDirectory(getClassDirectory());
+            jdepend.analyze();
+        }
+    }
 
-        argList.add(argument);
+    private PackageFilter createPackageFilter() {
+        PackageFilter packageFilter = new PackageFilter();
 
-        argList.add(locationXMLreportFile);
+        if (ignorePackages != null) {
+            for (String ignorePackage : ignorePackages) {
+                if (ignorePackage != null) {
+                    packageFilter.addPackage(ignorePackage.trim());
+                }
+            }
+        }
 
-        argList.add(classDir);
-
-        return argList.toArray(new String[0]);
+        return packageFilter;
     }
 
     public void generateReport(Locale locale) throws MavenReportException {
@@ -180,13 +195,6 @@ public abstract class AbstractJDependMojo extends AbstractMavenReport {
 
     public void setOutputDirectory(String outputDirectory) {
         this.outputDirectory = outputDirectory;
-    }
-
-    /**
-     * @return The argument.
-     */
-    public String getArgument() {
-        return "-file";
     }
 
     /**
