@@ -28,10 +28,6 @@ def xml = xmlReport.getText( 'UTF-8' )
 def html = siteReport.getText( 'UTF-8' )
 
 
-import java.io.*
-File reportFile = new File(basedir, "target/jdepend-report.xml")
-assert reportFile.exists() : "Error: The file jdepend-report.xml not generated!"
-
 assert html.contains( 'org.codehaus.mojo.modernjava' )
 
 assert xml.contains( 'org.codehaus.mojo.modernjava' )
@@ -40,16 +36,14 @@ assert xml.contains( 'org.codehaus.mojo.modernjava.another.Another' )
 assert xml.contains( 'org.codehaus.mojo.modernjava.LambdaSample' )
 assert xml.contains( 'org.codehaus.mojo.modernjava.RecordSample' )
 
+// the classes were analyzed, not only referenced from another package
+assert xml.contains( '<Class sourceFile="LambdaSample.java">' )
+assert xml.contains( '<Class sourceFile="RecordSample.java">' )
+assert !new File( basedir, 'build.log' ).text.contains( 'Unknown constant' )
+
 assert html.contains( 'org.codehaus.mojo.modernjava' )
 assert html.contains( 'org.codehaus.mojo.modernjava.another' )
 
-
-
-println "IT Test  Java 21 success.The Shadow Parser works!"
-
-println "\n=== [REAL GENERATED XML REPORT] ==="
-println reportFile.text
-println "===================================\n"
 
 
 return true

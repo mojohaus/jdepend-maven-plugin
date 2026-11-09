@@ -68,7 +68,7 @@
     <!-- run the ITs in parallel, one per CPU core -->
     <invoker.parallelThreads>1C</invoker.parallelThreads>
     <mavenVersion>3.9.16</mavenVersion>
-    <jdependVersion>2.9.1</jdependVersion>
+    <jdependVersion>2.9.5</jdependVersion>
     <scmpublish.content>target/staging/${project.artifactId}</scmpublish.content>
   </properties>
 
@@ -124,7 +124,7 @@
       <version>2.0.0</version>
     </dependency>
     <dependency>
-      <groupId>jdepend</groupId>
+      <groupId>guru.nidi</groupId>
       <artifactId>jdepend</artifactId>
       <version>${jdependVersion}</version>
     </dependency>

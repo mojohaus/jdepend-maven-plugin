@@ -26,6 +26,7 @@ import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -129,14 +130,17 @@ public abstract class AbstractJDependMojo extends AbstractMavenReport {
     }
 
     private PackageFilter createPackageFilter() {
-        PackageFilter packageFilter = new PackageFilter();
+        // as before, the ignore entries of jdepend.properties apply too
+        PackageFilter packageFilter = PackageFilter.all().excludingProperties();
 
         if (ignorePackages != null) {
+            List<String> packages = new ArrayList<>();
             for (String ignorePackage : ignorePackages) {
                 if (ignorePackage != null) {
-                    packageFilter.addPackage(ignorePackage.trim());
+                    packages.add(ignorePackage.trim());
                 }
             }
+            packageFilter = packageFilter.excluding(packages);
         }
 
         return packageFilter;
