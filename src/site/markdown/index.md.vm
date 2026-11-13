@@ -27,14 +27,17 @@ JDepend Maven Plugin
 
 This plugin produces a nicely formatted metrics report based on your project.
 
-This plugin uses the [JDepend library in version ${jdependVersion}](http://clarkware.com/software/JDepend.html)
-to fulfill it's purposes.
+This plugin uses [JDepend](https://github.com/nidi3/jdepend) in version ${jdependVersion}, a fork of
+[the original JDepend](https://github.com/clarkware/jdepend) that reads current class files.
 
 Goals Overview
 --------------
 
 - [jdepend:generate](./generate-mojo.html) Run JDepend and generate a site report.
 - [jdepend:generate-no-fork](./generate-no-fork-mojo.html) Run JDepend and generate a site report (without forking the life cycle).
+- [jdepend:check](./check-mojo.html) Check compiled classes for package dependency cycles and fail the build when a cycle is found.
+
+See the [cycle check page](./check.html) for build-time package cycle enforcement.
 
 Usage
 -----
