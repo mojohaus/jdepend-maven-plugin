@@ -27,8 +27,8 @@ JDepend Maven Plugin
 
 This plugin produces a nicely formatted metrics report based on your project.
 
-This plugin uses the [JDepend library in version ${jdependVersion}](http://clarkware.com/software/JDepend.html)
-to fulfill it's purposes.
+This plugin uses [JDepend](https://github.com/nidi3/jdepend) in version ${jdependVersion}, a fork of
+[the original JDepend](https://github.com/clarkware/jdepend) that reads current class files.
 
 Goals Overview
 --------------
