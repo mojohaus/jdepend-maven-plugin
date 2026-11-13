@@ -35,6 +35,9 @@ Goals Overview
 
 - [jdepend:generate](./generate-mojo.html) Run JDepend and generate a site report.
 - [jdepend:generate-no-fork](./generate-no-fork-mojo.html) Run JDepend and generate a site report (without forking the life cycle).
+- [jdepend:check](./check-mojo.html) Check compiled classes for package dependency cycles and fail the build when a cycle is found.
+
+See the [cycle check page](./check.html) for build-time package cycle enforcement.
 
 Usage
 -----
