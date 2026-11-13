@@ -155,7 +155,7 @@ public class JDependCheckMojo extends AbstractMojo implements ParserListener {
             if (file.isDirectory()) {
                 count += countClassFiles(file);
             } else if (file.isFile()) {
-                if (hasExtension(file.getName(), ".class")) {
+                if (isAnalyzedClassFile(file.getName())) {
                     count++;
                 } else if (isArchive(file.getName())) {
                     count += countArchiveClassFiles(file);
@@ -169,12 +169,19 @@ public class JDependCheckMojo extends AbstractMojo implements ParserListener {
         int count = 0;
         try (JarFile archive = new JarFile(file)) {
             for (java.util.Enumeration<JarEntry> entries = archive.entries(); entries.hasMoreElements(); ) {
-                if (hasExtension(entries.nextElement().getName(), ".class")) {
+                if (isAnalyzedClassFile(entries.nextElement().getName())) {
                     count++;
                 }
             }
         }
         return count;
+    }
+
+    /**
+     * JDepend analyzes class files of packages; a module descriptor has none and is never parsed.
+     */
+    private static boolean isAnalyzedClassFile(String path) {
+        return hasExtension(path, ".class") && !path.endsWith("module-info.class");
     }
 
     private static boolean isArchive(String fileName) {
