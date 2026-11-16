@@ -48,7 +48,7 @@ public class JDependXMLReportParser extends DefaultHandler {
 
     protected Stats stats;
 
-    protected StringBuffer buffer = null;
+    protected StringBuffer buffer;
 
     protected Stack<String> stack;
 
@@ -58,7 +58,7 @@ public class JDependXMLReportParser extends DefaultHandler {
 
     ReportGenerator report;
 
-    private boolean errFlag = false;
+    private boolean errFlag;
 
     /**
      * Creates a new instance of JDependXMLReportParser.
@@ -194,7 +194,7 @@ public class JDependXMLReportParser extends DefaultHandler {
                 break;
         }
 
-        if (stack.size() != 0) {
+        if (!stack.isEmpty()) {
             /* Remove element name in stack */
             stack.pop();
         }
