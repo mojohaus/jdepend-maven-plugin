@@ -85,6 +85,7 @@ public class JDependXMLReportParser extends DefaultHandler {
      * @see org.xml.sax.helpers.DefaultHandler#startElement(java.lang.String, java.lang.String, java.lang.String,
      * org.xml.sax.Attributes)
      */
+    @Override
     public void startElement(String namespaceURI, String sName, String qName, Attributes attrs) {
 
         /* Push element name into stack */
@@ -126,6 +127,7 @@ public class JDependXMLReportParser extends DefaultHandler {
      * (non-Javadoc)
      * @see org.xml.sax.helpers.DefaultHandler#endElement(java.lang.String, java.lang.String, java.lang.String)
      */
+    @Override
     public void endElement(String namespaceURI, String sName, String qName) {
 
         String elementValue = buffer != null ? buffer.toString().trim() : null;
@@ -206,6 +208,7 @@ public class JDependXMLReportParser extends DefaultHandler {
      * (non-Javadoc)
      * @see org.xml.sax.helpers.DefaultHandler#characters(char[], int, int)
      */
+    @Override
     public void characters(char[] buff, int offset, int len) {
         if (buffer != null) {
             buffer.append(buff, offset, len);

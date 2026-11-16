@@ -115,6 +115,7 @@ public abstract class AbstractJDependMojo extends AbstractMavenReport {
      * (non-Javadoc)
      * @see org.apache.maven.reporting.AbstractMavenReport#canGenerateReport()
      */
+    @Override
     public boolean canGenerateReport() {
         return new File(classDirectory).exists();
     }
@@ -162,6 +163,7 @@ public abstract class AbstractJDependMojo extends AbstractMavenReport {
      * (non-Javadoc)
      * @see org.apache.maven.reporting.MavenReport#getDescription(java.util.Locale)
      */
+    @Override
     public String getDescription(Locale locale) {
         return getBundle(locale).getString("report.jdepend.description");
     }
@@ -170,6 +172,7 @@ public abstract class AbstractJDependMojo extends AbstractMavenReport {
      * (non-Javadoc)
      * @see org.apache.maven.reporting.MavenReport#getName(java.util.Locale)
      */
+    @Override
     public String getName(Locale locale) {
         return getBundle(locale).getString("report.jdepend.name");
     }
@@ -185,6 +188,7 @@ public abstract class AbstractJDependMojo extends AbstractMavenReport {
      * (non-Javadoc)
      * @see org.apache.maven.reporting.MavenReport#getOutputName()
      */
+    @Override
     public String getOutputName() {
         return "jdepend-report";
     }
