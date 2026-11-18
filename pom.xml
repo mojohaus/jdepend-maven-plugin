@@ -151,7 +151,6 @@
           <licenseResolver>${project.baseUri}/src/license</licenseResolver>
           <verbose>false</verbose>
           <addSvnKeyWords>false</addSvnKeyWords>
-          <licenseName>asf-2.0</licenseName>
           <roots>
             <root>src/main/java</root>
             <root>src/test/java</root>
@@ -227,7 +226,7 @@
               <postBuildHookScript>verify</postBuildHookScript>
               <settingsFile>src/it/settings.xml</settingsFile>
               <!-- Currently working with more than one thread does not work, cause it is not guaranteed that the setup-config project
-                is build at first. see also http://jira.codehaus.org/browse/MINVOKER-147 -->
+                is build at first. see also https://issues.apache.org/jira/browse/MINVOKER-147 -->
               <parallelThreads>1</parallelThreads>
             </configuration>
             <executions>
