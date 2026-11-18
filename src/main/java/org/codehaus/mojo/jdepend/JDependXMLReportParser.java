@@ -48,7 +48,7 @@ public class JDependXMLReportParser extends DefaultHandler {
 
     protected Stats stats;
 
-    protected StringBuffer buffer;
+    protected StringBuilder buffer;
 
     protected Stack<String> stack;
 
@@ -93,7 +93,7 @@ public class JDependXMLReportParser extends DefaultHandler {
 
         // TODO only create a new buffer when the element is expected to have
         // text
-        buffer = new StringBuffer();
+        buffer = new StringBuilder();
 
         switch (qName) {
             case "Packages":
