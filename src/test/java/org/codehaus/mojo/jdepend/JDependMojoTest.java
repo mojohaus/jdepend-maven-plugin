@@ -31,7 +31,7 @@ import org.xmlunit.diff.Diff;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-public class JDependMojoTest {
+class JDependMojoTest {
     JDependXMLReportParser parser;
 
     public static final String REPORT_PATH = "target/test-classes/jdepend-report.xml";
