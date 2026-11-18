@@ -10,7 +10,7 @@ forks the `compile` phase first) and `generate-no-fork` (`JDependNoForkMojo`, bo
 Both extend `AbstractJDependMojo`, which runs JDepend and renders the report with
 `ReportGenerator`; `JDependXMLReportParser` reads the XML result into the classes in `objects`.
 
-- The site is built from `src/site/apt`; `.apt.vm` files go through Velocity.
+- The site is built from `src/site/markdown`; `.md.vm` files go through Velocity.
 
 ## Build gates
 
