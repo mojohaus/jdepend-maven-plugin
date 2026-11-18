@@ -124,10 +124,6 @@ class JDependReportParserTest {
                 assertTrue(concretes.contains("org.codehaus.mojo.jdepend.objects.CyclePackage"));
                 assertTrue(concretes.contains("org.codehaus.mojo.jdepend.objects.JDPackage"));
 
-                /*
-                 * Test failure assertTrue( concretes.contains( "org.codehaus.mojo.jdepend.objects.Packages" ) );
-                 */
-
                 assertTrue(concretes.contains("org.codehaus.mojo.jdepend.objects.Stats"));
             }
         }
