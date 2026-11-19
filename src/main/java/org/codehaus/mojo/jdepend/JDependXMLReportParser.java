@@ -91,9 +91,9 @@ public class JDependXMLReportParser extends DefaultHandler {
         /* Push element name into stack */
         stack.push(qName);
 
-        // TODO only create a new buffer when the element is expected to have
-        // text
-        buffer = new StringBuilder();
+        if (hasText(qName)) {
+            buffer = new StringBuilder();
+        }
 
         switch (qName) {
             case "Packages":
@@ -242,5 +242,32 @@ public class JDependXMLReportParser extends DefaultHandler {
      */
     private boolean isParentElement(String parentElement) {
         return stack.get(getParentIndex()).equals(parentElement);
+    }
+
+    /**
+     * Only elements whose character data is read by {@link #endElement} need a text buffer.
+     *
+     * @param qName the element name
+     * @return true when the element is expected to have text
+     */
+    private boolean hasText(String qName) {
+        switch (qName) {
+            case "DependsUpon":
+            case "UsedBy":
+            case "Package":
+            case "TotalClasses":
+            case "ConcreteClasses":
+            case "AbstractClasses":
+            case "Ca":
+            case "Ce":
+            case "A":
+            case "I":
+            case "D":
+            case "V":
+            case "Class":
+                return true;
+            default:
+                return false;
+        }
     }
 }
