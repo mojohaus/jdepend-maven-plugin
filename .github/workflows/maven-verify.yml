@@ -22,4 +22,8 @@ on: [push, pull_request, workflow_dispatch]
 jobs:
   build:
     name: Verify
+    # Same-repo PRs are already built by the push event. Skip the whole reusable
+    # workflow call so the checks UI shows one named "Verify" check instead of
+    # nested jobs whose matrix/needs expressions cannot be rendered when skipped.
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.fork
     uses: mojohaus/.github/.github/workflows/maven-verify.yml@master
