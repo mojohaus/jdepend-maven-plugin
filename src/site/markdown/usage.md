@@ -12,7 +12,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-     http://www.apache.org/licenses/LICENSE-2.0
+http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -39,7 +39,7 @@ In your `pom.xml`, insert this segment.
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>jdepend-maven-plugin</artifactId>
-        <version>${project.version}</version>
+        <version><!-- latest release --></version>
       </plugin>
     </plugins>
   </reporting>
@@ -65,7 +65,6 @@ JDepend's package filter.
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>jdepend-maven-plugin</artifactId>
-        <version>${project.version}</version>
         <configuration>
           <ignorePackages>
             <ignorePackage>java.*</ignorePackage>
@@ -79,3 +78,4 @@ JDepend's package filter.
   ...
 </project>
 ```
+

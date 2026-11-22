@@ -12,7 +12,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-     http://www.apache.org/licenses/LICENSE-2.0
+http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -27,7 +27,7 @@ JDepend Maven Plugin
 
 This plugin produces a nicely formatted metrics report based on your project.
 
-This plugin uses [JDepend](https://github.com/nidi3/jdepend) in version ${jdependVersion}, a fork of
+This plugin uses [JDepend](https://github.com/nidi3/jdepend), a maintained fork of
 [the original JDepend](https://github.com/clarkware/jdepend) that reads current class files.
 
 Goals Overview
@@ -51,3 +51,4 @@ To provide you with better understanding of some usages of the JDepend
 Maven Plugin, you can take a look into the following example:
 
 - [JDepend Sample Report](./examples/jdepend-report.html)
+
