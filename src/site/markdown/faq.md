@@ -32,4 +32,4 @@ JDepend is a tool that traverses Java class file directories and generates desig
 Java package. JDepend allows you to automatically measure the quality of a design in terms of its
 extensibility, reusability, and maintainability to manage package dependencies effectively.
 
-See [http://clarkware.com/software/JDepend.html](http://clarkware.com/software/JDepend.html) for details.
+See the [JDepend project](https://github.com/clarkware/jdepend) for details.

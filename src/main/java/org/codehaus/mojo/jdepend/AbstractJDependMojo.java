@@ -76,7 +76,9 @@ public abstract class AbstractJDependMojo extends AbstractMavenReport {
     private boolean skip;
 
     /**
-     * Package name prefixes to exclude from the JDepend analysis.
+     * Package name prefixes to exclude from the JDepend analysis, for example {@code java.*} or {@code org.slf4j*}.
+     * A trailing {@code *} is supported by the JDepend package filter. The ignore entries of a
+     * {@code jdepend.properties} file apply in addition.
      */
     @Parameter
     private List<String> ignorePackages;

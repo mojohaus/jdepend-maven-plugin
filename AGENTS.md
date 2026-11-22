@@ -10,7 +10,8 @@ forks the `compile` phase first) and `generate-no-fork` (`JDependNoForkMojo`, bo
 Both extend `AbstractJDependMojo`, which runs JDepend and renders the report with
 `ReportGenerator`; `JDependXMLReportParser` reads the XML result into the classes in `objects`.
 
-- The site is built from `src/site/markdown`; `.md.vm` files go through Velocity.
+- The site is built from the plain Markdown pages in `src/site/markdown`: `index.md`, `usage.md`,
+  `check.md` and `faq.md`, with the menu in `src/site/site.xml`.
 
 ## Build gates
 
@@ -19,14 +20,14 @@ Both extend `AbstractJDependMojo`, which runs JDepend and renders the report wit
   Markdown, including this file and the README.
 - `license-maven-plugin` runs `check-file-header` on `src/main/java` and `src/test/java` against
   the `asf-2.0` header in `src/license`.
-- The plugin compiles against `mavenVersion` (3.9.16) and declares a literal Maven 3.9.0 as its
-  `<prerequisites>`. Raising `mavenVersion` must not raise the prerequisite.
+- The plugin compiles against the Maven 3.9.x release in `mavenVersion` and declares a literal
+  Maven 3.9.0 as its `<prerequisites>`. Raising `mavenVersion` must not raise the prerequisite.
 - Fields of the mojo classes are plugin parameters; renaming one changes the plugin's
   configuration API.
 
 ## Unit tests
 
-- JUnit 5 only, under `src/test/java`. `JDependMojoTest` runs JDepend on `target/classes` and
+- Unit tests use JUnit 5, under `src/test/java`. `JDependMojoTest` runs JDepend on `target/classes` and
   compares its XML with `src/test/resources/jdepend-report.xml` using XMLUnit; `basedir` comes from the
   system property that Surefire sets.
 
@@ -69,9 +70,29 @@ Both extend `AbstractJDependMojo`, which runs JDepend and renders the report wit
 - Dependabot updates are monthly and grouped. Pins in `.github/dependabot.yml`: Maven core
   artifacts stay below 3.10 and `plexus-xml` below 4, because 4.x depends on the Maven 4 XML API.
 
+## Documentation updates
+
+A change that users or contributors can notice ships with the documentation it affects, in the
+same pull request. A refactor with no visible effect needs none.
+
+- A new goal or parameter, or a changed default: the mojo Javadoc, which becomes the goal page, and
+  the goal list in `src/site/markdown/index.md`.
+- New or changed usage: `src/site/markdown/usage.md` for the report goals and
+  `src/site/markdown/check.md` for the cycle check; recurring questions go in
+  `src/site/markdown/faq.md`. The site pages are plain Markdown; the first plugin declaration in
+  `usage.md` writes the version as `<version><!-- latest release --></version>` and the other
+  examples leave it out, so they never go stale.
+- A page added, removed or renamed: the menu in `src/site/site.xml`. Never rename a published page;
+  its URL is linked from elsewhere. `src/site/resources/examples/jdepend-report.html` is the sample
+  report; regenerate it when the report layout changes.
+- The Maven or Java requirement, or how to build and release: `README.md`.
+- A new convention, build gate or test fixture: this file.
+
+Check the result with `mvn site` and open `target/site/index.html`.
+
 ## Pull requests
 
 - Squash and rebase merges are enabled; merge commits are not. Release Drafter, through the shared
-  `apache/maven-gh-actions-shared` workflow, builds the release notes from pull request titles
+  MojoHaus `release-drafter.yml` workflow in `mojohaus/.github`, builds the release notes from pull request titles
   and labels, so the title should describe the change for a user.
 
