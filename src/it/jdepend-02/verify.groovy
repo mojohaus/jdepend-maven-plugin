@@ -17,6 +17,10 @@
  * under the License.
  */
 
+// The class directory comes from build/outputDirectory, not the default target/classes
+assert new File( basedir,'target/output-classes/org/codehaus/mojo/App.class' ).exists()
+assert !new File( basedir,'target/classes' ).exists()
+
 // Verify the existence of some files
 assert new File( basedir,'target/jdepend-report.xml' ).exists()
 
