@@ -45,6 +45,8 @@ import org.apache.maven.plugins.annotations.Parameter;
 
 /**
  * Checks the compiled project classes for package dependency cycles and fails the build when a cycle is found.
+ *
+ * @since 2.3.0
  */
 @Mojo(name = "check", defaultPhase = LifecyclePhase.VERIFY, threadSafe = true)
 public class JDependCheckMojo extends AbstractMojo implements ParserListener {

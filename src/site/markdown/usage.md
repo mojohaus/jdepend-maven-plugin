@@ -53,7 +53,7 @@ Generate the metrics report by executing the maven-site-plugin.
 mvn site
 ```
 
-Packages can be excluded from the JDepend analysis by configuring package
+Since 2.3.0, packages can be excluded from the JDepend analysis by configuring package
 prefixes in `ignorePackages`. A trailing `*` is supported by
 JDepend's package filter.
 

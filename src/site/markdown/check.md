@@ -23,7 +23,7 @@ limitations under the License.
 Checking Package Dependency Cycles
 ==================================
 
-The `jdepend:check` goal analyzes compiled project classes and fails the build when it finds a package
+Available since 2.3.0. The `jdepend:check` goal analyzes compiled project classes and fails the build when it finds a package
 dependency cycle. It does not generate an XML or HTML report.
 
 Bind the goal to the build to run it during the `verify` phase:
