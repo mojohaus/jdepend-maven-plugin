@@ -18,31 +18,31 @@
  * under the License.
  */
 
-def xmlReport = new File( basedir,'target/jdepend-report.xml' )
+def xmlReport = new File(basedir,'target/jdepend-report.xml')
 assert xmlReport.exists()
 
-def siteReport = new File( basedir,'target/site/jdepend-report.html' )
+def siteReport = new File(basedir,'target/site/jdepend-report.html')
 assert siteReport.exists()
 
-def xml = xmlReport.getText( 'UTF-8' )
-def html = siteReport.getText( 'UTF-8' )
+def xml = xmlReport.getText('UTF-8')
+def html = siteReport.getText('UTF-8')
 
 
-assert html.contains( 'org.codehaus.mojo.modernjava' )
+assert html.contains('org.codehaus.mojo.modernjava')
 
-assert xml.contains( 'org.codehaus.mojo.modernjava' )
-assert xml.contains( 'org.codehaus.mojo.modernjava.another' )
-assert xml.contains( 'org.codehaus.mojo.modernjava.another.Another' )
-assert xml.contains( 'org.codehaus.mojo.modernjava.LambdaSample' )
-assert xml.contains( 'org.codehaus.mojo.modernjava.RecordSample' )
+assert xml.contains('org.codehaus.mojo.modernjava')
+assert xml.contains('org.codehaus.mojo.modernjava.another')
+assert xml.contains('org.codehaus.mojo.modernjava.another.Another')
+assert xml.contains('org.codehaus.mojo.modernjava.LambdaSample')
+assert xml.contains('org.codehaus.mojo.modernjava.RecordSample')
 
 // the classes were analyzed, not only referenced from another package
-assert xml.contains( '<Class sourceFile="LambdaSample.java">' )
-assert xml.contains( '<Class sourceFile="RecordSample.java">' )
-assert !new File( basedir, 'build.log' ).text.contains( 'Unknown constant' )
+assert xml.contains('<Class sourceFile="LambdaSample.java">')
+assert xml.contains('<Class sourceFile="RecordSample.java">')
+assert !new File(basedir, 'build.log').text.contains('Unknown constant')
 
-assert html.contains( 'org.codehaus.mojo.modernjava' )
-assert html.contains( 'org.codehaus.mojo.modernjava.another' )
+assert html.contains('org.codehaus.mojo.modernjava')
+assert html.contains('org.codehaus.mojo.modernjava.another')
 
 
 

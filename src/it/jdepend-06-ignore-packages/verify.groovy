@@ -17,17 +17,17 @@
  * under the License.
  */
 
-def xmlReport = new File( basedir,'target/jdepend-report.xml' )
+def xmlReport = new File(basedir,'target/jdepend-report.xml')
 assert xmlReport.exists()
 
-def siteReport = new File( basedir,'target/site/jdepend-report.html' )
+def siteReport = new File(basedir,'target/site/jdepend-report.html')
 assert siteReport.exists()
 
-def xml = xmlReport.getText( 'UTF-8' )
-def html = siteReport.getText( 'UTF-8' )
+def xml = xmlReport.getText('UTF-8')
+def html = siteReport.getText('UTF-8')
 
-assert xml.contains( 'org.codehaus.mojo.visible' )
-assert !xml.contains( 'org.codehaus.mojo.ignored' )
+assert xml.contains('org.codehaus.mojo.visible')
+assert !xml.contains('org.codehaus.mojo.ignored')
 
-assert html.contains( 'org.codehaus.mojo.visible' )
-assert !html.contains( 'org.codehaus.mojo.ignored' )
+assert html.contains('org.codehaus.mojo.visible')
+assert !html.contains('org.codehaus.mojo.ignored')

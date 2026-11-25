@@ -17,9 +17,9 @@
  * under the License.
  */
 
-assert new File( basedir, 'target/classes/org/codehaus/mojo/alpha/Alpha.class' ).exists()
-assert new File( basedir, 'target/classes/org/codehaus/mojo/beta/Beta.class' ).exists()
+assert new File(basedir, 'target/classes/org/codehaus/mojo/alpha/Alpha.class').exists()
+assert new File(basedir, 'target/classes/org/codehaus/mojo/beta/Beta.class').exists()
 
-def buildLog = new File( basedir, 'build.log' )
-assert buildLog.text.contains( 'JDepend check failed: package dependency cycles detected' )
-assert buildLog.text.contains( 'org.codehaus.mojo.alpha -> org.codehaus.mojo.beta -> org.codehaus.mojo.alpha' )
+def buildLog = new File(basedir, 'build.log')
+assert buildLog.text.contains('JDepend check failed: package dependency cycles detected')
+assert buildLog.text.contains('org.codehaus.mojo.alpha -> org.codehaus.mojo.beta -> org.codehaus.mojo.alpha')

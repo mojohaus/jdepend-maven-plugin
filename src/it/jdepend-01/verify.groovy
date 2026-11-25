@@ -18,11 +18,11 @@
  */
 
 // Verify the existence of some files
-assert new File( basedir,'target/jdepend-report.xml' ).exists()
+assert new File(basedir,'target/jdepend-report.xml').exists()
 
-assert new File( basedir,'target/site/jdepend-report.html' ).exists()
-assert new File( basedir,'target/site/dependencies.html' ).exists()
-assert new File( basedir,'target/site/index.html' ).exists()
-assert new File( basedir,'target/site/licenses.html' ).exists()
-assert new File( basedir,'target/site/project-reports.html' ).exists()
-assert new File( basedir,'target/site/project-info.html' ).exists()
+assert new File(basedir,'target/site/jdepend-report.html').exists()
+assert new File(basedir,'target/site/dependencies.html').exists()
+assert new File(basedir,'target/site/index.html').exists()
+assert new File(basedir,'target/site/licenses.html').exists()
+assert new File(basedir,'target/site/project-reports.html').exists()
+assert new File(basedir,'target/site/project-info.html').exists()
