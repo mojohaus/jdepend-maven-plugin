@@ -17,9 +17,9 @@
  * under the License.
  */
 
-assert new File( basedir, 'target/classes/module-info.class' ).exists()
-assert new File( basedir, 'target/classes/org/codehaus/mojo/api/Api.class' ).exists()
-assert new File( basedir, 'target/classes/org/codehaus/mojo/implementation/Implementation.class' ).exists()
+assert new File(basedir, 'target/classes/module-info.class').exists()
+assert new File(basedir, 'target/classes/org/codehaus/mojo/api/Api.class').exists()
+assert new File(basedir, 'target/classes/org/codehaus/mojo/implementation/Implementation.class').exists()
 
-def buildLog = new File( basedir, 'build.log' )
-assert buildLog.text.contains( 'No package dependency cycles found.' )
+def buildLog = new File(basedir, 'build.log')
+assert buildLog.text.contains('No package dependency cycles found.')

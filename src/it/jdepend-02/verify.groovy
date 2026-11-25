@@ -18,15 +18,15 @@
  */
 
 // The class directory comes from build/outputDirectory, not the default target/classes
-assert new File( basedir,'target/output-classes/org/codehaus/mojo/App.class' ).exists()
-assert !new File( basedir,'target/classes' ).exists()
+assert new File(basedir,'target/output-classes/org/codehaus/mojo/App.class').exists()
+assert !new File(basedir,'target/classes').exists()
 
 // Verify the existence of some files
-assert new File( basedir,'target/jdepend-report.xml' ).exists()
+assert new File(basedir,'target/jdepend-report.xml').exists()
 
-assert new File( basedir,'target/site/jdepend-report.html' ).exists()
-assert new File( basedir,'target/site/dependencies.html' ).exists()
-assert new File( basedir,'target/site/index.html' ).exists()
-assert new File( basedir,'target/site/licenses.html' ).exists()
-assert new File( basedir,'target/site/project-reports.html' ).exists()
-assert new File( basedir,'target/site/project-info.html' ).exists()
+assert new File(basedir,'target/site/jdepend-report.html').exists()
+assert new File(basedir,'target/site/dependencies.html').exists()
+assert new File(basedir,'target/site/index.html').exists()
+assert new File(basedir,'target/site/licenses.html').exists()
+assert new File(basedir,'target/site/project-reports.html').exists()
+assert new File(basedir,'target/site/project-info.html').exists()

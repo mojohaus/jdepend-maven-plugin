@@ -18,7 +18,7 @@
  */
 
 // Verify the existence of some files
-assert !new File( basedir,'target/jdepend-report.xml' ).exists()
+assert !new File(basedir,'target/jdepend-report.xml').exists()
 
-assert !new File( basedir,'target/output-site-directory/jdepend-report.html' ).exists()
-assert new File( basedir,'target/classes/org/codehaus/mojo/App.class' ).exists()
+assert !new File(basedir,'target/output-site-directory/jdepend-report.html').exists()
+assert new File(basedir,'target/classes/org/codehaus/mojo/App.class').exists()
